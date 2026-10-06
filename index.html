@@ -387,6 +387,120 @@ legend{color:var(--berry-d);padding:0 4px}
 .tblpick input{width:46px}
 .win.zen .tablebar{display:none!important}
 
+.rich .flow{margin:8px 0;padding:8px;border:1px dashed var(--edge);background:#fffefa;border-radius:4px;cursor:pointer;overflow-x:auto;text-align:center;line-height:0}
+.rich .flow:hover{border-color:var(--berry);box-shadow:0 0 0 2px rgba(179,32,42,.15)}
+.rich .flow svg{max-width:100%;height:auto;display:inline-block}
+.flowempty{color:#999;line-height:1.6;padding:10px;font-size:13px}
+#win-flow{width:min(1020px,calc(100% - 16px));height:min(660px,calc(100% - 60px))}
+.flowdlg{flex:1;min-height:0;display:flex;gap:8px;padding:8px}
+.flowL{width:42%;min-width:260px;display:flex;flex-direction:column;gap:6px;min-height:0}
+.flowL textarea{flex:1;min-height:120px;resize:none;font:13px/1.5 "Courier New",monospace;white-space:pre;overflow:auto}
+.flowerr{font-size:12px;color:var(--berry-d);max-height:70px;overflow:auto}
+.flowprev{flex:1;min-width:0;overflow:auto;background:#fffefa;border:2px inset #d9d2b8;padding:10px;text-align:center;line-height:0}
+.flowprev svg{max-width:100%;height:auto}
+@media (max-width:760px){ .flowdlg{flex-direction:column}.flowL{width:auto;min-width:0;flex:none;height:46%}.flowprev{min-height:40%} }
+
+/* left panel toggles */
+#win-main.hide-tree .pane-task{display:none}
+#win-main.hide-list .pane-list{display:none}
+/* Christmas highlighter */
+.rich mark{padding:0 2px;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;color:inherit}
+.rich mark.hl-y{background:linear-gradient(transparent 8%,#ffe27a 8%,#ffe27a 94%,transparent 94%)}
+.rich mark.hl-g{background:linear-gradient(transparent 8%,#a8e6b8 8%,#a8e6b8 94%,transparent 94%)}
+.rich mark.hl-p{background:linear-gradient(transparent 8%,#ffb3c9 8%,#ffb3c9 94%,transparent 94%)}
+.rich mark.hl-b{background:linear-gradient(transparent 8%,#aee3ff 8%,#aee3ff 94%,transparent 94%)}
+.rich mark.hl-o{background:linear-gradient(transparent 8%,#ff9d9d 8%,#ff9d9d 94%,transparent 94%)}
+.rich td.hl-y,.rich th.hl-y{background:#fff1b8}.rich td.hl-g,.rich th.hl-g{background:#d3f3dc}.rich td.hl-p,.rich th.hl-p{background:#ffdbe6}.rich td.hl-b,.rich th.hl-b{background:#d6efff}.rich td.hl-o,.rich th.hl-o{background:#ffd0d0}
+.sw.y{background:#ffe27a}.sw.g{background:#a8e6b8}.sw.p{background:#ffb3c9}.sw.b{background:#aee3ff}.sw.o{background:#ff9d9d}
+.edbar button.sw{width:26px;min-width:26px;height:24px;font-size:12px;line-height:1;padding:0}
+.tablebar .sw{width:20px;min-width:20px;height:20px;font-size:0}
+/* sketch / post-it */
+.rich figure.sketch .fw{box-shadow:2px 3px 7px rgba(0,0,0,.28);border-color:rgba(0,0,0,.18)}
+.rich figure.sketch img{cursor:pointer}
+/* drawing dialog */
+#win-draw{width:min(1000px,calc(100% - 12px));height:min(720px,calc(100% - 44px))}
+.drawdlg{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding:8px}
+.drawbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.dtools{display:flex;gap:2px}
+.dt{padding:3px 9px;border:1px solid var(--brown);border-radius:3px;background:linear-gradient(#fffdf6,#f2ead4 86%,#e0d4ae);cursor:pointer}
+.dt.on{background:linear-gradient(#e0d4ae,#fff3c4);box-shadow:inset 0 0 0 2px var(--berry);font-weight:bold}
+.dcols{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.dcol{width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #6b5a30;cursor:pointer;padding:0}
+.dcol.on{box-shadow:0 0 0 2px var(--berry),0 0 0 4px #fff}
+#dr-pcustom{width:30px;height:26px;padding:0;border:1px solid #6b5a30;background:none}
+.dsz{display:inline-flex;align-items:center;gap:5px}
+.dsz input[type=range]{width:110px;padding:0}
+.drawstage{flex:1;min-height:0;overflow:auto;background:#cfc8ad;border:2px inset #d9d2b8;display:grid;place-items:start center;padding:12px}
+.dwrap{position:relative;line-height:0;box-shadow:0 2px 8px rgba(0,0,0,.4);background:#fff;max-width:none}
+.dwrap canvas{display:block;width:100%;height:auto}
+#dr-ink{position:absolute;left:0;top:0;touch-action:none;cursor:crosshair}
+#dr-bg{pointer-events:none}
+/* templates manager */
+.tmh{font-weight:bold;color:var(--berry-d);padding:3px 4px;background:#efe6cb;margin-top:4px}
+.tmh:first-child{margin-top:0}
+#win-tpl{width:min(560px,calc(100% - 16px))}
+/* print: real text PDF via browser print */
+@page{size:A4;margin:14mm}
+@media print{
+  html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+  :root{padding:0!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #printarea{display:block!important;flex:none!important;overflow:visible!important;height:auto!important;padding:0!important;background:#fff!important;color:#000;font-family:"Noto Sans Thai",Tahoma,Thonburi,sans-serif;position:static!important}
+  #printarea .pnote{break-after:page;page-break-after:always}
+  #printarea .pnote:last-child{break-after:auto;page-break-after:auto}
+  #printarea h1,#printarea h2,#printarea h3{break-after:avoid;page-break-after:avoid}
+  #printarea table,#printarea figure,#printarea pre,#printarea .callout,#printarea .flow,#printarea tr{break-inside:avoid;page-break-inside:avoid}
+  #printarea .flow{border:0!important;padding:0!important;background:none!important}
+  #printarea .flow svg{max-width:100%;height:auto}
+  #printarea figure.img img{max-width:100%}
+  #printarea .ftools,#printarea .ci{}
+}
+
+/* Forest study timer */
+#win-timer{width:min(800px,calc(100% - 12px));height:min(620px,calc(100% - 44px))}
+.ftbody{flex:1;min-height:0;overflow:auto;padding:10px;background:var(--paper);border:1px solid var(--edge);margin:0 8px 6px}
+.ftpanel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ftscene{position:relative;min-height:300px;border:3px inset #d9d2b8;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle at 80% 18%,#fff8c9 0 14px,transparent 15px),linear-gradient(#0b1f4a,#1d4f91 68%,#dff0ff 68%)}
+.fttree{position:relative;z-index:2;width:min(280px,80%);line-height:0;margin-bottom:2px}
+.fttree svg{width:100%;height:auto}
+.fsnow{position:absolute;inset:0;pointer-events:none;z-index:3}
+.fsnow i{position:absolute;top:-8px;width:5px;height:5px;background:#fff;border-radius:50%;animation:fsn linear infinite}
+@keyframes fsn{to{transform:translateY(330px)}}
+.fttree .o,.ftr .o,.fsv .o{animation:tw 1.3s ease-in-out infinite}
+.ftctl{display:flex;flex-direction:column;gap:8px;min-width:0}
+.ftlcd{font:700 56px/1.1 "Courier New",monospace;letter-spacing:4px;text-align:center;color:#8dff9a;text-shadow:0 0 10px #34ff5a;background:#071a0c;border:3px inset #8a8a8a;border-radius:4px;padding:8px 6px}
+.ftbar{height:20px;border:1px solid #686868;background:#fff;padding:2px;border-radius:3px}
+.ftbar #ft-bar{height:100%;width:0;background:repeating-linear-gradient(90deg,#2ec04a 0 9px,transparent 9px 11px);transition:width 1s linear}
+.ftmsg{min-height:40px;line-height:1.5;font-weight:bold;color:var(--berry-d)}
+.ftsetup{display:flex;flex-direction:column;gap:7px}
+.ftsetup label{display:flex;flex-direction:column;gap:3px}
+.ftsetup .chips{display:flex;gap:4px;flex-wrap:wrap}
+#ft-go{font-size:15px;padding:6px 20px}
+#fo-range{display:flex;gap:4px;margin-bottom:8px}
+#fo-range .on{box-shadow:inset 0 0 0 2px var(--berry);font-weight:bold}
+.fcards{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
+.fcard{background:linear-gradient(#fffdf6,#efe6cb);border:1px solid var(--edge);border-radius:4px;padding:6px 4px;text-align:center}
+.fcard b{display:block;font-size:17px;color:var(--holly)}.fcard span{font-size:11px;color:var(--muted)}
+.fgrid{display:flex;flex-wrap:wrap;gap:2px;background:linear-gradient(#cfe8ff,#eaf4ff);border:2px inset #d9d2b8;padding:6px;min-height:84px;margin-bottom:8px;max-height:230px;overflow:auto}
+.ftr{width:46px;line-height:0}.ftr svg{width:46px;height:54px}
+.fsplit{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fbars{display:flex;gap:6px;align-items:flex-end;height:110px;padding:4px;border-bottom:1px solid var(--edge)}
+.fbar{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;font-size:11px;color:var(--muted)}
+.fbar i{display:block;width:70%;background:linear-gradient(#2ec04a,#14612b);border-radius:3px 3px 0 0;min-height:2px}
+.fsr{display:grid;grid-template-columns:110px 1fr auto;gap:6px;align-items:center;font-size:12px;margin:3px 0}
+.fsr>div{background:#efe6cb;height:12px;border-radius:6px;overflow:hidden}.fsr i{display:block;height:100%;background:linear-gradient(#e04a50,#b3202a)}
+.fshops{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:8px}
+.fshop{display:flex;flex-direction:column;align-items:center;gap:6px;background:linear-gradient(#fffdf6,#efe6cb);border:1px solid var(--edge);border-radius:6px;padding:8px}
+.fsv{width:80px;line-height:0;background:linear-gradient(#cfe8ff,#eaf4ff);border-radius:4px}.fsv svg{width:100%;height:auto}
+.ftset{display:flex;flex-direction:column;gap:10px}
+.ftset label{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+#tray-timer{color:#fff;font-weight:bold}
+@media (max-width:760px){
+  #win-timer{left:0!important;top:0!important;width:100%!important;height:calc(100% - 30px)!important;border-radius:0}
+  .ftpanel,.fsplit{grid-template-columns:1fr}.ftscene{min-height:220px}.fcards{grid-template-columns:repeat(2,1fr)}
+  .ftlcd{font-size:44px}
+}
+
 #ed{position:relative}
 </style>
 </head>
@@ -408,6 +522,7 @@ legend{color:var(--berry-d);padding:0 4px}
   </svg>
   <div class="icons">
     <button class="dicon" data-open="win-main"><span class="g">📚</span><span class="t">คลังความรู้ของฉัน</span></button>
+    <button class="dicon" data-open="win-timer"><span class="g">🌲</span><span class="t">ป่าคริสต์มาส (จับเวลา)</span></button>
     <button class="dicon" data-open="win-calc"><span class="g">🧮</span><span class="t">เครื่องคิดเลขคลินิก</span></button>
     <button class="dicon" data-open="win-lists"><span class="g">🏷️</span><span class="t">จัดการแผนก / ประเภท</span></button>
     <button class="dicon" data-open="win-backup"><span class="g">🎁</span><span class="t">สำรองข้อมูล</span></button>
@@ -420,6 +535,8 @@ legend{color:var(--berry-d);padding:0 4px}
     <div class="wbody">
       <div class="menubar" id="menubar"></div>
       <div class="toolbar">
+        <button class="tbn on" id="b-tree" title="แสดง/ซ่อนแถบโฟลเดอร์ด้านซ้าย">📁</button><button class="tbn on" id="b-listp" title="แสดง/ซ่อนรายการโน้ต">📃</button>
+        <span class="tsep"></span>
         <button class="tbn" id="b-new" title="สร้างโน้ตใหม่">➕<span class="tx"> สร้างใหม่</span></button>
         <button class="tbn" id="b-save" title="บันทึก (Ctrl+S)">💾<span class="tx"> บันทึก</span></button>
         <span class="tsep"></span>
@@ -429,6 +546,7 @@ legend{color:var(--berry-d);padding:0 4px}
         <button class="tbn" id="b-restore" title="กู้คืน" style="display:none">♻️<span class="tx"> กู้คืน</span></button>
         <button class="tbn" id="b-del" title="ลบ">🗑️<span class="tx"> ลบ</span></button>
         <span class="tsep"></span>
+        <button class="tbn" id="b-timer" title="จับเวลาอ่านหนังสือ (ปลูกต้นคริสต์มาส)">🌲<span class="tx"> จับเวลา</span></button>
         <button class="tbn" id="b-calc" title="เครื่องคิดเลขคลินิก">🧮<span class="tx"> คำนวณ</span></button>
         <button class="tbn" id="b-lists" title="แผนก / ประเภท">🏷️<span class="tx"> แผนก</span></button>
         <span class="tspacer"></span>
@@ -449,17 +567,20 @@ legend{color:var(--berry-d);padding:0 4px}
           <div class="edbar" id="edbar">
             <button data-fmt="bold" title="ตัวหนา Ctrl+B"><b>B</b></button><button data-fmt="italic" title="ตัวเอียง Ctrl+I"><i>I</i></button><button data-fmt="underline" title="ขีดเส้นใต้ Ctrl+U"><u>U</u></button><button data-fmt="strike" title="ขีดฆ่า"><s>S</s></button><button data-fmt="code" title="โค้ดในบรรทัด">&lt;/&gt;</button>
             <span class="sp"></span>
-            <span title="ไฮไลต์ข้อความที่เลือก (Ctrl+Shift+H = สีล่าสุด)">🖍️</span>
-            <button class="sw y" data-hl="y" title="ไฮไลต์เหลือง" aria-label="ไฮไลต์เหลือง"></button><button class="sw g" data-hl="g" title="ไฮไลต์เขียว" aria-label="ไฮไลต์เขียว"></button><button class="sw p" data-hl="p" title="ไฮไลต์ชมพู" aria-label="ไฮไลต์ชมพู"></button><button class="sw b" data-hl="b" title="ไฮไลต์ฟ้า" aria-label="ไฮไลต์ฟ้า"></button><button class="sw o" data-hl="o" title="ไฮไลต์ส้ม" aria-label="ไฮไลต์ส้ม"></button><button data-hl="none" title="ลบไฮไลต์">⌫</button>
+            <span title="ปากกาไฮไลต์ธีมคริสต์มาส — เลือกข้อความแล้วกดสี (Ctrl+Shift+H = สีล่าสุด)">🖍️</span>
+            <button class="sw y" data-hl="y" title="ไฮไลต์ทอง" aria-label="ไฮไลต์ทอง">⭐</button><button class="sw g" data-hl="g" title="ไฮไลต์เขียวฮอลลี" aria-label="ไฮไลต์เขียวฮอลลี">🎄</button><button class="sw p" data-hl="p" title="ไฮไลต์ชมพูแคนดี้" aria-label="ไฮไลต์ชมพูแคนดี้">🍬</button><button class="sw b" data-hl="b" title="ไฮไลต์ฟ้าน้ำแข็ง" aria-label="ไฮไลต์ฟ้าน้ำแข็ง">❄️</button><button class="sw o" data-hl="o" title="ไฮไลต์แดงซานต้า" aria-label="ไฮไลต์แดงซานต้า">🎅</button>
+            <button data-hl="none" title="ลบไฮไลต์">⌫</button>
             <span class="sp"></span>
             <button data-fmt="h1">H1</button><button data-fmt="h2">H2</button><button data-fmt="h3">H3</button>
             <span class="sp"></span>
             <button data-fmt="ul" title="รายการ">•</button><button data-fmt="ol" title="รายการลำดับ">1.</button><button data-fmt="task" title="เช็กลิสต์">☑</button>
             <select id="callout-sel" aria-label="กล่องเน้น"><option value="">💬 กล่องเน้น…</option><option value="info">ℹ️ ข้อมูล</option><option value="warn">⚠️ คำเตือน</option><option value="pearl">⭐ High-yield</option><option value="flag">🚩 Red flag</option></select>
             <span class="sp"></span>
-            <button data-fmt="table" title="แทรกตาราง">▦ ตาราง</button><button data-fmt="image" title="แทรกรูปที่ตำแหน่งเคอร์เซอร์ (หรือ Ctrl+V)">🖼️ รูป</button><button data-fmt="camera" title="ถ่ายรูป (มือถือ)">📷</button>
+            <button data-fmt="table" title="แทรกตาราง">▦ ตาราง</button><button data-fmt="image" title="แทรกรูปที่ตำแหน่งเคอร์เซอร์ (หรือ Ctrl+V)">🖼️ รูป</button><button data-fmt="camera" title="ถ่ายรูป (มือถือ)">📷</button><button data-fmt="flow" title="เขียน flowchart / algorithm">🔀 Flowchart</button>
             <span class="sp"></span>
-            <select id="tpl-sel" aria-label="แทรกเทมเพลต"></select>
+            <button data-fmt="postit" title="Post-it เขียนมือ (ปากกา/Apple Pencil)">🗒️ Post-it</button><button data-fmt="sketch" title="กระดานวาดเขียน">✏️ วาด</button>
+            <span class="sp"></span>
+            <select id="tpl-sel" aria-label="แทรกเทมเพลต"></select><button id="b-tplm" title="เพิ่ม/ลบเทมเพลตของฉัน">⚙️</button>
             <button data-fmt="undo" title="ย้อนกลับ">↶</button><button data-fmt="redo" title="ทำซ้ำ">↷</button>
             <input type="file" id="file-in" accept="image/*" multiple hidden><input type="file" id="cam-in" accept="image/*" capture="environment" hidden>
             <div class="tblpick" id="tblpick"><div class="g" id="tp-grid"></div><div id="tp-lbl">เลือกขนาดตาราง</div>
@@ -517,9 +638,11 @@ legend{color:var(--berry-d);padding:0 4px}
         <label>ขนาดตัวอักษร <select id="pdf-font"><option value="13">เล็ก</option><option value="14" selected>ปกติ</option><option value="16">ใหญ่</option></select></label>
         <label style="display:block;margin-top:4px"><input type="checkbox" id="pdf-head" checked> ใส่ชื่อโน้ต แผนก ประเภท แท็ก และวันที่ไว้หัวเอกสาร</label>
         <label style="display:block"><input type="checkbox" id="pdf-img" checked> รวมรูปภาพ</label></fieldset>
-      <div class="note-s">PDF เป็นขนาด A4 มีเลขหน้า แต่ละโน้ตขึ้นหน้าใหม่ · ตัวหนังสือในไฟล์เป็นภาพ จึงเลือกคัดลอก/ค้นหาในไฟล์ไม่ได้ ถ้าต้องการข้อความจริงให้กด “พิมพ์แทน” แล้วเลือก “บันทึกเป็น PDF”</div>
+      <div class="note-s"><b>แบบข้อความจริง (แนะนำ):</b> เปิดหน้าต่างพิมพ์ของเบราว์เซอร์ แล้วเลือก “บันทึกเป็น PDF” — ตัวหนังสือ ฟอนต์ไทย และ flowchart เป็นเวกเตอร์ เลือก/ค้นหา/คัดลอกได้<br>
+        <b>บนไอแพด:</b> ในหน้าต่างพิมพ์ ใช้สองนิ้วถ่างที่ภาพตัวอย่างจนเปิดเป็น PDF แล้วกดปุ่ม Share > Save to Files<br>
+        <b>แบบรูป:</b> ดาวน์โหลดเป็นไฟล์ทันที แต่ตัวหนังสือเป็นภาพ (ใช้เมื่อพิมพ์ไม่ได้)</div>
       <div class="out" id="pdf-st" style="min-height:24px" aria-live="polite"></div>
-      <div class="btns"><button class="btn def" id="pdf-go">สร้าง PDF</button><button class="btn" id="pdf-print">🖨️ พิมพ์แทน</button><button class="btn" data-close="win-pdf">ปิด</button></div></div></div></div>
+      <div class="btns"><button class="btn def" id="pdf-print">🖨️ พิมพ์ / บันทึกเป็น PDF (ข้อความจริง)</button><button class="btn" id="pdf-go">⬇️ ดาวน์โหลดแบบรูป</button><button class="btn" data-close="win-pdf">ปิด</button></div></div></div></div>
 
   <div class="win" id="win-gh"><div class="titlebar"><span>🔗</span><span class="ttitle">ซิงก์ผ่าน GitHub</span><div class="tbtns"><button class="tbtn" data-act="min" aria-label="ย่อ">–</button><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
     <div class="wbody"><div class="dlg">
@@ -535,6 +658,86 @@ legend{color:var(--berry-d);padding:0 4px}
       <div class="out" id="gh-st" style="min-height:24px" aria-live="polite"></div>
       <div class="btns"><button class="btn def" id="gh-go">เชื่อมต่อ</button><button class="btn" id="gh-off">ยกเลิกการเชื่อมต่อ</button><button class="btn" data-close="win-gh">ปิด</button></div></div></div></div>
 
+  <div class="win" id="win-flow"><div class="titlebar"><span>🔀</span><span class="ttitle">เขียน Flowchart / Algorithm</span><div class="tbtns"><button class="tbtn" data-act="min" aria-label="ย่อ">–</button><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
+    <div class="wbody"><div class="flowdlg">
+      <div class="flowL">
+        <div class="chips" id="fl-chips"><button class="btn sm" data-c="start">⬭ เริ่ม</button><button class="btn sm" data-c="step">▭ + ขั้นตอน</button><button class="btn sm" data-c="ask">◇ + คำถาม ใช่/ไม่</button><button class="btn sm" data-c="end">⬭ + จบ</button><button class="btn sm" data-c="example">📋 ตัวอย่าง</button>
+          <select id="fl-dir" aria-label="ทิศทาง"><option value="TD">↓ บนลงล่าง</option><option value="LR">→ ซ้ายไปขวา</option></select></div>
+        <textarea id="fl-src" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="โค้ด flowchart"></textarea>
+        <div id="fl-err" class="flowerr"></div>
+        <div class="note-s">A[กล่อง] · A([เริ่ม/จบ]) · A{คำถาม} · A(มน) · A --&gt; B · A --&gt;|ใช่| B · A -.-&gt; B (เส้นประ) · ขึ้นบรรทัดในกล่องด้วย &lt;br&gt; · สี: A[ข้อความ]:::red (red green yellow blue orange pink gray) · %% คอมเมนต์ · ปุ่ม “+ ขั้นตอน/คำถาม” จะต่อจากโหนดล่าสุดให้</div>
+      </div>
+      <div class="flowprev" id="fl-prev"></div>
+    </div>
+    <div class="dlg" style="padding-top:0"><div class="btns"><button class="btn def" id="fl-ok">ตกลง</button><button class="btn" id="fl-del">ลบ flowchart</button><button class="btn" data-close="win-flow">ยกเลิก</button></div></div></div></div>
+
+  <div class="win" id="win-draw"><div class="titlebar"><span>🖍️</span><span class="ttitle" id="dr-title">ปากกา / Post-it</span><div class="tbtns"><button class="tbtn" data-act="min" aria-label="ย่อ">–</button><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
+    <div class="wbody"><div class="drawdlg">
+      <div class="drawbar">
+        <div class="dtools" id="dr-tools"><button class="dt on" data-t="pen" title="ปากกา">✏️ ปากกา</button><button class="dt" data-t="hl" title="ปากกาไฮไลต์">🖍️ ไฮไลต์</button><button class="dt" data-t="arrow" title="ลูกศร">➚ ลูกศร</button><button class="dt" data-t="eraser" title="ยางลบ">🧽 ยางลบ</button></div>
+        <div class="dcols" id="dr-pens"></div><div class="dcols" id="dr-hls" style="display:none"></div>
+        <label class="dsz">ขนาด <input type="range" id="dr-size" min="1" max="60" value="4" aria-label="ขนาดเส้น"> <span id="dr-sizev">4 px</span></label>
+        <button class="btn sm" id="dr-undo" title="ย้อนกลับ (Ctrl+Z)">↶</button><button class="btn sm" id="dr-redo" title="ทำซ้ำ">↷</button><button class="btn sm" id="dr-clear" title="ล้างเส้นทั้งหมด">ล้าง</button>
+        <button class="btn sm" id="dr-zout">−</button><span id="dr-zoomv" style="min-width:38px;text-align:center">100%</span><button class="btn sm" id="dr-zin">+</button>
+        <label class="dsz" title="วาดเฉพาะ Apple Pencil — นิ้วใช้เลื่อนหน้าจอ"><input type="checkbox" id="dr-penonly"> ปากกาเท่านั้น</label>
+      </div>
+      <div class="drawbar" id="dr-meta"><span>พื้นหลัง:</span><div class="dcols" id="dr-bgs"></div></div>
+      <div class="drawstage" id="dr-stage"><div class="dwrap" id="dr-wrap"><canvas id="dr-bg"></canvas><canvas id="dr-ink"></canvas></div></div>
+      <div class="drawbar"><span id="dr-st" class="note-s" style="flex:1" aria-live="polite"></span>
+        <label id="dr-keepw" class="dsz" style="display:none"><input type="checkbox" id="dr-keep"> เก็บรูปต้นฉบับไว้ (บันทึกเป็นรูปใหม่)</label>
+        <button class="btn def" id="dr-ok">บันทึกลงโน้ต</button><button class="btn" data-close="win-draw">ยกเลิก</button></div>
+    </div></div></div>
+
+  <div class="win" id="win-tpl"><div class="titlebar"><span>🗂️</span><span class="ttitle">จัดการเทมเพลต</span><div class="tbtns"><button class="tbtn" data-act="min" aria-label="ย่อ">–</button><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
+    <div class="wbody"><div class="dlg">
+      <fieldset><legend>เพิ่มเทมเพลตของฉัน</legend>
+        <div class="addrow"><input id="tm-name" maxlength="60" placeholder="ตั้งชื่อเทมเพลต" aria-label="ชื่อเทมเพลต"><button class="btn" id="tm-save">บันทึกโน้ตที่เปิดอยู่เป็นเทมเพลต</button></div>
+        <div class="note-s" style="margin-top:4px">ใช้โครงของโน้ตที่เปิดอยู่ (หัวข้อ ตาราง flowchart กล่องเน้น) — ไม่รวมรูปภาพและไฮไลต์ · เทมเพลตซิงก์ข้ามเครื่องไปด้วย</div></fieldset>
+      <div class="lscroll" id="tm-list" style="max-height:300px"></div>
+      <div class="out" id="tm-st" style="min-height:22px" aria-live="polite"></div>
+      <div class="btns"><button class="btn" id="tm-restore">แสดงเทมเพลตมาตรฐานทั้งหมด</button><button class="btn def" data-close="win-tpl">ปิด</button></div></div></div></div>
+
+  <div class="win" id="win-timer"><div class="titlebar"><span>🌲</span><span class="ttitle">ป่าคริสต์มาส — จับเวลาอ่านหนังสือ</span><div class="tbtns"><button class="tbtn" data-act="min" aria-label="ย่อ">–</button><button class="tbtn" data-act="max" aria-label="ขยาย">□</button><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
+    <div class="wbody">
+      <div class="tabs" id="ft-tabs" style="padding:6px 8px 0"><button class="tab on" data-t="timer">⏱️ จับเวลา</button><button class="tab" data-t="forest">🌲 ป่าของฉัน</button><button class="tab" data-t="shop">🛍️ ร้านต้นไม้</button><button class="tab" data-t="set">⚙️ ตั้งค่า</button></div>
+      <div class="ftbody">
+        <div class="ftpanel" id="ftp-timer">
+          <div class="ftscene"><div class="fsnow" id="ft-snow"></div><div class="fttree" id="ft-tree"></div></div>
+          <div class="ftctl">
+            <div class="ftlcd" id="ft-lcd" aria-live="off">25:00</div>
+            <div class="ftbar" role="progressbar" aria-label="ความคืบหน้า"><div id="ft-bar"></div></div>
+            <div class="ftmsg" id="ft-msg" aria-live="polite"></div>
+            <div id="ft-setup" class="ftsetup">
+              <label>ระยะเวลา <b id="ft-durv">25 นาที</b><input type="range" id="ft-dur" min="5" max="180" step="5" value="25" style="width:100%"></label>
+              <div class="chips" id="ft-chips"><button class="btn sm" data-m="15">15</button><button class="btn sm" data-m="25">25</button><button class="btn sm" data-m="45">45</button><button class="btn sm" data-m="60">60</button><button class="btn sm" data-m="90">90</button></div>
+              <label>อ่านวิชา / แผนก<select id="ft-subj" style="width:100%"></select></label>
+              <label>หัวข้อ (ไม่บังคับ)<input id="ft-label" maxlength="60" placeholder="เช่น ECG, Pharmacology" style="width:100%"></label>
+              <label>ต้นไม้ที่จะปลูก<select id="ft-type" style="width:100%"></select></label>
+              <div class="note-s">ดาวสะสม: ⭐ <b id="ft-star">0</b> · ปลูกสำเร็จได้ดาว 1 ดวงต่อ 5 นาที · ออกจากแอปนานเกินเวลาผ่อนผัน ต้นไม้จะเหี่ยว (ปิดได้ในตั้งค่า)</div>
+            </div>
+            <div class="btns" style="justify-content:flex-start"><button class="btn def" id="ft-go">🌱 เริ่มปลูก</button><button class="btn" id="ft-giveup" style="display:none">🥀 ยอมแพ้</button><button class="btn" id="ft-skip" style="display:none">ข้ามช่วงพัก</button></div>
+          </div>
+        </div>
+        <div id="ftp-forest" style="display:none">
+          <div class="chips" id="fo-range"><button class="btn sm on" data-r="today">วันนี้</button><button class="btn sm" data-r="week">7 วัน</button><button class="btn sm" data-r="month">30 วัน</button><button class="btn sm" data-r="all">ทั้งหมด</button></div>
+          <div class="fcards" id="fo-cards"></div>
+          <div class="tmh">🌲 ป่าของคุณ (เลื่อนเมาส์/แตะที่ต้นไม้เพื่อดูรายละเอียด)</div><div class="fgrid" id="fo-grid"></div>
+          <div class="fsplit"><div><div class="tmh">เวลาอ่านย้อนหลัง 7 วัน</div><div class="fbars" id="fo-week"></div></div><div><div class="tmh">แยกตามวิชา (ช่วงที่เลือก)</div><div id="fo-subj"></div></div></div>
+        </div>
+        <div id="ftp-shop" style="display:none"><div class="tmh">ร้านต้นไม้ — ดาวของคุณ ⭐ <b id="fs-star">0</b></div><div class="fshops" id="fs-list"></div></div>
+        <div id="ftp-set" style="display:none" class="ftset">
+          <label><input type="checkbox" id="fz-strict"> ต้นไม้เหี่ยวถ้าออกจากแอประหว่างจับเวลา (แบบ Forest)</label>
+          <label>เวลาผ่อนผัน <input type="number" id="fz-grace" min="5" max="600" style="width:70px"> วินาที (สลับแอปสั้นๆ ได้ไม่เหี่ยว)</label>
+          <div class="note-s">ถ้าอ่านหนังสือหรือ PDF ในแอปอื่น ให้ปิดข้อแรก ไม่งั้นการสลับแอปจะทำให้ต้นไม้เหี่ยว · การจดโน้ตในแอปนี้ไม่นับว่าออกจากแอป</div>
+          <label><input type="checkbox" id="fz-sound"> เสียงระฆังเมื่อจบรอบ <button class="btn sm" id="fz-test">ทดสอบเสียง</button></label>
+          <label><input type="checkbox" id="fz-brk"> เริ่มช่วงพักอัตโนมัติหลังปลูกสำเร็จ</label>
+          <label>พักสั้น <input type="number" id="fz-brkm" min="1" max="60" style="width:70px"> นาที (ครบ 4 รอบได้พักยาว 15 นาที)</label>
+          <div class="btns" style="justify-content:flex-start"><button class="btn" id="fz-reset">🗑️ ล้างข้อมูลป่าทั้งหมด</button></div>
+        </div>
+      </div>
+      <div class="status"><span id="ft-status" class="grow">⭐ 0 ดาว</span></div>
+    </div></div>
+
   <div id="modal"></div>
   <div class="win" id="win-msg"><div class="titlebar"><span class="ttitle" id="msg-title">MedNote</span><div class="tbtns"><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
     <div class="wbody"><div class="msgrow"><div class="ic" id="msg-ico">ℹ️</div><p id="msg-txt"></p></div><div class="dlg"><div class="btns" id="msg-btns"></div></div></div></div>
@@ -543,13 +746,13 @@ legend{color:var(--berry-d);padding:0 4px}
     <div class="sm-head"><div class="av">🧑‍⚕️</div><div>นักศึกษาแพทย์ (Extern)</div></div>
     <div class="sm-body"><div class="sm-l">
         <div class="sm-item" data-sm="new">📝 สร้างโน้ตใหม่</div><div class="sm-item" data-sm="win-main">📚 คลังความรู้ของฉัน</div>
-        <div class="sm-item" data-sm="win-calc">🧮 เครื่องคิดเลขคลินิก</div><div class="sm-item" data-sm="win-lists">🏷️ จัดการแผนก / ประเภท</div>
+        <div class="sm-item" data-sm="win-timer">🌲 ป่าคริสต์มาส (จับเวลา)</div><div class="sm-item" data-sm="win-calc">🧮 เครื่องคิดเลขคลินิก</div><div class="sm-item" data-sm="win-lists">🏷️ จัดการแผนก / ประเภท</div>
         <div class="sm-item" data-sm="win-backup">🎁 สำรอง / กู้คืนข้อมูล</div><div class="sm-item" data-sm="win-about">ℹ️ เกี่ยวกับ MedNote</div></div>
       <div class="sm-r"><h5>โน้ตล่าสุด</h5><div id="sm-recent"></div></div></div>
     <div class="sm-foot"><div class="sm-item" data-sm="off">⏻ ปิดเครื่อง</div></div>
   </div>
   <div id="balloon" role="status"><button class="bx" aria-label="ปิดข้อความ">×</button><div class="bt">⚠️ โปรดอย่าบันทึกข้อมูลระบุตัวผู้ป่วย</div>ทั้งข้อความและรูป: ไม่ควรมีชื่อ-สกุล, HN, เลขบัตรประชาชน, ใบหน้า หรือป้ายชื่อ</div>
-  <div id="taskbar"><button id="start" aria-haspopup="true">❄️ start</button><div id="tasks"></div><div id="tray"><span id="xmas"></span><span class="clk" id="clock"></span></div></div>
+  <div id="taskbar"><button id="start" aria-haspopup="true">❄️ start</button><div id="tasks"></div><div id="tray"><span id="tray-timer" style="display:none;cursor:pointer" title="เปิดตัวจับเวลา"></span><span id="xmas"></span><span class="clk" id="clock"></span></div></div>
   <div id="off"><div><b>ปิดเครื่องเรียบร้อยแล้ว</b>ปลอดภัยที่จะปิดเครื่องคอมพิวเตอร์ได้ 🎅<br><br><small>คลิกที่ใดก็ได้เพื่อเปิดเครื่องอีกครั้ง</small></div></div>
 </div>
 <div id="printarea" class="rich ro"></div>
@@ -769,11 +972,11 @@ const unwrap=e=>{ const p=e.parentNode; if(!p) return; while(e.firstChild) p.ins
 const escH=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 let notes=[], cur=null, folder='all', query='', saveTimer=null;
 const SYNC={mode:'',skey:'',on:false,ready:false,busy:false,again:false,uid:null,col:null,db:null,assets:null,synced:{},big:{},tombs:[],imgMap:{},timer:null,state:'local',last:0,err:'',imgBlocked:false,reloadCur:false};
-let settingsM=0, settingsDirty=false, NEED_SEED=false;
+let settingsM=0, settingsDirty=false, NEED_SEED=false, TPLCUST=[], TPLHIDE=[];
 function markSettings(){ settingsM=Date.now(); settingsDirty=true; }
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
 function persist(){ let ok=true; try{localStorage.setItem(KEY,JSON.stringify(notes));}catch(e){ok=false} schedulePush(); return ok; }
-function persistSettings(){ try{localStorage.setItem(SETKEY,JSON.stringify({v:2,rot:ROT,type:TYPES,m:settingsM}))}catch(e){} }
+function persistSettings(){ try{localStorage.setItem(SETKEY,JSON.stringify({v:3,rot:ROT,type:TYPES,tpl:TPLCUST,hide:TPLHIDE,m:settingsM}))}catch(e){} }
 function normalizeLists(){
   notes.forEach(n=>{
     if(!n.rot) n.rot=ROT[0]; if(!n.type) n.type=TYPES[0];
@@ -817,6 +1020,7 @@ function plainText(root){
       if(c.nodeType!==1) return;
       const cl=c.classList;
       if(cl.contains('ftools')||cl.contains('ci')) return;
+      if(cl.contains('flow')){ s+='[flowchart] '+(c.getAttribute('data-src')||'').replace(/[\n]+/g,' ')+'\n'; return; }
       const t=c.tagName.toLowerCase();
       if(t==='br'){ s+='\n'; return; }
       w(c);
@@ -912,6 +1116,7 @@ function loadNotes(deferSeed){
   try{raw=localStorage.getItem(KEY); seeded=localStorage.getItem(SEEDKEY); set=localStorage.getItem(SETKEY)}catch(e){}
   let s=null; if(set){ try{s=JSON.parse(set)}catch(e){} }
   if(s&&s.m) settingsM=s.m;
+  if(s&&Array.isArray(s.tpl)) TPLCUST=s.tpl; if(s&&Array.isArray(s.hide)) TPLHIDE=s.hide;
   if(s&&Array.isArray(s.rot)&&s.rot.length) ROT=s.rot.slice();
   if(s&&Array.isArray(s.type)&&s.type.length) TYPES=s.type.slice();
   if(raw){ try{notes=JSON.parse(raw)||[]}catch(e){notes=[]} }
@@ -987,7 +1192,7 @@ function exec(c,a){ try{ return document.execCommand(c,false,a==null?null:a); }c
 const CI={info:'ℹ️',warn:'⚠️',pearl:'⭐',flag:'🚩'};
 function makeP(){ const p=document.createElement('p'); p.innerHTML='<br>'; return p; }
 function isEmptyEl(el){ return !el.textContent.replace(/[\u200b\u00a0]/g,'').trim() && !el.querySelector('img,figure,table,hr'); }
-function needsP(el){ return !!el&&(/^(TABLE|FIGURE|HR|PRE)$/.test(el.tagName)||el.classList.contains('callout')); }
+function needsP(el){ return !!el&&(/^(TABLE|FIGURE|HR|PRE)$/.test(el.tagName)||el.classList.contains('callout')||el.classList.contains('flow')); }
 function ensureEdges(){
   if(!ed.firstChild) ed.appendChild(makeP());
   if(needsP(ed.firstElementChild)) ed.insertBefore(makeP(),ed.firstChild);
@@ -1007,12 +1212,14 @@ function decorate(root){
     let fw=f.querySelector('.fw'); if(!fw){ fw=document.createElement('div'); fw.className='fw'; f.insertBefore(fw,f.firstChild); }
     if(im.parentNode!==fw) fw.appendChild(im);
     if(!f.getAttribute('data-w')) f.setAttribute('data-w','m');
+    if(f.classList.contains('sketch')){ fw.style.background=f.getAttribute('data-bg')||''; sketchSize(f); }
     if(!f.querySelector('.ftools')){
       const t=document.createElement('span'); t.className='ftools'; t.setAttribute('contenteditable','false');
-      t.innerHTML='<button type="button" data-fa="view" title="ดูเต็ม">🔍</button><button type="button" data-fa="size" title="เปลี่ยนขนาด">⇔</button><button type="button" data-fa="del" title="ลบรูป">✕</button>';
+      t.innerHTML='<button type="button" data-fa="view" title="ดูเต็ม">🔍</button><button type="button" data-fa="draw" title="เขียน/วาดบนรูป">✏️</button><button type="button" data-fa="size" title="เปลี่ยนขนาด">⇔</button><button type="button" data-fa="del" title="ลบรูป">✕</button>';
       fw.appendChild(t);
     }
   });
+  qa(root,'.flow').forEach(renderFlowEl);
   qa(root,'.callout').forEach(c=>{
     if(!c.querySelector('.cb')){ const cb=document.createElement('div'); cb.className='cb'; while(c.firstChild) cb.appendChild(c.firstChild); c.appendChild(cb); }
     if(!c.querySelector('.ci')){ const i=document.createElement('span'); i.className='ci'; i.setAttribute('contenteditable','false'); i.textContent=CI[c.getAttribute('data-k')]||'ℹ️'; c.insertBefore(i,c.firstChild); }
@@ -1021,6 +1228,7 @@ function decorate(root){
 function serialize(root){
   const c=root.cloneNode(true);
   qa(c,'.ftools,.ci').forEach(rm);
+  qa(c,'.flow').forEach(f=>{ f.innerHTML=''; f.removeAttribute('title'); });
   qa(c,'figure.img').forEach(f=>{
     const fw=f.querySelector('.fw'), im=f.querySelector('img');
     if(fw){ if(im) f.insertBefore(im,fw); rm(fw); }
@@ -1032,6 +1240,11 @@ function serialize(root){
   qa(c,'div:not([class])').forEach(d=>{ const p=document.createElement('p'); while(d.firstChild) p.appendChild(d.firstChild); d.parentNode.replaceChild(p,d); });
   qa(c,'mark').forEach(m=>{ if(!m.textContent) rm(m); });
   return c.innerHTML.replace(/\u200b/g,'');
+}
+function sketchSize(f){
+  const im=f.querySelector('img'); if(!im||!f.classList.contains('sketch')) return;
+  const base=+f.getAttribute('data-cw')||480, w=f.getAttribute('data-w')||'m';
+  im.style.width=w==='l'?'100%':Math.round(base*(w==='s'?0.6:1))+'px'; im.style.maxWidth='100%';
 }
 function hydrateImages(root){
   qa(root,'figure.img img').forEach(img=>{
@@ -1149,6 +1362,9 @@ function fmt(k){
   else if(k==='undo') exec('undo'); else if(k==='redo') exec('redo');
   else if(k==='image'){ if(editable()) $('#file-in').click(); }
   else if(k==='camera'){ if(editable()) $('#cam-in').click(); }
+  else if(k==='flow') openFlow(null);
+  else if(k==='postit') openDraw({postit:true});
+  else if(k==='sketch') openDraw({});
   edChanged();
 }
 function editable(){ const n=curNote(); return !!n&&!n.deleted; }
@@ -1276,7 +1492,7 @@ ed.addEventListener('paste',e=>{
   const text=cd.getData('text/plain')||'', html=cd.getData('text/html')||'';
   if(files.length&&(!text.trim()||/<img\b/i.test(html))){ e.preventDefault(); insertImageFiles(files); return; }
   e.preventDefault();
-  if(text.indexOf('\n')>-1) insertHtmlBlocks(mdToHtml(text)); else if(text) insertPlain(text);
+  if(text.indexOf('\n')>-1) insertHtmlBlocks(text.replace(/\r/g,'').split('\n').map(l=>'<p>'+(escH(l)||'<br>')+'</p>').join('')); else if(text) insertPlain(text);
 });
 ed.addEventListener('dragover',e=>{ if(e.dataTransfer&&Array.prototype.indexOf.call(e.dataTransfer.types||[],'Files')>-1) e.preventDefault(); });
 ed.addEventListener('drop',e=>{
@@ -1292,7 +1508,7 @@ function showViewer(){
   if(!vFigs.length){ closeWin('win-view'); return; }
   vIdx=Math.max(0,Math.min(vIdx,vFigs.length-1)); const f=vFigs[vIdx], img=$('#v-img');
   $('#v-info').textContent=(vIdx+1)+' / '+vFigs.length; $('#v-cap').textContent=f.querySelector('figcaption').textContent||'';
-  $('#v-prev').disabled=vIdx===0; $('#v-next').disabled=vIdx===vFigs.length-1; img.removeAttribute('src');
+  $('#v-prev').disabled=vIdx===0; $('#v-next').disabled=vIdx===vFigs.length-1; img.removeAttribute('src'); img.style.background=f.classList.contains('sketch')?(f.getAttribute('data-bg')||'#fff'):'';
   imgURL(f.getAttribute('data-iid')).then(u=>{ if(vFigs[vIdx]===f&&u) img.src=u; });
 }
 $('#v-prev').addEventListener('click',()=>{vIdx--;showViewer()}); $('#v-next').addEventListener('click',()=>{vIdx++;showViewer()});
@@ -1303,31 +1519,58 @@ ed.addEventListener('compositionstart',()=>{composing=true}); ed.addEventListene
 ed.addEventListener('input',e=>{
   if(composing) return;
   if(!ed.firstChild){ ed.appendChild(makeP()); caretTo(ed.firstChild,true); }
-  shortcuts(e); edChanged();
+  edChanged();
 });
-function shortcuts(e){
-  if(e.inputType!=='insertText'||(e.data!==' '&&e.data!=='\u00a0')) return;
-  const p=curP(); if(!p||p.tagName!=='P') return;
-  if(p.querySelector('*')&&!(p.children.length===1&&p.firstElementChild.tagName==='BR')) return;
-  const t=p.textContent.replace(/[\u00a0\u200b]/g,' '); let m, el=null, focus=null;
-  const mk=(h)=>{ const d=document.createElement('div'); d.innerHTML=h; return d.firstChild; };
-  if((m=t.match(/^(#{1,3}) (.*)$/))){ el=mk('<h'+m[1].length+'>'+(escH(m[2])||'<br>')+'</h'+m[1].length+'>'); }
-  else if((m=t.match(/^[-*] (.*)$/))){ el=mk('<ul><li>'+(escH(m[1])||'<br>')+'</li></ul>'); }
-  else if((m=t.match(/^\d+[.)] (.*)$/))){ el=mk('<ol><li>'+(escH(m[1])||'<br>')+'</li></ol>'); }
-  else if((m=t.match(/^\[ ?\] (.*)$/))){ el=mk('<ul class="tl"><li>'+(escH(m[1])||'<br>')+'</li></ul>'); }
-  else if((m=t.match(/^!! (.*)$/))){ el=mk('<div class="callout" data-k="warn"><div class="cb"><p>'+(escH(m[1])||'<br>')+'</p></div></div>'); }
-  if(!el) return;
-  p.parentNode.replaceChild(el,p); decorate(ed); caretTo(firstEditable(el),false);
+/* ---- Tab / Shift+Tab: nested bullets, table cells, paragraph indent ---- */
+function caretMarker(fn){
+  const s=getSelection(); if(!s.rangeCount){ fn(); return; }
+  const r=s.getRangeAt(0).cloneRange(); r.collapse(false);
+  const mk=document.createElement('span'); mk.setAttribute('data-cm','1'); mk.textContent='\u200b'; r.insertNode(mk);
+  try{ fn(); } finally {
+    const nr=document.createRange(); nr.setStartAfter(mk); nr.collapse(true); s.removeAllRanges(); s.addRange(nr); savedRange=nr.cloneRange(); rm(mk);
+  }
+}
+function indentLi(li){
+  const prev=li.previousElementSibling; if(!prev) return false;
+  let sub=prev.lastElementChild&&/^(UL|OL)$/.test(prev.lastElementChild.tagName)?prev.lastElementChild:null;
+  if(!sub){ sub=document.createElement(li.parentNode.tagName); if(li.parentNode.classList.contains('tl')) sub.className='tl'; prev.appendChild(sub); }
+  sub.appendChild(li); return true;
+}
+function outdentLi(li){
+  const list=li.parentNode, pli=list.parentNode; if(!pli||pli.tagName!=='LI') return false;
+  const after=[]; let n=li.nextElementSibling; while(n){ after.push(n); n=n.nextElementSibling; }
+  if(after.length){
+    let sub=li.lastElementChild&&/^(UL|OL)$/.test(li.lastElementChild.tagName)?li.lastElementChild:null;
+    if(!sub){ sub=document.createElement(list.tagName); if(list.classList.contains('tl')) sub.className='tl'; li.appendChild(sub); }
+    after.forEach(a=>sub.appendChild(a));
+  }
+  pli.parentNode.insertBefore(li,pli.nextSibling); if(!list.children.length) rm(list); return true;
+}
+function handleTab(back){
+  const c=curCell(); if(c){ tabCell(c,back); return; }
+  const el=curEl(), li=el&&el.closest('li');
+  if(li&&ed.contains(li)){
+    const s=getSelection(), r=s.getRangeAt(0), list=li.parentNode;
+    let lis=Array.from(list.children).filter(x=>x.tagName==='LI'&&r.intersectsNode(x)); if(!lis.length) lis=[li];
+    caretMarker(()=>{ (back?lis.slice().reverse():lis).forEach(x=>{ if(back) outdentLi(x); else indentLi(x); }); });
+    edChanged(); return;
+  }
+  const p=curP();
+  if(back){
+    if(!p) return; const w=document.createTreeWalker(p,NodeFilter.SHOW_TEXT), t=w.nextNode();
+    if(t){ const m=/^[\u00a0 ]{1,4}/.exec(t.data); if(m){ t.deleteData(0,m[0].length); edChanged(); } }
+    return;
+  }
+  if(!exec('insertText','\u00a0\u00a0\u00a0\u00a0')) insertPlain('\u00a0\u00a0\u00a0\u00a0'); else edChanged();
 }
 ed.addEventListener('keydown',e=>{
   if(e.isComposing) return;
-  if(e.key==='Tab'){ const c=curCell(); if(c){ e.preventDefault(); tabCell(c,e.shiftKey); return; } }
+  if(e.key==='Tab'){ e.preventDefault(); handleTab(e.shiftKey); return; }
   if(e.key==='Enter'&&!e.shiftKey){
     const s=getSelection(); if(s.rangeCount&&s.isCollapsed){
       const el=curEl();
       if(el&&el.closest('figcaption')){ e.preventDefault(); const f=el.closest('figure'); let nx=f.nextElementSibling; if(!nx||nx.tagName!=='P'){ nx=makeP(); f.parentNode.insertBefore(nx,f.nextSibling); } caretTo(nx,true); return; }
       const p=curP();
-      if(p&&p.tagName==='P'&&p.parentNode===ed&&/^---+$/.test(p.textContent.trim())){ e.preventDefault(); const hr=document.createElement('hr'); ed.replaceChild(hr,p); let nx=hr.nextElementSibling; if(!nx||nx.tagName!=='P'){ nx=makeP(); ed.insertBefore(nx,hr.nextSibling); } caretTo(nx,true); edChanged(); return; }
       if(p&&p.tagName==='P'&&p.parentNode.classList.contains('cb')&&isEmptyEl(p)&&p.parentNode.children.length>1&&p.parentNode.lastElementChild===p){ e.preventDefault(); const co=p.parentNode.parentNode; rm(p); const np=makeP(); co.parentNode.insertBefore(np,co.nextSibling); caretTo(np,true); edChanged(); return; }
       const li=el&&el.closest('li');
       if(li&&li.parentNode.classList&&li.parentNode.classList.contains('tl')) setTimeout(()=>{ const e2=curEl(), l2=e2&&e2.closest('li'); if(l2&&l2.classList.contains('done')&&!l2.textContent.trim()) l2.classList.remove('done'); },0);
@@ -1338,11 +1581,13 @@ ed.addEventListener('keydown',e=>{
 });
 ed.addEventListener('click',e=>{
   const t=e.target;
+  const fl=t.closest&&t.closest('.flow'); if(fl&&editable()){ openFlow(fl); return; }
   const fa=t.closest&&t.closest('[data-fa]');
   if(fa){
     const f=fa.closest('figure'), a=fa.getAttribute('data-fa');
     if(a==='view') openViewer(f);
-    else if(a==='size'){ f.setAttribute('data-w',{s:'m',m:'l',l:'s'}[f.getAttribute('data-w')||'m']); edChanged(); }
+    else if(a==='size'){ f.setAttribute('data-w',{s:'m',m:'l',l:'s'}[f.getAttribute('data-w')||'m']); sketchSize(f); edChanged(); }
+    else if(a==='draw') openDraw({fig:f});
     else if(a==='del'){ msgBox({icon:'❓',title:'ลบรูป',text:'ลบรูปนี้ออกจากโน้ตหรือไม่?',buttons:[{label:'ใช่',cb:()=>{ const nx=f.nextElementSibling; const id=f.getAttribute('data-iid'); rm(f); ensureEdges(); edChanged(); if(nx) caretTo(firstEditable(nx),true); }},{label:'ไม่ใช่'}]}); }
     return;
   }
@@ -1645,7 +1890,7 @@ buildCalc();
 /* ================= Backup ================= */
 $('#bk-make').addEventListener('click',()=>{
   flushEditor();
-  const t=JSON.stringify({app:'mednote-xp',v:3,rot:ROT,type:TYPES,notes:notes});
+  const t=JSON.stringify({app:'mednote-xp',v:4,rot:ROT,type:TYPES,notes:notes,forest:fExport()});
   $('#bk-text').value=t; $('#bk-text').select();
   copyText(t).then(ok=>msgBox({icon:ok?'ℹ️':'⚠️',text:ok?'สร้างข้อมูลสำรองและคัดลอกไปยังคลิปบอร์ดแล้ว\nนำไปวางเก็บไว้ในแอปโน้ตหรืออีเมลของคุณ (ไม่รวมไฟล์รูป)':'สร้างข้อมูลสำรองแล้ว แต่คัดลอกอัตโนมัติไม่ได้\nโปรดเลือกข้อความในช่องแล้วคัดลอกด้วยตนเอง'}));
 });
@@ -1660,39 +1905,49 @@ $('#bk-restore').addEventListener('click',()=>{
     const i=notes.findIndex(x=>x.id===n.id);
     if(i<0){ notes.push(n); added++; } else if((n.modified||0)>(notes[i].modified||0)){ notes[i]=n; updated++; }
   });
+  let trees=0; if(data.forest) trees=fImport(data.forest); fFill(); fUi();
   normalizeLists(); persistSettings(); persist(); ensureCur(); buildSelects(); renderAll(true);
-  msgBox({icon:'ℹ️',text:'กู้คืนข้อมูลเรียบร้อย\nเพิ่มใหม่ '+added+' รายการ, อัปเดต '+updated+' รายการ\nรูปจะแสดงเมื่อไฟล์รูปยังอยู่ในเบราว์เซอร์นี้'});
+  msgBox({icon:'ℹ️',text:'กู้คืนข้อมูลเรียบร้อย\nเพิ่มใหม่ '+added+' รายการ, อัปเดต '+updated+' รายการ'+(trees?'\nต้นไม้ในป่า +'+trees+' ต้น':'')+'\nรูปจะแสดงเมื่อไฟล์รูปยังอยู่ในเบราว์เซอร์นี้'});
 });
 
 /* ================= Menus ================= */
-const HLN={y:'เหลือง',g:'เขียว',p:'ชมพู',b:'ฟ้า',o:'ส้ม'};
+const HLN={y:'⭐ ทอง',g:'🎄 เขียวฮอลลี',p:'🍬 ชมพูแคนดี้',b:'❄️ ฟ้าน้ำแข็ง',o:'🎅 แดงซานต้า'};
 const MENUS=[
  ['ไฟล์',[['📝 สร้างโน้ตใหม่',()=>newNote()],['📘 สร้าง: โรค / Disease',()=>newFromTpl('dis')],['🧭 สร้าง: Approach',()=>newFromTpl('app')],['🩺 สร้าง: คู่มือตรวจร่างกาย',()=>newFromTpl('pe')],['💊 สร้าง: Drug card',()=>newFromTpl('drug')],'-',
-   ['💾 บันทึก   Ctrl+S',saveNow],['📋 คัดลอกข้อความในโน้ต',copyNote],['📄 ส่งออกเป็น PDF…',openPdfDialog],'-',['☁️ ซิงก์ข้อมูลตอนนี้',syncNow],['☁️ สถานะการซิงก์',syncStatus],['🔗 ซิงก์ผ่าน GitHub…',openGh],'-',['🎁 สำรอง / กู้คืนข้อมูล…',()=>openWin('win-backup')],'-',['✕ ปิด',()=>closeWin('win-main')]]],
+   ['💾 บันทึก   Ctrl+S',saveNow],['📋 คัดลอกข้อความในโน้ต',copyNote],['📄 ส่งออกเป็น PDF…',openPdfDialog],'-',
+   ['💾 บันทึกโน้ตนี้เป็นเทมเพลต…',()=>openTplMgr(true)],['🗂️ จัดการเทมเพลต…',()=>openTplMgr(false)],'-',
+   ['☁️ ซิงก์ข้อมูลตอนนี้',syncNow],['☁️ สถานะการซิงก์',syncStatus],['🔗 ซิงก์ผ่าน GitHub…',openGh],'-',
+   ['🎁 สำรอง / กู้คืนข้อมูล…',()=>openWin('win-backup')],'-',['✕ ปิด',()=>closeWin('win-main')]]],
  ['แก้ไข',[['↶ ย้อนกลับ',()=>fmt('undo')],['↷ ทำซ้ำ',()=>fmt('redo')],'-',['📌 ปักหมุด / เลิกปักหมุด',togglePin],['🗑️ ลบโน้ต',delNote],['♻️ กู้คืนจากถังรีไซเคิล',restoreNote],'-',['ล้างถังรีไซเคิล…',emptyTrash]]],
- ['จัดรูปแบบ',[].concat(Object.keys(HLN).map(k=>['🖍️ ไฮไลต์สี'+HLN[k],()=>applyHL(k)]),[['⌫ ลบไฮไลต์',()=>applyHL('none')],'-',['H1 หัวข้อใหญ่',()=>fmt('h1')],['H2 หัวข้อรอง',()=>fmt('h2')],['H3 หัวข้อย่อย',()=>fmt('h3')],'-',['☑ เช็กลิสต์',()=>fmt('task')],['⭐ กล่อง High-yield',()=>wrapCurrent('callout','pearl')],['🚩 กล่อง Red flag',()=>wrapCurrent('callout','flag')],['⚠️ กล่องคำเตือน',()=>wrapCurrent('callout','warn')]])],
+ ['มุมมอง',()=>[[(UI.tree?'☑':'☐')+' แถบโฟลเดอร์ด้านซ้าย',()=>toggleUi('tree')],[(UI.list?'☑':'☐')+' รายการโน้ต',()=>toggleUi('list')]]],
+ ['จัดรูปแบบ',[].concat(Object.keys(HLN).map(k=>['🖍️ ไฮไลต์'+HLN[k],()=>applyHL(k)]),[['⌫ ลบไฮไลต์',()=>applyHL('none')],'-',['H1 หัวข้อใหญ่',()=>fmt('h1')],['H2 หัวข้อรอง',()=>fmt('h2')],['H3 หัวข้อย่อย',()=>fmt('h3')],'-',['• รายการ (กด Tab เพื่อย่อหน้า)',()=>fmt('ul')],['1. รายการลำดับ',()=>fmt('ol')],['☑ เช็กลิสต์',()=>fmt('task')],'-',['⭐ กล่อง High-yield',()=>wrapCurrent('callout','pearl')],['🚩 กล่อง Red flag',()=>wrapCurrent('callout','flag')],['⚠️ กล่องคำเตือน',()=>wrapCurrent('callout','warn')]])],
  ['ตาราง',[['▦ แทรกตาราง 3 × 3',()=>insertTable(3,3)],['▦ แทรกตาราง 5 × 4',()=>insertTable(5,4)],'-',['+ แถวด้านบน',()=>tableOp('rowa')],['+ แถวด้านล่าง',()=>tableOp('rowb')],['+ คอลัมน์ซ้าย',()=>tableOp('cola')],['+ คอลัมน์ขวา',()=>tableOp('colb')],['− ลบแถว',()=>tableOp('rowd')],['− ลบคอลัมน์',()=>tableOp('cold')],['สลับหัวตาราง',()=>tableOp('head')],['🗑️ ลบตาราง',()=>tableOp('del')]]],
- ['แทรก',[['🖼️ รูปจากไฟล์…',()=>fmt('image')],['📷 ถ่ายรูป (มือถือ)',()=>fmt('camera')],['🕒 วันเวลา',()=>{ if(editable()) insertPlain(nowStr()); }],'-'].concat((function(){ const a=[]; let g=''; TPL.forEach(t=>{ if(t.g!==g){ if(g) a.push('-'); g=t.g; } a.push([t.name,()=>{ if(editable()) insertTpl(t.k); }]); }); return a; })())],
- ['เครื่องมือ',[['🧮 เครื่องคิดเลขคลินิก…',()=>openWin('win-calc')],['🏷️ จัดการแผนก / ประเภท…',()=>openLists()]]],
+ ['แทรก',()=>insertMenuItems()],
+ ['เครื่องมือ',[['🧮 เครื่องคิดเลขคลินิก…',()=>openWin('win-calc')],['🌲 จับเวลาอ่านหนังสือ (Forest)…',()=>openTimer()],['🏷️ จัดการแผนก / ประเภท…',()=>openLists()],['🗂️ จัดการเทมเพลต…',()=>openTplMgr(false)]]],
  ['ช่วยเหลือ',[['ℹ️ เกี่ยวกับ MedNote XP',()=>openWin('win-about')]]]
 ];
 function closeMenus(){ $$('.mi.open').forEach(m=>{ m.classList.remove('open'); m.querySelector('.dd').hidden=true; }); }
 (function(){
   const bar=$('#menubar');
-  MENUS.forEach(mn=>{
-    const m=document.createElement('div'); m.className='mi'; m.tabIndex=0; m.appendChild(document.createTextNode(mn[0]));
-    const dd=document.createElement('div'); dd.className='dd'; dd.hidden=true;
-    mn[1].forEach(it=>{
+  function fill(dd,items){
+    dd.innerHTML='';
+    items.forEach(it=>{
       if(it==='-'){ dd.appendChild(document.createElement('hr')); return; }
       const r=document.createElement('div'); r.className='ddi'; r.textContent=it[0];
       r.addEventListener('mousedown',e=>e.preventDefault());
       r.onclick=e=>{ e.stopPropagation(); closeMenus(); it[1](); }; dd.appendChild(r);
     });
-    m.appendChild(dd);
+  }
+  MENUS.forEach(mn=>{
+    const m=document.createElement('div'); m.className='mi'; m.tabIndex=0; m.appendChild(document.createTextNode(mn[0]));
+    const dd=document.createElement('div'); dd.className='dd'; dd.hidden=true;
+    const get=()=>typeof mn[1]==='function'?mn[1]():mn[1];
+    fill(dd,typeof mn[1]==='function'?[]:mn[1]); m.appendChild(dd);
+    const open=()=>{ closeMenus(); fill(dd,get()); dd.hidden=false; m.classList.add('open'); };
     m.addEventListener('mousedown',e=>e.preventDefault());
-    m.onclick=()=>{ const o=!dd.hidden; closeMenus(); if(!o){ dd.hidden=false; m.classList.add('open'); } };
+    m.onclick=()=>{ if(!dd.hidden) closeMenus(); else open(); };
     m.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); m.click(); } else if(e.key==='Escape') closeMenus(); };
-    m.onmouseenter=()=>{ if($('.mi.open')&&!m.classList.contains('open')){ closeMenus(); dd.hidden=false; m.classList.add('open'); } };
+    m.onmouseenter=()=>{ if($('.mi.open')&&!m.classList.contains('open')) open(); };
     bar.appendChild(m);
   });
 })();
@@ -1704,7 +1959,7 @@ $('#b-calc').onclick=()=>openWin('win-calc'); $('#b-lists').onclick=()=>openList
 $('#q').addEventListener('input',function(){ query=this.value; renderTree(); renderList(); });
 $$('.dicon').forEach(d=>{
   d.addEventListener('click',()=>{ $$('.dicon').forEach(x=>x.classList.remove('sel')); d.classList.add('sel'); });
-  d.addEventListener('dblclick',()=>{ const o=d.getAttribute('data-open'); if(o==='win-lists') openLists(); else if(o) openWin(o); else { openWin('win-main'); setFolder('trash'); } });
+  d.addEventListener('dblclick',()=>{ const o=d.getAttribute('data-open'); if(o==='win-lists') openLists(); else if(o==='win-timer') openTimer(); else if(o) openWin(o); else { openWin('win-main'); setFolder('trash'); } });
   d.addEventListener('keydown',e=>{ if(e.key==='Enter') d.dispatchEvent(new Event('dblclick')); });
 });
 function closeStart(){ $('#startmenu').style.display='none'; $('#start').classList.remove('on'); }
@@ -1725,6 +1980,7 @@ $('#startmenu').addEventListener('click',e=>{
   if(nid){ if(notes.some(x=>x.id===nid)){ flushEditor(); folder='all'; query=''; $('#q').value=''; cur=nid; renderAll(true); openWin('win-main'); } }
   else if(sm==='new') newNote();
   else if(sm==='win-lists') openLists();
+  else if(sm==='win-timer') openTimer();
   else if(sm==='off') msgBox({icon:'❓',title:'ปิดเครื่องคอมพิวเตอร์',text:'คุณต้องการปิดเครื่องหรือไม่?\nโน้ตทั้งหมดถูกบันทึกอัตโนมัติแล้ว',buttons:[{label:'ปิดเครื่อง',cb:()=>{ flushEditor(); saveNow(); Object.keys(W).forEach(k=>{W[k].el.style.display='none'}); $('#off').style.display='grid'; }},{label:'ยกเลิก'}]});
   else if(sm) openWin(sm);
 });
@@ -1755,7 +2011,7 @@ async function loadPdfLibs(){
 }
 function safeName(t){ return String(t||'note').replace(/[\\\/:*?"<>|\u0000-\u001f]/g,'').replace(/\s+/g,' ').trim().slice(0,80)||'note'; }
 async function buildDoc(n,opt,pxW,target){
-  const box=document.createElement('div'); box.className='rich ro pdfdoc';
+  const box=document.createElement('div'); box.className='rich ro pdfdoc'+(target?' pnote':'');
   box.style.cssText=(target?'':'position:fixed;left:-20000px;top:0;')+'width:'+(target?'auto':pxW+'px')+';flex:none;height:auto;overflow:visible;padding:0;background:#fff;color:#000;font-family:"Noto Sans Thai",Tahoma,sans-serif;font-size:'+opt.font+'px;line-height:1.65;';
   let head='';
   if(opt.head){
@@ -1764,11 +2020,12 @@ async function buildDoc(n,opt,pxW,target){
   }
   box.innerHTML=head+sanitize(n.html||'');
   decorate(box); qa(box,'.ftools').forEach(rm); qa(box,'[contenteditable]').forEach(e=>e.removeAttribute('contenteditable'));
+  if(!opt.vector) for(const f of qa(box,'.flow')){ const sv=f.querySelector('svg'); if(!sv) continue; const im=document.createElement('img'); im.style.cssText='max-width:100%;height:auto;display:block;margin:6px auto'; const w=sv.getAttribute('width'); if(w) im.setAttribute('width',w); const url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(sv)); await Promise.race([new Promise(r=>{ im.onload=r; im.onerror=r; im.src=url; }),sleep(5000)]); f.innerHTML=''; f.style.cssText='border:0;padding:0;background:none'; f.appendChild(im); }
   const figs=qa(box,'figure.img');
   for(const f of figs){
     if(!opt.images){ rm(f); continue; }
     const img=f.querySelector('img'), u=await imgURL(f.getAttribute('data-iid'));
-    if(u&&img){ img.style.cursor='default'; await new Promise(r=>{ img.onload=r; img.onerror=r; img.src=u; }); }
+    if(u&&img){ img.style.cursor='default'; await Promise.race([new Promise(r=>{ img.onload=r; img.onerror=r; img.src=u; }),sleep(5000)]); }
     else { f.classList.add('missing'); }
   }
   (target||document.body).appendChild(box);
@@ -1846,12 +2103,19 @@ async function doPdf(){
   }finally{ pdfBusy=false; $('#pdf-go').disabled=false; }
 }
 async function printFallback(){
-  flushEditor(); const list=pdfList(); if(!list.length) return;
-  const pa=$('#printarea'); pa.innerHTML=''; const opt=pdfOpts();
-  for(let i=0;i<list.length;i++){ const b=await buildDoc(list[i],opt,0,pa); if(i<list.length-1) b.style.pageBreakAfter='always'; }
-  const done=()=>{ pa.innerHTML=''; window.removeEventListener('afterprint',done); };
-  window.addEventListener('afterprint',done);
-  try{ window.print(); }catch(e){ done(); msgBox({icon:'⚠️',text:'เบราว์เซอร์ไม่อนุญาตให้พิมพ์จากมุมมองนี้'}); }
+  if(pdfBusy) return; flushEditor(); const list=pdfList(); if(!list.length){ msgBox({icon:'ℹ️',text:'ไม่มีโน้ตให้ส่งออก'}); return; }
+  pdfBusy=true; $('#pdf-print').disabled=true; $('#pdf-st').textContent='กำลังเตรียมเอกสาร…';
+  const pa=$('#printarea'); pa.innerHTML=''; const opt=Object.assign(pdfOpts(),{vector:true});
+  try{
+    for(let i=0;i<list.length;i++){ await buildDoc(list[i],opt,0,pa); }
+    if(document.fonts&&document.fonts.ready) await document.fonts.ready;
+    await sleep(250);
+    const done=()=>{ window.removeEventListener('afterprint',done); };
+    window.addEventListener('afterprint',done);
+    $('#pdf-st').textContent='เปิดหน้าต่างพิมพ์แล้ว — เลือก “บันทึกเป็น PDF” (ไอแพด: ถ่างสองนิ้วที่ภาพตัวอย่าง แล้ว Share > Save to Files)';
+    window.print();
+  }catch(e){ $('#pdf-st').textContent=''; msgBox({icon:'⚠️',text:'เปิดหน้าต่างพิมพ์ไม่ได้ในมุมมองนี้ ('+(e&&e.message||e)+')\nลองกด “ดาวน์โหลดแบบรูป” แทน หรือเปิดแอปจากเว็บของคุณเองแล้วลองอีกครั้ง'}); }
+  finally{ pdfBusy=false; $('#pdf-print').disabled=false; }
 }
 regWin('win-pdf',{title:'ส่งออก PDF',icon:'📄',center:true});
 $('#pdf-go').addEventListener('click',doPdf); $('#pdf-print').addEventListener('click',printFallback);
@@ -1988,7 +2252,7 @@ async function pushAll(){
   if(SYNC.busy){ SYNC.again=true; return; }
   SYNC.busy=true; setSync('syncing'); const P=PV();
   try{
-    if(settingsDirty){ const m=settingsM; await P.setSettings({rot:ROT,type:TYPES,m:m}); if(settingsM===m) settingsDirty=false; }
+    if(settingsDirty){ const m=settingsM; await P.setSettings({rot:ROT,type:TYPES,tpl:TPLCUST,hide:TPLHIDE,m:m}); if(settingsM===m) settingsDirty=false; }
     await uploadPendingImages(P);
     for(const n of notes.slice()){
       const base=SYNC.synced[n.id]||0; if(!(n.modified>base)||SYNC.big[n.id]) continue;
@@ -2031,7 +2295,8 @@ function applyRemoteSettings(d){
   if(!(d.m>settingsM)) return false;
   if(Array.isArray(d.rot)&&d.rot.length) ROT=d.rot.slice();
   if(Array.isArray(d.type)&&d.type.length) TYPES=d.type.slice();
-  settingsM=d.m; settingsDirty=false; normalizeLists(); persistSettings(); buildSelects(); return true;
+  if(Array.isArray(d.tpl)) TPLCUST=d.tpl.slice(); if(Array.isArray(d.hide)) TPLHIDE=d.hide.slice();
+  settingsM=d.m; settingsDirty=false; normalizeLists(); persistSettings(); buildSelects(); buildTplSel(); return true;
 }
 function applyDocs(items){
   let changed=false, imgs=false;
@@ -2141,9 +2406,755 @@ function ghDisconnect(){
 }
 $('#gh-go').addEventListener('click',ghConnect); $('#gh-off').addEventListener('click',ghDisconnect);
 
+/* ================= Flowchart engine ================= */
+const FC_CLS={red:['#fde4e4','#b3202a'],green:['#dcefd8','#14612b'],yellow:['#fff9cf','#c9a300'],blue:['#e8f1fb','#3a7bd5'],gray:['#eeeeee','#777777'],orange:['#ffe6c4','#d98a00'],pink:['#ffe3ee','#c2185b']};
+const FC_SHAPE={rect:['#fffdf6','#5c2a1e'],stadium:['#dcefd8','#14612b'],diamond:['#fff3d6','#d98a00'],round:['#e8f1fb','#3a7bd5'],circle:['#efe6cb','#6b5a30']};
+const FC_FONT='"Noto Sans Thai",Tahoma,Thonburi,"Leelawadee UI",Sarabun,sans-serif';
+let _fcCtx=null;
+function fcMeasure(t){
+  try{
+    if(!_fcCtx){ _fcCtx=document.createElement('canvas').getContext('2d'); if(_fcCtx) _fcCtx.font='13px '+FC_FONT; }
+    if(_fcCtx&&_fcCtx.measureText){ const w=_fcCtx.measureText(t).width; if(w>0) return w; }
+  }catch(e){}
+  let w=0; for(const ch of String(t)){ const c=ch.codePointAt(0); if(c===0x0e31||(c>=0x0e34&&c<=0x0e3a)||(c>=0x0e47&&c<=0x0e4e)) continue; w+=c>0x2e80?13:7; } return w;
+}
+function fcWrap(label,maxW){
+  const out=[];
+  String(label).split('\n').forEach(line=>{
+    const words=line.split(/(?<=\s)/); let cur='';
+    const push=()=>{ if(cur.trim()!==''||!out.length||cur==='') out.push(cur.trim()); cur=''; };
+    words.forEach(w=>{
+      if(fcMeasure(cur+w)<=maxW){ cur+=w; return; }
+      if(cur.trim()) push();
+      if(fcMeasure(w)<=maxW){ cur=w; return; }
+      for(const ch of w){ if(fcMeasure(cur+ch)>maxW&&cur){ out.push(cur); cur=''; } cur+=ch; }
+    });
+    push();
+  });
+  return out.length?out:[''];
+}
+function fcParse(src){
+  const g={dir:'TD',nodes:[],edges:[],errors:[]}, map=new Map();
+  function node(id,label,shape,cls){
+    let n=map.get(id); if(!n){ n={id:id,label:id,shape:'rect',cls:''}; map.set(id,n); g.nodes.push(n); }
+    if(label!=null){ n.label=label; if(shape) n.shape=shape; } else if(shape) n.shape=shape;
+    if(cls) n.cls=cls; return n;
+  }
+  const OPEN=[['([','])','stadium'],['((','))','circle'],['[','`]'.slice(1),'rect'],['{{','}}','rect'],['{','}','diamond'],['(',')','round']];
+  function scanNode(s,pos){
+    while(s[pos]===' '||s[pos]==='\t') pos++;
+    const m=/^[\p{L}\p{N}_]+/u.exec(s.slice(pos)); if(!m) return null;
+    const id=m[0]; pos+=id.length; let label=null, shape=null, cls='';
+    for(const o of OPEN){
+      if(s.startsWith(o[0],pos)){
+        let start=pos+o[0].length, end;
+        if(s[start]==='"'){ const q=s.indexOf('"',start+1); if(q<0) return {err:'ปิดเครื่องหมาย " ไม่ครบ'}; end=s.indexOf(o[1],q+1); label=s.slice(start+1,q); }
+        else { end=s.indexOf(o[1],start); label=end<0?null:s.slice(start,end); }
+        if(end<0) return {err:'ไม่เจอตัวปิด '+o[1]+' ของโหนด '+id};
+        label=label.replace(/<br\s*\/?>/gi,'\n').replace(/\\n/g,'\n').trim(); shape=o[2]; pos=end+o[1].length; break;
+      }
+    }
+    const c=/^:::([\w-]+)/.exec(s.slice(pos)); if(c){ cls=c[1].toLowerCase(); pos+=c[0].length; }
+    return {id:id,label:label,shape:shape,cls:cls,pos:pos};
+  }
+  function scanArrow(s,pos){
+    while(s[pos]===' '||s[pos]==='\t') pos++;
+    const r=s.slice(pos); let m, label='', style='solid', arrow=true;
+    if((m=/^--\s+([^>]+?)\s+-->/.exec(r))){ label=m[1]; }
+    else if((m=/^-\.\s*([^.]*?)\s*\.->/.exec(r))){ label=m[1]; style='dotted'; }
+    else if((m=/^-\.->/.exec(r))){ style='dotted'; }
+    else if((m=/^==>/.exec(r))){ style='thick'; }
+    else if((m=/^-->/.exec(r))){ }
+    else if((m=/^---/.exec(r))){ arrow=false; }
+    else return null;
+    pos+=m[0].length;
+    const l=/^\s*\|([^|]*)\|/.exec(s.slice(pos)); if(l){ label=l[1]; pos+=l[0].length; }
+    return {label:label.replace(/<br\s*\/?>/gi,'\n').replace(/\\n/g,'\n').trim(),style:style,arrow:arrow,pos:pos};
+  }
+  String(src||'').split(/\r?\n/).forEach((raw,li)=>{
+    const line=raw.replace(/%%.*$/,'').trim(); if(!line) return;
+    const d=/^(flowchart|graph)\s+(TD|TB|LR|BT|RL)\s*$/i.exec(line); if(d){ g.dir=/LR|RL/i.test(d[2])?'LR':'TD'; return; }
+    let pos=0, prev=null;
+    const first=scanNode(line,pos); if(!first||first.err){ g.errors.push('บรรทัด '+(li+1)+': '+((first&&first.err)||'อ่านไม่ออก — ขึ้นต้นด้วยชื่อโหนด เช่น A[ข้อความ]')); return; }
+    prev=node(first.id,first.label,first.shape,first.cls); pos=first.pos;
+    while(pos<line.length){
+      while(line[pos]===' ') pos++; if(pos>=line.length) break;
+      const a=scanArrow(line,pos); if(!a){ g.errors.push('บรรทัด '+(li+1)+': ไม่เข้าใจตรง “'+line.slice(pos,pos+14)+'” (ใช้ --> หรือ -->|ข้อความ|)'); break; }
+      const nx=scanNode(line,a.pos); if(!nx||nx.err){ g.errors.push('บรรทัด '+(li+1)+': '+((nx&&nx.err)||'หลังลูกศรต้องตามด้วยชื่อโหนด')); break; }
+      const nn=node(nx.id,nx.label,nx.shape,nx.cls); g.edges.push({from:prev.id,to:nn.id,label:a.label,style:a.style,arrow:a.arrow}); prev=nn; pos=nx.pos;
+    }
+  });
+  return g;
+}
+function fcPav(desired,sep){
+  const n=desired.length, off=[0]; for(let i=1;i<n;i++) off[i]=off[i-1]+sep[i-1];
+  const blocks=[]; desired.forEach((d,i)=>{
+    blocks.push({s:d-off[i],c:1});
+    while(blocks.length>1){ const b=blocks[blocks.length-1], a=blocks[blocks.length-2]; if(a.s/a.c>b.s/b.c){ a.s+=b.s; a.c+=b.c; blocks.pop(); } else break; }
+  });
+  const q=[]; blocks.forEach(b=>{ for(let k=0;k<b.c;k++) q.push(b.s/b.c); });
+  return q.map((v,i)=>v+off[i]);
+}
+function fcLayout(g){
+  const N=g.nodes, LR=g.dir==='LR', lh=17;
+  N.forEach(n=>{
+    n.lines=fcWrap(n.label,n.shape==='diamond'?140:210); const tw=Math.max(30,...n.lines.map(fcMeasure));
+    if(n.shape==='diamond'){ n.w=Math.max(120,tw*1.5+34); n.h=Math.max(72,n.lines.length*lh*1.5+34); }
+    else if(n.shape==='circle'){ const s=Math.max(tw+26,n.lines.length*lh+26,60); n.w=s; n.h=Math.max(60,n.lines.length*lh+22); }
+    else { n.w=tw+30+(n.shape==='stadium'||n.shape==='round'?10:0); n.h=n.lines.length*lh+18; }
+    n.par=[]; n.kid=[]; n.dummy=false;
+  });
+  const real=new Map(N.map(n=>[n.id,n]));
+  const E=g.edges.filter(e=>e.from!==e.to&&real.has(e.from)&&real.has(e.to)).map(e=>Object.assign({},e));
+  const out=new Map(N.map(n=>[n.id,[]])); E.forEach(e=>out.get(e.from).push(e));
+  const color=new Map();
+  (function dfsAll(){ const dfs=u=>{ color.set(u,1); out.get(u).forEach(e=>{ const c=color.get(e.to)||0; if(c===1) e.rev=true; else if(c===0) dfs(e.to); }); color.set(u,2); }; N.forEach(n=>{ if(!color.get(n.id)) dfs(n.id); }); })();
+  const eu=E.map(e=>e.rev?[e.to,e.from]:[e.from,e.to]);
+  const indeg=new Map(N.map(n=>[n.id,0])), adj=new Map(N.map(n=>[n.id,[]])), layer=new Map(N.map(n=>[n.id,0]));
+  eu.forEach(p=>{ indeg.set(p[1],indeg.get(p[1])+1); adj.get(p[0]).push(p[1]); });
+  const q=N.filter(n=>indeg.get(n.id)===0).map(n=>n.id);
+  while(q.length){ const u=q.shift(); adj.get(u).forEach(v=>{ layer.set(v,Math.max(layer.get(v),layer.get(u)+1)); indeg.set(v,indeg.get(v)-1); if(indeg.get(v)===0) q.push(v); }); }
+  N.forEach(n=>{ n.l=layer.get(n.id); });
+  const L=N.length?Math.max(...N.map(n=>n.l)):0, layers=Array.from({length:L+1},()=>[]);
+  const chains=E.map((e,i)=>{
+    const A=real.get(eu[i][0]), B=real.get(eu[i][1]), ch=[A];
+    for(let l=A.l+1;l<B.l;l++) ch.push({id:'~'+i+'_'+l,dummy:true,l:l,w:8,h:8,par:[],kid:[]});
+    ch.push(B); for(let k=0;k<ch.length-1;k++){ ch[k].kid.push(ch[k+1]); ch[k+1].par.push(ch[k]); } return ch;
+  });
+  const seen=new Set(), queue=[];
+  const visit=n=>{ if(seen.has(n)) return; seen.add(n); layers[n.l].push(n); queue.push(n); };
+  N.filter(n=>!n.par.length).forEach(visit);
+  while(queue.length){ const u=queue.shift(); u.kid.forEach(visit); }
+  N.forEach(visit);
+  const reindex=()=>layers.forEach(a=>a.forEach((n,i)=>{ n._i=i; }));
+  reindex();
+  for(let it=0;it<8;it++){
+    const down=it%2===0, ls=down?Array.from({length:L},(_,i)=>i+1):Array.from({length:L},(_,i)=>L-1-i);
+    ls.forEach(l=>{
+      layers[l].forEach(n=>{ const list=down?n.par:n.kid; n._b=list.length?list.reduce((s,x)=>s+x._i,0)/list.length:n._i; });
+      layers[l].sort((a,b)=>a._b-b._b||a._i-b._i); layers[l].forEach((n,i)=>{ n._i=i; });
+    });
+  }
+  const ms=n=>LR?n.w:n.h, cs=n=>LR?n.h:n.w, gapM=LR?74:60, gapC=n=>n;
+  const sepOf=(a,b)=>cs(a)/2+cs(b)/2+((a.dummy||b.dummy)?16:38);
+  let m=0; const lm=[];
+  layers.forEach((arr,l)=>{ const sz=Math.max(0,...arr.map(ms)); lm[l]=m+sz/2; m+=sz+gapM; arr.forEach(n=>{ n.m=lm[l]; }); });
+  layers.forEach(arr=>{ let c=0; arr.forEach((n,i)=>{ if(i) c+=sepOf(arr[i-1],n); n.c=c; }); const mid=arr.length?arr[arr.length-1].c/2:0; arr.forEach(n=>{ n.c-=mid; }); });
+  const place=(l,useBoth,down)=>{
+    const arr=layers[l]; if(!arr.length) return;
+    const des=arr.map(n=>{ const list=useBoth?n.par.concat(n.kid):(down?n.par:n.kid); return list.length?list.reduce((s,x)=>s+x.c,0)/list.length:n.c; });
+    const sep=arr.slice(1).map((n,i)=>sepOf(arr[i],n)), pos=fcPav(des,sep); arr.forEach((n,i)=>{ n.c=pos[i]; });
+  };
+  for(let it=0;it<6;it++){
+    for(let l=1;l<=L;l++) place(l,false,true);
+    for(let l=L-1;l>=0;l--) place(l,false,false);
+  }
+  for(let l=0;l<=L;l++) place(l,true,true);
+  const all=[]; layers.forEach(a=>a.forEach(n=>all.push(n)));
+  const minC=Math.min(0,...all.map(n=>n.c-cs(n)/2)); all.forEach(n=>{ n.c-=minC; });
+  all.forEach(n=>{ if(LR){ n.x=n.m; n.y=n.c; } else { n.x=n.c; n.y=n.m; } });
+  /* edges */
+  const forwardOut=new Map(); E.forEach((e,i)=>{ if(!e.rev){ (forwardOut.get(e.from)||forwardOut.set(e.from,[]).get(e.from)).push(i); } });
+  const routes=E.map((e,i)=>{
+    const ch=chains[i], src=real.get(e.from), dst=real.get(e.to), pts=[];
+    if(!e.rev){
+      let p0;
+      const fo=forwardOut.get(src.id)||[];
+      if(src.shape==='diamond'&&fo.length>=2){
+        const key=j=>{ const c2=chains[j][1]; return c2.c; };
+        const sorted=fo.slice().sort((a,b)=>key(a)-key(b)||a-b), rank=sorted.indexOf(i);
+        if(rank===0) p0=LR?[src.x,src.y-src.h/2]:[src.x-src.w/2,src.y];
+        else if(rank===sorted.length-1) p0=LR?[src.x,src.y+src.h/2]:[src.x+src.w/2,src.y];
+        else p0=LR?[src.x+src.w/2,src.y]:[src.x,src.y+src.h/2];
+      } else p0=LR?[src.x+src.w/2,src.y]:[src.x,src.y+src.h/2];
+      pts.push(p0); ch.slice(1,-1).forEach(d=>pts.push([d.x,d.y])); pts.push(LR?[dst.x-dst.w/2,dst.y]:[dst.x,dst.y-dst.h/2]);
+    } else {
+      pts.push(LR?[src.x-src.w/2,src.y+14]:[src.x+14,src.y-src.h/2]); ch.slice(1,-1).reverse().forEach(d=>pts.push([d.x,d.y])); pts.push(LR?[dst.x+dst.w/2,dst.y+14]:[dst.x+14,dst.y+dst.h/2]);
+    }
+    return {e:e,pts:pts};
+  });
+  return {nodes:N,routes:routes,LR:LR,all:all};
+}
+const _fe=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function fcSvg(g){
+  if(!g.nodes.length) return {svg:'',errors:g.errors};
+  const lay=fcLayout(g), LR=lay.LR, lh=17;
+  let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9; const ext=(x,y)=>{ minX=Math.min(minX,x); minY=Math.min(minY,y); maxX=Math.max(maxX,x); maxY=Math.max(maxY,y); };
+  g.nodes.forEach(n=>{ ext(n.x-n.w/2,n.y-n.h/2); ext(n.x+n.w/2,n.y+n.h/2); });
+  lay.routes.forEach(r=>r.pts.forEach(p=>ext(p[0],p[1])));
+  const pad=26; minX-=pad; minY-=pad; maxX+=pad; maxY+=pad;
+  const W=Math.ceil(maxX-minX), H=Math.ceil(maxY-minY);
+  let s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="'+minX.toFixed(1)+' '+minY.toFixed(1)+' '+W+' '+H+'" width="'+W+'" height="'+H+'" font-family=\''+FC_FONT.replace(/"/g,'')+'\' font-size="13" role="img" aria-label="flowchart">';
+  s+='<defs><marker id="fca" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5c2a1e"/></marker></defs>';
+  lay.routes.forEach(r=>{
+    const p=r.pts; let d='M'+p[0][0].toFixed(1)+','+p[0][1].toFixed(1);
+    for(let i=1;i<p.length;i++){
+      const a=p[i-1], b=p[i];
+      if(LR){ const mx=(a[0]+b[0])/2; d+=' C'+mx.toFixed(1)+','+a[1].toFixed(1)+' '+mx.toFixed(1)+','+b[1].toFixed(1)+' '+b[0].toFixed(1)+','+b[1].toFixed(1); }
+      else { const my=(a[1]+b[1])/2; d+=' C'+a[0].toFixed(1)+','+my.toFixed(1)+' '+b[0].toFixed(1)+','+my.toFixed(1)+' '+b[0].toFixed(1)+','+b[1].toFixed(1); }
+    }
+    const e=r.e, w=e.style==='thick'?3:1.6;
+    s+='<path d="'+d+'" fill="none" stroke="#5c2a1e" stroke-width="'+w+'"'+(e.style==='dotted'?' stroke-dasharray="5 4"':'')+(e.arrow?' marker-end="url(#fca)"':'')+'/>';
+  });
+  g.nodes.forEach(n=>{
+    const cl=FC_CLS[n.cls]||FC_SHAPE[n.shape]||FC_SHAPE.rect, fill=cl[0], stk=cl[1], x=n.x, y=n.y, w=n.w, h=n.h;
+    if(n.shape==='diamond') s+='<polygon points="'+x+','+(y-h/2)+' '+(x+w/2)+','+y+' '+x+','+(y+h/2)+' '+(x-w/2)+','+y+'" fill="'+fill+'" stroke="'+stk+'" stroke-width="1.8"/>';
+    else if(n.shape==='circle') s+='<ellipse cx="'+x+'" cy="'+y+'" rx="'+w/2+'" ry="'+h/2+'" fill="'+fill+'" stroke="'+stk+'" stroke-width="1.8"/>';
+    else s+='<rect x="'+(x-w/2)+'" y="'+(y-h/2)+'" width="'+w+'" height="'+h+'" rx="'+(n.shape==='stadium'?h/2:n.shape==='round'?10:3)+'" fill="'+fill+'" stroke="'+stk+'" stroke-width="1.8"/>';
+    const y0=y-(n.lines.length-1)*lh/2+4.5;
+    s+='<text x="'+x+'" y="'+y0.toFixed(1)+'" text-anchor="middle" fill="#222">'+n.lines.map((t,i)=>'<tspan x="'+x+'" dy="'+(i?lh:0)+'">'+_fe(t)+'</tspan>').join('')+'</text>';
+  });
+  lay.routes.forEach(r=>{
+    const e=r.e; if(!e.label) return; const a=r.pts[0], b=r.pts[1], t=0.38;
+    let lx,ly;
+    if(LR){ const mx=(a[0]+b[0])/2, u=1-t; lx=u*u*u*a[0]+3*u*u*t*mx+3*u*t*t*mx+t*t*t*b[0]; ly=u*u*u*a[1]+3*u*u*t*a[1]+3*u*t*t*b[1]+t*t*t*b[1]; }
+    else { const my=(a[1]+b[1])/2, u=1-t; lx=u*u*u*a[0]+3*u*u*t*a[0]+3*u*t*t*b[0]+t*t*t*b[0]; ly=u*u*u*a[1]+3*u*u*t*my+3*u*t*t*my+t*t*t*b[1]; }
+    const lines=e.label.split('\n'), tw=Math.max(...lines.map(fcMeasure))+10, th=lines.length*15+4;
+    s+='<rect x="'+(lx-tw/2).toFixed(1)+'" y="'+(ly-th/2).toFixed(1)+'" width="'+tw.toFixed(1)+'" height="'+th+'" rx="3" fill="#fffdf6" fill-opacity="0.92"/>';
+    s+='<text text-anchor="middle" font-size="12" fill="#8a1010" font-weight="bold">'+lines.map((t,i)=>'<tspan x="'+lx.toFixed(1)+'" y="'+(ly-(lines.length-1)*7.5+i*15+4).toFixed(1)+'">'+_fe(t)+'</tspan>').join('')+'</text>';
+  });
+  return {svg:s+'</svg>',errors:g.errors};
+}
+function fcRender(src){ try{ return fcSvg(fcParse(src)); }catch(e){ return {svg:'',errors:['สร้างภาพไม่สำเร็จ: '+(e&&e.message||e)]}; } }
+
+/* ---- flowchart blocks + dialog ---- */
+const FLOW_STARTER='flowchart TD\n  A([เริ่ม]) --> B[ขั้นตอนที่ 1]\n  B --> C{คำถาม?}\n  C -->|ใช่| D[ทำอย่างนี้]\n  C -->|ไม่| E[ทำอย่างนั้น]\n  D --> F([จบ])\n  E --> F';
+const FLOW_EXAMPLE='flowchart TD\n  A([เริ่ม: ผู้ป่วยเจ็บหน้าอก]) --> B[ประเมิน ABC และ V/S]\n  B --> C[EKG ภายใน 10 นาที]\n  C --> D{ST elevation?}\n  D -->|ใช่| E[STEMI pathway<br>Reperfusion]:::red\n  D -->|ไม่| F[hs-troponin ซ้ำตามเวลา]\n  F --> G{Troponin สูง?}\n  G -->|ใช่| H[NSTE-ACS → รักษา]\n  G -->|ไม่| I[หาสาเหตุอื่น: PE, Dissection ฯลฯ]\n  E --> Z([จบ / Admit])\n  H --> Z\n  I --> Z\n%% ตัวอย่างเพื่อแสดงรูปแบบเท่านั้น ตรวจสอบกับ guideline ก่อนใช้จริง';
+let flowTarget=null, flowTimer=null;
+regWin('win-flow',{title:'Flowchart / Algorithm',icon:'🔀',center:true});
+function renderFlowEl(el){
+  el.setAttribute('contenteditable','false'); el.title='คลิกเพื่อแก้ไข flowchart';
+  const r=fcRender(el.getAttribute('data-src')||'');
+  el.innerHTML=r.svg||'<div class="flowempty">(flowchart ว่าง — คลิกเพื่อแก้ไข)</div>';
+}
+function flowPreview(){
+  const src=$('#fl-src').value, r=fcRender(src);
+  $('#fl-prev').innerHTML=r.svg||'<div class="flowempty">พิมพ์โหนดทางซ้าย เช่น A[เริ่ม] --> B[ขั้นตอน] แล้วภาพจะขึ้นที่นี่</div>';
+  $('#fl-err').innerHTML=r.errors.map(e=>'<div>⚠️ '+escH(e)+'</div>').join('');
+  const m=/^\s*(?:flowchart|graph)\s+(TD|TB|LR|BT|RL)/im.exec(src); $('#fl-dir').value=m&&/LR|RL/i.test(m[1])?'LR':'TD';
+}
+function openFlow(el){
+  if(!editable()) return; flowTarget=el||null;
+  $('#fl-src').value=el?(el.getAttribute('data-src')||''):FLOW_STARTER; $('#fl-del').style.display=el?'':'none';
+  flowPreview(); openWin('win-flow'); $('#fl-src').focus();
+}
+function flowAppend(text){
+  const t=$('#fl-src'); let v=t.value; if(v&&!/\n$/.test(v)) v+='\n'; t.value=v+text; flowPreview(); t.scrollTop=t.scrollHeight;
+}
+function flowIds(){ const g=fcParse($('#fl-src').value); return {last:g.nodes.length?g.nodes[g.nodes.length-1].id:null,has:id=>g.nodes.some(n=>n.id===id),n:g.nodes.length}; }
+function flowNewId(base){ const f=flowIds(); let i=f.n+1, id; do{ id=base+i; i++; }while(f.has(id)); return id; }
+function flowChip(k){
+  const f=flowIds(), last=f.last;
+  if(k==='step'){ const id=flowNewId('N'); flowAppend('  '+(last?last+' --> ':'')+id+'[ขั้นตอนใหม่]'); }
+  else if(k==='ask'){ const id=flowNewId('Q'); flowAppend('  '+(last?last+' --> ':'')+id+'{คำถาม?}\n  '+id+' -->|ใช่| '+id+'y[ทำเมื่อใช่]\n  '+id+' -->|ไม่| '+id+'n[ทำเมื่อไม่ใช่]'); }
+  else if(k==='start'){ flowAppend('  START([เริ่ม])'+(last&&last!=='START'?'':'')); }
+  else if(k==='end'){ const id=f.has('END')?flowNewId('END'):'END'; flowAppend('  '+(last?last+' --> ':'')+id+'([จบ])'); }
+  else if(k==='example'){ if($('#fl-src').value.trim()) msgBox({icon:'❓',text:'แทนที่ข้อความปัจจุบันด้วยตัวอย่างหรือไม่?',buttons:[{label:'แทนที่',cb:()=>{ $('#fl-src').value=FLOW_EXAMPLE; flowPreview(); }},{label:'ยกเลิก'}]}); else { $('#fl-src').value=FLOW_EXAMPLE; flowPreview(); } }
+}
+$('#fl-chips').addEventListener('click',e=>{ const b=e.target.closest('button'); if(b) flowChip(b.getAttribute('data-c')); });
+$('#fl-src').addEventListener('input',()=>{ clearTimeout(flowTimer); flowTimer=setTimeout(flowPreview,250); });
+$('#fl-dir').addEventListener('change',function(){
+  const t=$('#fl-src'), line='flowchart '+this.value; let v=t.value;
+  if(/^\s*(flowchart|graph)\s+\w+/im.test(v)) v=v.replace(/^\s*(flowchart|graph)\s+\w+/im,line); else v=line+'\n'+v;
+  t.value=v; flowPreview();
+});
+$('#fl-ok').addEventListener('click',()=>{
+  const src=$('#fl-src').value.trim();
+  if(!src){ if(flowTarget){ rm(flowTarget); ensureEdges(); edChanged(); } closeWin('win-flow'); return; }
+  if(flowTarget){ flowTarget.setAttribute('data-src',src); renderFlowEl(flowTarget); edChanged(); }
+  else {
+    const el=document.createElement('div'); el.className='flow'; el.setAttribute('data-src',src);
+    placeBlock(el,false); decorate(ed); ensureEdges();
+    let nx=el.nextElementSibling; if(!nx||nx.tagName!=='P'){ nx=makeP(); el.parentNode.insertBefore(nx,el.nextSibling); }
+    caretTo(nx,true); edChanged();
+  }
+  closeWin('win-flow');
+});
+$('#fl-del').addEventListener('click',()=>{ if(!flowTarget) return; const el=flowTarget; rm(el); ensureEdges(); edChanged(); closeWin('win-flow'); });
+
+
+/* ================= Pen / Post-it / drawing ================= */
+const PEN_COLORS=[['#222222','⚫ ดำ'],['#c62828','🔴 แดงเบอร์รี'],['#1b7a3a','🟢 เขียวฮอลลี'],['#d99a00','🟡 ทอง'],['#1976d2','🔵 ฟ้า'],['#6d4c41','🤎 น้ำตาลขนมปังขิง'],['#ffffff','⚪ ขาวหิมะ']];
+const HL_COLORS=[['#ffd54f','⭐ ทอง'],['#69c58a','🎄 เขียวฮอลลี'],['#ff8fb0','🍬 ชมพูแคนดี้'],['#7fd0ff','❄️ ฟ้าน้ำแข็ง'],['#ff7a7a','🎅 แดงซานต้า']];
+const BG_COLORS=[['#fff3a8','เหลือง'],['#c8f2d4','เขียวมิ้นต์'],['#ffd3df','ชมพูแคนดี้'],['#cdeafb','ฟ้าน้ำแข็ง'],['#ffc9c9','แดงอ่อน'],['#ffffff','ขาว'],['','โปร่งใส']];
+const DR_SIZES={s:[300,300,'เล็ก'],m:[480,360,'กลาง'],l:[720,480,'ใหญ่'],w:[720,300,'แถบยาว']};
+const DR={mode:'new',fig:null,bg:'#fff3a8',sz:'s',tool:'pen',pc:'#222222',hc:'#ffd54f',size:4,hsize:18,penOnly:false,undo:[],redo:[],zoom:1,baseImg:null,drawing:false,pts:[],snap:null,lastMid:null,k:1,ready:false};
+regWin('win-draw',{title:'ปากกา / Post-it',icon:'🖍️',center:true});
+const drInk=$('#dr-ink'), drBg=$('#dr-bg');
+function drUi(){
+  $('#dr-pens').innerHTML=PEN_COLORS.map(c=>'<button class="dcol" data-pc="'+c[0]+'" title="'+c[1]+'" aria-label="'+c[1]+'" style="background:'+c[0]+'"></button>').join('')+'<input type="color" id="dr-pcustom" value="#222222" title="เลือกสีเอง" aria-label="เลือกสีเอง">';
+  $('#dr-hls').innerHTML=HL_COLORS.map(c=>'<button class="dcol" data-hc="'+c[0]+'" title="'+c[1]+'" aria-label="'+c[1]+'" style="background:'+c[0]+'"></button>').join('');
+  $('#dr-bgs').innerHTML=BG_COLORS.map(c=>'<button class="dcol" data-bg="'+c[0]+'" title="'+c[1]+'" aria-label="'+c[1]+'" style="background:'+(c[0]||'repeating-conic-gradient(#bbb 0 25%,#fff 0 50%) 50%/10px 10px')+'"></button>').join('')
+    +'<select id="dr-sz" aria-label="ขนาดกระดาษ">'+Object.keys(DR_SIZES).map(k=>'<option value="'+k+'">'+DR_SIZES[k][2]+' ('+DR_SIZES[k][0]+'×'+DR_SIZES[k][1]+')</option>').join('')+'</select>';
+}
+function drMarks(){
+  $$('#dr-tools .dt').forEach(b=>b.classList.toggle('on',b.getAttribute('data-t')===DR.tool));
+  $$('#dr-pens .dcol').forEach(b=>b.classList.toggle('on',b.getAttribute('data-pc')===DR.pc));
+  $$('#dr-hls .dcol').forEach(b=>b.classList.toggle('on',b.getAttribute('data-hc')===DR.hc));
+  $$('#dr-bgs .dcol').forEach(b=>b.classList.toggle('on',b.getAttribute('data-bg')===DR.bg));
+  $('#dr-pens').style.display=DR.tool==='pen'||DR.tool==='arrow'?'flex':'none';
+  $('#dr-hls').style.display=DR.tool==='hl'?'flex':'none';
+  $('#dr-size').value=DR.tool==='hl'?DR.hsize:DR.size; $('#dr-sizev').textContent=($('#dr-size').value)+' px';
+  $('#dr-undo').disabled=!DR.undo.length; $('#dr-redo').disabled=!DR.redo.length;
+  drInk.style.touchAction=DR.penOnly?'pan-x pan-y pinch-zoom':'none';
+}
+function loadImgEl(u){ return new Promise(r=>{ if(!u){ r(null); return; } const im=new Image(); im.onload=()=>r(im); im.onerror=()=>r(null); im.src=u; }); }
+function drCanvasSize(w,h){ [drInk,drBg].forEach(c=>{ c.width=w; c.height=h; }); }
+function drFit(){
+  const st=$('#dr-stage'), sw=Math.max(200,st.clientWidth-24); let base=drInk.width;
+  if(DR.mode!=='photo') base=drInk.width/2;
+  $('#dr-wrap').style.width=Math.round(Math.min(base,sw)*DR.zoom)+'px'; $('#dr-zoomv').textContent=Math.round(DR.zoom*100)+'%';
+}
+function drPaintBg(){
+  const x=drBg.getContext('2d'); x.clearRect(0,0,drBg.width,drBg.height);
+  if(DR.mode==='photo'&&DR.baseImg) x.drawImage(DR.baseImg,0,0,drBg.width,drBg.height);
+  else if(DR.bg){ x.fillStyle=DR.bg; x.fillRect(0,0,drBg.width,drBg.height); }
+  $('#dr-wrap').style.background=(DR.mode!=='photo'&&!DR.bg)?'repeating-conic-gradient(#d8d3c0 0 25%,#f4f0e2 0 50%) 50%/16px 16px':'#fff';
+}
+async function openDraw(opts){
+  opts=opts||{}; if(!editable()) return;
+  if(!DR.ready){ drUi(); DR.ready=true; }
+  const fig=opts.fig||null; DR.fig=fig; DR.undo=[]; DR.redo=[]; DR.zoom=1; DR.baseImg=null; DR.tool='pen';
+  DR.mode=fig?(fig.classList.contains('sketch')?'sketch':'photo'):'new';
+  $('#dr-meta').style.display=DR.mode==='new'?'flex':'none'; $('#dr-keepw').style.display=DR.mode==='photo'?'inline-flex':'none'; $('#dr-keep').checked=false;
+  $('#dr-st').textContent='กำลังเตรียมกระดาน…'; openWin('win-draw');
+  if(DR.mode==='new'){
+    DR.bg=opts.postit?'#fff3a8':'#ffffff'; DR.sz=opts.postit?'s':'m'; $('#dr-sz').value=DR.sz;
+    const s=DR_SIZES[DR.sz]; drCanvasSize(s[0]*2,s[1]*2); $('#dr-title').textContent=opts.postit?'🗒️ Post-it เขียนมือ':'✏️ กระดานวาดเขียน';
+  } else if(DR.mode==='sketch'){
+    DR.bg=fig.getAttribute('data-bg')||''; const u=await imgURL(fig.getAttribute('data-iid')), im=await loadImgEl(u);
+    if(im){ drCanvasSize(im.naturalWidth,im.naturalHeight); drInk.getContext('2d').drawImage(im,0,0); }
+    else drCanvasSize((+fig.getAttribute('data-cw')||480)*2,(+fig.getAttribute('data-ch')||360)*2);
+    $('#dr-title').textContent='✏️ แก้ Post-it / ภาพวาด';
+  } else {
+    const u=await imgURL(fig.getAttribute('data-iid')), im=await loadImgEl(u);
+    if(!im){ closeWin('win-draw'); msgBox({icon:'⚠️',text:'โหลดรูปไม่ได้ จึงเขียนบนรูปนี้ไม่ได้'}); return; }
+    const sc=Math.min(1,1600/Math.max(im.naturalWidth,im.naturalHeight)); DR.baseImg=im; drCanvasSize(Math.round(im.naturalWidth*sc),Math.round(im.naturalHeight*sc)); $('#dr-title').textContent='✏️ เขียน / ทำเครื่องหมายบนรูป';
+  }
+  drPaintBg(); drMarks(); drFit(); $('#dr-st').textContent='';
+}
+function drPush(){
+  const x=drInk.getContext('2d'), bytes=drInk.width*drInk.height*4, max=Math.max(4,Math.floor(150e6/bytes));
+  DR.undo.push(x.getImageData(0,0,drInk.width,drInk.height)); if(DR.undo.length>max) DR.undo.shift(); DR.redo.length=0; drMarks();
+}
+function drUndo(){ if(!DR.undo.length) return; const x=drInk.getContext('2d'); DR.redo.push(x.getImageData(0,0,drInk.width,drInk.height)); x.putImageData(DR.undo.pop(),0,0); drMarks(); }
+function drRedo(){ if(!DR.redo.length) return; const x=drInk.getContext('2d'); DR.undo.push(x.getImageData(0,0,drInk.width,drInk.height)); x.putImageData(DR.redo.pop(),0,0); drMarks(); }
+function drPos(e){
+  const r=drInk.getBoundingClientRect();
+  return {x:(e.clientX-r.left)*drInk.width/r.width,y:(e.clientY-r.top)*drInk.height/r.height,p:e.pointerType==='pen'?(e.pressure>0?e.pressure:0.5):1};
+}
+function drStyle(x){
+  x.lineCap='round'; x.lineJoin='round'; x.globalAlpha=1; x.globalCompositeOperation='source-over';
+  if(DR.tool==='eraser'){ x.globalCompositeOperation='destination-out'; x.strokeStyle='#000'; x.fillStyle='#000'; }
+  else if(DR.tool==='hl'){ x.globalAlpha=0.4; x.strokeStyle=DR.hc; x.fillStyle=DR.hc; x.lineCap='butt'; }
+  else { x.strokeStyle=DR.pc; x.fillStyle=DR.pc; }
+}
+function drWidth(p){ const k=DR.k; if(DR.tool==='eraser') return DR.size*2.2*k; if(DR.tool==='hl') return DR.hsize*k; return DR.size*k*(DR.pen?(0.35+0.9*p):1); }
+function drDot(p){ const x=drInk.getContext('2d'); drStyle(x); x.beginPath(); x.arc(p.x,p.y,Math.max(0.5,drWidth(p.p)/2),0,6.2832); x.fill(); x.globalAlpha=1; x.globalCompositeOperation='source-over'; }
+function drPath(x,pts){
+  x.beginPath(); x.moveTo(pts[0].x,pts[0].y);
+  for(let i=1;i<pts.length-1;i++){ const m={x:(pts[i].x+pts[i+1].x)/2,y:(pts[i].y+pts[i+1].y)/2}; x.quadraticCurveTo(pts[i].x,pts[i].y,m.x,m.y); }
+  const l=pts[pts.length-1]; x.lineTo(l.x,l.y); x.stroke();
+}
+function drArrow(x,a,b){
+  const k=DR.k, w=DR.size*k, ang=Math.atan2(b.y-a.y,b.x-a.x), hl=Math.max(12*k,w*4);
+  x.lineWidth=w; x.beginPath(); x.moveTo(a.x,a.y); x.lineTo(b.x-Math.cos(ang)*hl*0.6,b.y-Math.sin(ang)*hl*0.6); x.stroke();
+  x.beginPath(); x.moveTo(b.x,b.y); x.lineTo(b.x-hl*Math.cos(ang-0.45),b.y-hl*Math.sin(ang-0.45)); x.lineTo(b.x-hl*Math.cos(ang+0.45),b.y-hl*Math.sin(ang+0.45)); x.closePath(); x.fill();
+}
+function drMove(p){
+  const x=drInk.getContext('2d'), pts=DR.pts; pts.push(p);
+  if(DR.tool==='hl'){ x.putImageData(DR.snap,0,0); drStyle(x); x.lineWidth=drWidth(1); if(pts.length>1) drPath(x,pts); x.globalAlpha=1; return; }
+  if(DR.tool==='arrow'){ x.putImageData(DR.snap,0,0); drStyle(x); drArrow(x,DR.start,p); return; }
+  drStyle(x); const n=pts.length; if(n<2) return; const a=pts[n-2], mid={x:(a.x+p.x)/2,y:(a.y+p.y)/2}, from=DR.lastMid||a;
+  x.lineWidth=drWidth(p.p); x.beginPath(); x.moveTo(from.x,from.y); x.quadraticCurveTo(a.x,a.y,mid.x,mid.y); x.stroke(); DR.lastMid=mid;
+  x.globalCompositeOperation='source-over';
+}
+drInk.addEventListener('pointerdown',e=>{
+  if(DR.penOnly&&e.pointerType==='touch') return; if(e.button>0) return; e.preventDefault();
+  try{ drInk.setPointerCapture(e.pointerId); }catch(_){}
+  drPush(); DR.drawing=true; DR.pen=e.pointerType==='pen'; DR.k=drInk.width/drInk.getBoundingClientRect().width; DR.lastMid=null;
+  const p=drPos(e); DR.pts=[p]; DR.start=p;
+  DR.snap=(DR.tool==='hl'||DR.tool==='arrow')?drInk.getContext('2d').getImageData(0,0,drInk.width,drInk.height):null;
+  if(DR.tool==='pen'||DR.tool==='eraser') drDot(p);
+});
+drInk.addEventListener('pointermove',e=>{
+  if(!DR.drawing) return; e.preventDefault();
+  const evs=(e.getCoalescedEvents&&e.getCoalescedEvents().length)?e.getCoalescedEvents():[e]; evs.forEach(ev=>drMove(drPos(ev)));
+});
+function drEnd(){ if(!DR.drawing) return; DR.drawing=false; DR.snap=null; drMarks(); }
+drInk.addEventListener('pointerup',drEnd); drInk.addEventListener('pointercancel',drEnd);
+$('#dr-tools').addEventListener('click',e=>{ const b=e.target.closest('.dt'); if(b){ DR.tool=b.getAttribute('data-t'); drMarks(); } });
+$('#dr-pens').addEventListener('click',e=>{ const b=e.target.closest('[data-pc]'); if(b){ DR.pc=b.getAttribute('data-pc'); if(DR.tool!=='arrow') DR.tool='pen'; drMarks(); } });
+$('#dr-pens').addEventListener('input',e=>{ if(e.target.id==='dr-pcustom'){ DR.pc=e.target.value; if(DR.tool!=='arrow') DR.tool='pen'; drMarks(); } });
+$('#dr-hls').addEventListener('click',e=>{ const b=e.target.closest('[data-hc]'); if(b){ DR.hc=b.getAttribute('data-hc'); drMarks(); } });
+$('#dr-bgs').addEventListener('click',e=>{ const b=e.target.closest('[data-bg]'); if(b&&DR.mode==='new'){ DR.bg=b.getAttribute('data-bg'); drPaintBg(); drMarks(); } });
+$('#dr-bgs').addEventListener('change',e=>{
+  if(e.target.id!=='dr-sz'||DR.mode!=='new') return;
+  if(DR.undo.length){ e.target.value=DR.sz; $('#dr-st').textContent='ล้างภาพก่อน จึงจะเปลี่ยนขนาดกระดาษได้'; return; }
+  DR.sz=e.target.value; const s=DR_SIZES[DR.sz]; drCanvasSize(s[0]*2,s[1]*2); drPaintBg(); drFit();
+});
+$('#dr-size').addEventListener('input',function(){ if(DR.tool==='hl') DR.hsize=+this.value; else DR.size=+this.value; $('#dr-sizev').textContent=this.value+' px'; });
+$('#dr-penonly').addEventListener('change',function(){ DR.penOnly=this.checked; drMarks(); });
+$('#dr-undo').addEventListener('click',drUndo); $('#dr-redo').addEventListener('click',drRedo);
+$('#dr-clear').addEventListener('click',()=>{ if(!DR.undo.length&&!drHasInk()) return; drPush(); drInk.getContext('2d').clearRect(0,0,drInk.width,drInk.height); drMarks(); });
+function drHasInk(){ return true; }
+$('#dr-zin').addEventListener('click',()=>{ DR.zoom=Math.min(3,DR.zoom*1.25); drFit(); }); $('#dr-zout').addEventListener('click',()=>{ DR.zoom=Math.max(0.4,DR.zoom/1.25); drFit(); });
+document.addEventListener('keydown',e=>{
+  if(!W['win-draw'].open||W['win-draw'].min||(e.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))) return;
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){ e.preventDefault(); if(e.shiftKey) drRedo(); else drUndo(); }
+});
+function toBlobP(c,type,q){ return new Promise(r=>c.toBlob(r,type,q)); }
+function imageReferenced(id,exceptFig){
+  if(qa(ed,'figure.img').some(f=>f!==exceptFig&&f.getAttribute('data-iid')===id)) return true;
+  return notes.some(n=>n.id!==cur&&(n.html||'').indexOf('data-iid="'+id+'"')>-1);
+}
+function dropImage(id){
+  if(!id||imageReferenced(id)) return; const a=SYNC.imgMap[id]; delImgRec(id);
+  if(a&&SYNC.on){ delete SYNC.imgMap[id]; saveSynced(); PV().delImg(id,a); }
+}
+function makeSketchFig(id,bg,cw,ch){
+  const tmp=document.createElement('div');
+  tmp.innerHTML='<figure class="img sketch" data-iid="'+id+'" data-bg="'+(bg||'')+'" data-w="m" data-cw="'+cw+'" data-ch="'+ch+'"><img alt=""><figcaption></figcaption></figure>';
+  return tmp.firstChild;
+}
+async function drSave(){
+  if(!editable()){ closeWin('win-draw'); return; }
+  $('#dr-ok').disabled=true; $('#dr-st').textContent='กำลังบันทึก…';
+  try{
+    const id=uid()+'d';
+    if(DR.mode==='photo'){
+      const c=document.createElement('canvas'); c.width=drInk.width; c.height=drInk.height; const x=c.getContext('2d');
+      x.drawImage(drBg,0,0); x.drawImage(drInk,0,0);
+      const blob=await toBlobP(c,'image/jpeg',0.9), buf=await blobToBuf(blob);
+      await putImg({id:id,type:'image/jpeg',buf:buf,w:c.width,h:c.height,t:Date.now()});
+      const fig=DR.fig, old=fig.getAttribute('data-iid');
+      if($('#dr-keep').checked){ const nf=makeFig(id); fig.parentNode.insertBefore(nf,fig.nextSibling); decorate(ed); }
+      else { fig.setAttribute('data-iid',id); const im=fig.querySelector('img'); if(im) im.removeAttribute('src'); fig.classList.remove('missing'); dropImage(old); }
+    } else {
+      const blob=await toBlobP(drInk,'image/png'), buf=await blobToBuf(blob);
+      await putImg({id:id,type:'image/png',buf:buf,w:drInk.width,h:drInk.height,t:Date.now()});
+      const cw=Math.round(drInk.width/2), ch=Math.round(drInk.height/2);
+      if(DR.mode==='sketch'){
+        const fig=DR.fig, old=fig.getAttribute('data-iid');
+        fig.setAttribute('data-iid',id); fig.setAttribute('data-bg',DR.bg||''); fig.setAttribute('data-cw',cw); fig.setAttribute('data-ch',ch);
+        const im=fig.querySelector('img'); if(im) im.removeAttribute('src'); fig.classList.remove('missing'); const fw=fig.querySelector('.fw'); if(fw) fw.style.background=DR.bg||''; dropImage(old);
+      } else {
+        const fig=makeSketchFig(id,DR.bg,cw,ch), after=placeBlock(fig,true);
+        decorate(ed); ensureEdges();
+        let nx=after||fig.nextElementSibling; if(!nx||nx.tagName==='FIGURE'){ nx=makeP(); fig.parentNode.insertBefore(nx,fig.nextSibling); }
+        caretTo(nx,true);
+      }
+    }
+    hydrateImages(ed); sketchSizeAll(); edChanged(); closeWin('win-draw'); flash('บันทึกภาพวาดลงในโน้ตแล้ว');
+  }catch(e){ $('#dr-st').textContent='บันทึกไม่สำเร็จ: '+(e&&e.message||e); }
+  finally{ $('#dr-ok').disabled=false; }
+}
+function sketchSizeAll(){ qa(ed,'figure.sketch').forEach(sketchSize); }
+$('#dr-ok').addEventListener('click',drSave);
+window.addEventListener('resize',()=>{ if(W['win-draw'].open) drFit(); });
+
+
+/* ================= UI toggles ================= */
+const UI={tree:true,list:true};
+try{ const u=JSON.parse(localStorage.getItem('mednote.xp.ui')||'null'); if(u){ UI.tree=u.tree!==false; UI.list=u.list!==false; } }catch(e){}
+function applyUi(){
+  const m=$('#win-main'); m.classList.toggle('hide-tree',!UI.tree); m.classList.toggle('hide-list',!UI.list);
+  $('#b-tree').classList.toggle('on',UI.tree); $('#b-listp').classList.toggle('on',UI.list);
+  try{ localStorage.setItem('mednote.xp.ui',JSON.stringify(UI)); }catch(e){}
+}
+function toggleUi(k){ UI[k]=!UI[k]; applyUi(); }
+$('#b-tree').addEventListener('click',()=>toggleUi('tree')); $('#b-listp').addEventListener('click',()=>toggleUi('list'));
+applyUi();
+
+/* ================= Templates: built-in + custom (add / hide / delete) ================= */
+function allTpls(){
+  return TPL.filter(t=>TPLHIDE.indexOf(t.k)<0).concat(TPLCUST.map(c=>({k:'c:'+c.id,g:'⭐ เทมเพลตของฉัน',name:c.name,type:c.type,title:c.title,html:c.html,custom:true})));
+}
+function tplByKey(k){
+  if(k&&k.indexOf('c:')===0){ const c=TPLCUST.filter(x=>'c:'+x.id===k)[0]; return c?{k:k,g:'⭐ เทมเพลตของฉัน',name:c.name,type:c.type,title:c.title,html:c.html,custom:true}:null; }
+  return TPL.filter(t=>t.k===k)[0]||null;
+}
+function tplHtml(t){ return t.html!=null?sanitize(t.html):mdToHtml(t.body); }
+function insertTpl(k){ const t=tplByKey(k); if(t) insertHtmlBlocks(tplHtml(t)); }
+function newFromTpl(k){ if(k==='blank'){ newNote(); return; } const t=tplByKey(k); if(t) newNote({title:t.title||'',type:t.type,html:tplHtml(t)}); }
+function buildTplSel(){
+  let s='<option value="">➕ แทรกเทมเพลต…</option>', g='';
+  allTpls().forEach(t=>{ if(t.g!==g){ if(g) s+='</optgroup>'; s+='<optgroup label="'+esc(t.g)+'">'; g=t.g; } s+='<option value="'+esc(t.k)+'">'+esc(t.name)+'</option>'; });
+  $('#tpl-sel').innerHTML=s+(g?'</optgroup>':'');
+}
+function insertMenuItems(){
+  const a=[['🗒️ Post-it เขียนมือ…',()=>openDraw({postit:true})],['✏️ กระดานวาดเขียน…',()=>openDraw({})],['🔀 Flowchart / Algorithm…',()=>openFlow(null)],['🖼️ รูปจากไฟล์…',()=>fmt('image')],['📷 ถ่ายรูป (มือถือ)',()=>fmt('camera')],['🕒 วันเวลา',()=>{ if(editable()) insertPlain(nowStr()); }],'-']; let g='';
+  allTpls().forEach(t=>{ if(t.g!==g){ if(g) a.push('-'); g=t.g; } a.push([t.name,()=>{ if(editable()) insertTpl(t.k); }]); });
+  a.push('-'); a.push(['🗂️ จัดการเทมเพลต…',()=>openTplMgr(false)]); return a;
+}
+function tplChanged(){ markSettings(); persistSettings(); buildTplSel(); renderTplMgr(); schedulePush(); }
+function cleanForTemplate(html){
+  const d=document.createElement('div'); d.innerHTML=sanitize(html||'');
+  qa(d,'figure.img').forEach(rm); qa(d,'mark').forEach(unwrap); return d.innerHTML||'<p><br></p>';
+}
+function saveAsTemplate(name){
+  const n=curNote(); if(!n){ msgBox({icon:'ℹ️',text:'ยังไม่ได้เปิดโน้ต — เปิดโน้ตที่อยากใช้เป็นแม่แบบก่อน'}); return; }
+  flushEditor(); name=(name||'').trim().slice(0,60)||n.title||'เทมเพลตใหม่';
+  TPLCUST.push({id:uid(),name:name,type:n.type,title:n.title,html:cleanForTemplate(n.html)});
+  tplChanged(); $('#tm-name').value=''; $('#tm-st').textContent='✅ บันทึก “'+name+'” เป็นเทมเพลตแล้ว (ไม่รวมรูปภาพ และไม่รวมไฮไลต์)';
+}
+regWin('win-tpl',{title:'จัดการเทมเพลต',icon:'🗂️',center:true});
+function renderTplMgr(){
+  const box=$('#tm-list'); box.innerHTML='';
+  const head=t=>{ const h=document.createElement('div'); h.className='tmh'; h.textContent=t; box.appendChild(h); };
+  const btn=(row,txt,fn,title)=>{ const b=document.createElement('button'); b.className='btn sm'; b.textContent=txt; if(title) b.title=title; b.addEventListener('click',fn); row.appendChild(b); return b; };
+  head('⭐ เทมเพลตของฉัน ('+TPLCUST.length+')');
+  if(!TPLCUST.length){ const e=document.createElement('div'); e.className='note-s'; e.style.padding='4px 6px'; e.textContent='ยังไม่มี — เปิดโน้ตที่อยากใช้เป็นแม่แบบ แล้วตั้งชื่อด้านบน กด “บันทึกโน้ตที่เปิดอยู่เป็นเทมเพลต”'; box.appendChild(e); }
+  TPLCUST.forEach((c,i)=>{
+    const row=document.createElement('div'); row.className='lrow';
+    const inp=document.createElement('input'); inp.value=c.name; inp.maxLength=60; inp.setAttribute('aria-label','ชื่อเทมเพลต');
+    inp.addEventListener('change',()=>{ const v=inp.value.trim(); if(v){ c.name=v; tplChanged(); } else inp.value=c.name; });
+    row.appendChild(inp);
+    btn(row,'แทรก',()=>{ if(!editable()){ msgBox({icon:'ℹ️',text:'เปิดโน้ตที่แก้ไขได้ก่อนแล้วจึงแทรกเทมเพลต'}); return; } closeWin('win-tpl'); openWin('win-main'); insertTpl('c:'+c.id); });
+    btn(row,'สร้างโน้ต',()=>{ closeWin('win-tpl'); newFromTpl('c:'+c.id); });
+    btn(row,'✕',()=>msgBox({icon:'❓',title:'ลบเทมเพลต',text:'ลบเทมเพลต “'+c.name+'” หรือไม่? (โน้ตที่เคยสร้างจากเทมเพลตนี้ไม่ถูกลบ)',buttons:[{label:'ลบ',cb:()=>{ TPLCUST.splice(i,1); tplChanged(); }},{label:'ยกเลิก'}]}),'ลบเทมเพลต');
+    box.appendChild(row);
+  });
+  head('เทมเพลตมาตรฐาน (ติ๊กออก = ซ่อนจากเมนู)');
+  TPL.forEach(t=>{
+    const row=document.createElement('div'); row.className='lrow';
+    const lb=document.createElement('label'); lb.style.cssText='flex:1;display:flex;gap:6px;align-items:center;min-width:0';
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=TPLHIDE.indexOf(t.k)<0; cb.setAttribute('aria-label','แสดง '+t.name);
+    cb.addEventListener('change',()=>{ const i=TPLHIDE.indexOf(t.k); if(cb.checked&&i>-1) TPLHIDE.splice(i,1); else if(!cb.checked&&i<0) TPLHIDE.push(t.k); tplChanged(); });
+    lb.appendChild(cb); lb.appendChild(document.createTextNode(t.name+'  · '+t.g.replace(/^\S+\s/,''))); row.appendChild(lb);
+    btn(row,'สร้างโน้ต',()=>{ closeWin('win-tpl'); newFromTpl(t.k); });
+    box.appendChild(row);
+  });
+}
+function openTplMgr(focusName){
+  renderTplMgr(); const n=curNote(); $('#tm-name').value=focusName&&n?n.title:''; $('#tm-st').textContent=''; openWin('win-tpl'); if(focusName) $('#tm-name').focus();
+}
+$('#tm-save').addEventListener('click',()=>saveAsTemplate($('#tm-name').value));
+$('#tm-restore').addEventListener('click',()=>{ TPLHIDE=[]; tplChanged(); $('#tm-st').textContent='แสดงเทมเพลตมาตรฐานทั้งหมดแล้ว'; });
+$('#b-tplm').addEventListener('click',()=>openTplMgr(false));
+
+
+/* ================= Forest: study timer (Christmas) ================= */
+const FK='mednote.xp.forest';
+const FTYPES={pine:{n:'สนคริสต์มาส',ic:'🎄',price:0},snowy:{n:'สนหิมะ',ic:'❄️',price:20},candy:{n:'ต้นแคนดี้เคน',ic:'🍬',price:40},snowman:{n:'ตุ๊กตาหิมะ',ic:'⛄',price:60},ginger:{n:'บ้านขนมปังขิง',ic:'🏠',price:100}};
+const FO={sessions:[],spent:0,owned:['pine'],sel:'pine',set:{dur:25,strict:true,grace:60,sound:true,autoBreak:true,brk:5},active:null,subj:'',cycle:0};
+regWin('win-timer',{title:'ป่าคริสต์มาส',icon:'🌲',center:true});
+function fLoad(){
+  try{ const s=JSON.parse(localStorage.getItem(FK)||'null'); if(s){ ['sessions','spent','owned','sel','active','subj','cycle'].forEach(k=>{ if(s[k]!==undefined) FO[k]=s[k]; }); FO.set=Object.assign(FO.set,s.set||{}); } }catch(e){}
+  if(!Array.isArray(FO.sessions)) FO.sessions=[]; if(!Array.isArray(FO.owned)||!FO.owned.length) FO.owned=['pine']; if(!FTYPES[FO.sel]||FO.owned.indexOf(FO.sel)<0) FO.sel='pine';
+}
+function fSave(){ try{ localStorage.setItem(FK,JSON.stringify(FO)); }catch(e){} }
+function fExport(){ return {sessions:FO.sessions,spent:FO.spent,owned:FO.owned,sel:FO.sel,set:FO.set}; }
+function fImport(f){
+  if(!f||!Array.isArray(f.sessions)) return 0; let n=0;
+  f.sessions.forEach(s=>{ if(s&&s.id&&!FO.sessions.some(x=>x.id===s.id)){ FO.sessions.push(s); n++; } });
+  FO.sessions.sort((a,b)=>a.start-b.start); FO.spent=Math.max(FO.spent,f.spent||0);
+  (f.owned||[]).forEach(o=>{ if(FTYPES[o]&&FO.owned.indexOf(o)<0) FO.owned.push(o); }); fSave(); return n;
+}
+const fStars=()=>FO.sessions.reduce((s,x)=>s+(x.ok?(x.stars||0):0),0)-FO.spent;
+const pad2=n=>String(n).padStart(2,'0');
+function fMMSS(ms){ const s=Math.max(0,Math.ceil(ms/1000)); return pad2(Math.floor(s/60))+':'+pad2(s%60); }
+function fHM(min){ min=Math.round(min); const h=Math.floor(min/60), m=min%60; return h?h+' ชม. '+m+' น.':m+' นาที'; }
+
+/* ---- drawings ---- */
+function treeSvg(type,stage,dead,cls){
+  const W0='<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" class="'+(cls||'')+'" aria-hidden="true">';
+  const ground='<ellipse cx="60" cy="124" rx="46" ry="8" fill="#eaf4ff" opacity=".95"/>';
+  let b='';
+  if(dead){
+    if(type==='snowman') b='<ellipse cx="60" cy="122" rx="32" ry="6" fill="#cfe6f7"/><rect x="48" y="110" width="22" height="6" rx="2" fill="#222"/><rect x="42" y="114" width="36" height="4" fill="#222"/><polygon points="86,120 104,118 86,116" fill="#f08a24"/><circle cx="40" cy="120" r="2" fill="#333"/>';
+    else if(type==='ginger') b='<polygon points="30,122 50,108 62,122" fill="#8a4a1e"/><rect x="62" y="108" width="26" height="14" fill="#b5753a" transform="rotate(14 75 115)"/><polygon points="68,106 86,96 94,108" fill="#6a3815"/><circle cx="46" cy="120" r="3" fill="#d6283a"/><circle cx="96" cy="120" r="3" fill="#1b7a3a"/>';
+    else b='<path d="M60 124 L60 74 M60 98 L44 84 M60 88 L76 72 M60 110 L74 100" stroke="#6b4a2a" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M44 84 L36 86 M76 72 L82 68" stroke="#6b4a2a" stroke-width="3" stroke-linecap="round"/><polygon points="52,120 38,126 58,126" fill="#8a7a55"/><polygon points="76,122 90,126 70,126" fill="#8a7a55"/>';
+    return W0+ground+b+'</svg>';
+  }
+  if(stage<=0) return W0+ground+'<ellipse cx="60" cy="118" rx="14" ry="6" fill="#6b3d1e"/><circle cx="60" cy="114" r="2.6" fill="#d9a520"/></svg>';
+  if(type==='snowman'){
+    b+=stage>=1?'<circle cx="60" cy="104" r="19" fill="#fff" stroke="#bcd3e8" stroke-width="1.5"/>':'';
+    b+=stage>=2?'<circle cx="60" cy="76" r="14" fill="#fff" stroke="#bcd3e8" stroke-width="1.5"/>':'';
+    b+=stage>=3?'<circle cx="60" cy="54" r="11" fill="#fff" stroke="#bcd3e8" stroke-width="1.5"/><circle cx="56" cy="52" r="1.6" fill="#222"/><circle cx="64" cy="52" r="1.6" fill="#222"/>':'';
+    if(stage>=4) b+='<polygon points="60,55 72,58 60,59" fill="#f08a24"/><rect x="50" y="40" width="20" height="3" fill="#222"/><rect x="53" y="28" width="14" height="13" fill="#222"/><rect x="49" y="64" width="22" height="5" rx="2" fill="#c62828"/><rect x="66" y="66" width="5" height="12" rx="2" fill="#c62828"/><circle cx="60" cy="78" r="1.8" fill="#222"/><circle cx="60" cy="86" r="1.8" fill="#222"/><circle cx="60" cy="104" r="1.8" fill="#222"/><path d="M42 80 L26 68 M78 80 L94 68" stroke="#6b3d1e" stroke-width="3" stroke-linecap="round"/>';
+    return W0+ground+b+'</svg>';
+  }
+  if(type==='ginger'){
+    if(stage<=1) b+='<rect x="26" y="84" width="68" height="36" fill="'+(stage>=1?'#b5753a':'none')+'" stroke="#8a4a1e" stroke-width="2" '+(stage<1?'stroke-dasharray="4 3"':'')+'/>';
+    else b+='<rect x="26" y="84" width="68" height="36" fill="#b5753a" stroke="#8a4a1e" stroke-width="2"/>';
+    if(stage>=2) b+='<polygon points="20,88 60,48 100,88" fill="#8a4a1e" stroke="#6a3815" stroke-width="2"/>';
+    if(stage>=3) b+='<rect x="54" y="98" width="13" height="22" rx="2" fill="#5c2a1e"/><rect x="34" y="94" width="12" height="12" fill="#ffe27a" stroke="#6a3815"/><rect x="76" y="94" width="12" height="12" fill="#ffe27a" stroke="#6a3815"/>';
+    if(stage>=4) b+='<path d="M22 88 Q30 96 38 88 T54 88 T70 88 T86 88 T98 88" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle cx="46" cy="76" r="3.4" fill="#d6283a"/><circle cx="74" cy="76" r="3.4" fill="#1b7a3a"/><circle cx="60" cy="64" r="3.4" fill="#ffd54f"/><rect x="78" y="46" width="9" height="16" fill="#8a4a1e"/><circle cx="84" cy="38" r="5" fill="#fff" opacity=".8"/><circle cx="90" cy="28" r="4" fill="#fff" opacity=".6"/>';
+    return W0+ground+b+'</svg>';
+  }
+  const cols=type==='candy'?['#d6283a','#ffffff','#d6283a']:['#1b7a3a','#178036','#146a30'];
+  const sc=stage===1?0:(stage===2?.42:(stage===3?.74:1));
+  if(stage===1) return W0+ground+'<path d="M60 120 L60 100" stroke="#3f8f3a" stroke-width="3" stroke-linecap="round"/><ellipse cx="51" cy="99" rx="9" ry="5" fill="#3fae52" transform="rotate(-25 51 99)"/><ellipse cx="69" cy="96" rx="9" ry="5" fill="#4cbf5f" transform="rotate(25 69 96)"/></svg>';
+  const st=type==='candy'?' stroke="#b3202a" stroke-width="1.4"':'';
+  b='<g transform="translate(60 124) scale('+sc+') translate(-60 -124)"><rect x="54" y="112" width="12" height="12" fill="#6b3d1e"/><polygon points="60,66 100,116 20,116" fill="'+cols[2]+'"'+st+'/><polygon points="60,40 92,88 28,88" fill="'+cols[1]+'"'+st+'/><polygon points="60,18 84,58 36,58" fill="'+cols[0]+'"'+st+'/>';
+  if(type==='snowy'||(type==='pine'&&false)) b+='<path d="M60 18 L72 36 Q66 32 60 36 Q54 32 48 36 Z" fill="#fff"/><path d="M60 40 L78 66 Q70 60 62 66 Q54 60 46 66 Q42 62 40 60 Z" fill="#fff"/><path d="M60 66 L88 102 Q78 94 68 102 Q58 94 48 102 Q40 96 34 100 Z" fill="#fff"/>';
+  if(stage>=4){
+    b+='<path d="M42 54 Q60 64 78 54 M34 84 Q60 98 86 84 M26 110 Q60 126 94 110" stroke="#f3c93a" stroke-width="2" fill="none"/>';
+    b+='<circle class="o" cx="52" cy="46" r="3.4" fill="#ff4d4d"/><circle class="o" style="animation-delay:.4s" cx="68" cy="64" r="3.4" fill="#4db8ff"/><circle class="o" style="animation-delay:.8s" cx="48" cy="80" r="3.4" fill="#ffd84d"/><circle class="o" style="animation-delay:.2s" cx="74" cy="90" r="3.4" fill="#ff4d4d"/><circle class="o" style="animation-delay:.6s" cx="40" cy="104" r="3.4" fill="#4db8ff"/><circle class="o" style="animation-delay:1s" cx="62" cy="108" r="3.4" fill="#ffd84d"/><circle class="o" style="animation-delay:.3s" cx="84" cy="110" r="3.4" fill="#ff4d4d"/>';
+    b+='<polygon points="60,2 64,13 76,13 66,20 70,32 60,25 50,32 54,20 44,13 56,13" fill="#f3c93a"/>';
+  }
+  return W0+ground+b+'</g></svg>';
+}
+function fStage(p){ return p<0.12?0:p<0.35?1:p<0.6?2:p<0.85?3:4; }
+
+/* ---- audio ---- */
+let fAC=null;
+function fAudio(){ try{ if(!fAC){ const C=window.AudioContext||window.webkitAudioContext; if(C) fAC=new C(); } if(fAC&&fAC.state==='suspended') fAC.resume(); }catch(e){} }
+function fPlay(seq){
+  if(!FO.set.sound||!fAC) return; let t=fAC.currentTime+0.03;
+  seq.forEach(n=>{ const o=fAC.createOscillator(), g=fAC.createGain(); o.type=n[2]||'triangle'; o.frequency.value=n[0];
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.25,t+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+n[1]);
+    o.connect(g); g.connect(fAC.destination); o.start(t); o.stop(t+n[1]+0.05); t+=n[1]*0.92; });
+}
+const F_WIN=[[659,.17],[659,.17],[659,.34],[659,.17],[659,.17],[659,.34],[659,.17],[784,.17],[523,.26],[587,.11],[659,.5]];
+const F_FAIL=[[392,.28],[330,.28],[262,.6,'sawtooth']], F_BRK=[[880,.2],[1109,.2],[1319,.4]];
+
+/* ---- state machine ---- */
+let fTick=null, fBrk=null, fLastKey='', fResult=null, fRange='today', fTab='timer';
+const DOC_TITLE=document.title;
+function fSceneSet(type,stage,dead){ const key=type+'|'+stage+'|'+(dead?1:0); if(key===fLastKey) return; fLastKey=key; $('#ft-tree').innerHTML=treeSvg(type,stage,dead); }
+function fSetTaskTitle(t){ W['win-timer'].title=t||'ป่าคริสต์มาส'; renderTask(); }
+function fStart(){
+  if(FO.active||fBrk) return; fAudio();
+  const dur=Math.max(5,Math.min(180,+$('#ft-dur').value||25)), subj=$('#ft-subj').value||'อื่นๆ';
+  FO.set.dur=dur; FO.subj=subj; FO.active={id:uid(),start:Date.now(),seen:Date.now(),hiddenAt:0,dur:dur,subj:subj,label:$('#ft-label').value.trim().slice(0,60),type:FO.sel};
+  fResult=null; fSave(); fRun();
+}
+function fRun(){ clearInterval(fTick); fTick=setInterval(fTickFn,1000); fTickFn(); fUi(); }
+function fTickFn(){
+  const a=FO.active;
+  if(a){
+    const el=Date.now()-a.start, tot=a.dur*60000; if(el>=tot){ fFinish(true); return; }
+    a.seen=Date.now(); if(Math.round(el/1000)%5===0) fSave();
+    const p=el/tot; $('#ft-lcd').textContent=fMMSS(tot-el); $('#ft-bar').style.width=(p*100).toFixed(1)+'%'; fSceneSet(a.type,fStage(p),false);
+    $('#ft-msg').textContent='กำลังปลูก '+FTYPES[a.type].ic+' · '+a.subj+(a.label?' — '+a.label:'')+' · อีก '+Math.ceil((tot-el)/60000)+' นาที';
+    const t=fMMSS(tot-el); document.title='🎄 '+t+' — MedNote XP'; fSetTaskTitle(t); const tr=$('#tray-timer'); tr.style.display=''; tr.textContent='🎄 '+t; return;
+  }
+  if(fBrk){
+    const left=fBrk.end-Date.now(); if(left<=0){ fBreakEnd(); return; }
+    $('#ft-lcd').textContent=fMMSS(left); $('#ft-bar').style.width=((1-left/(fBrk.dur*60000))*100).toFixed(1)+'%'; $('#ft-msg').textContent='☕ พักดื่มโกโก้ร้อน · '+(fBrk.long?'พักยาว':'พักสั้น');
+    const t=fMMSS(left); document.title='☕ '+t+' — MedNote XP'; fSetTaskTitle(t); const tr=$('#tray-timer'); tr.style.display=''; tr.textContent='☕ '+t; return;
+  }
+  clearInterval(fTick); fTick=null;
+}
+function fEndUi(){ document.title=DOC_TITLE; fSetTaskTitle(''); $('#tray-timer').style.display='none'; }
+function fFinish(ok,why){
+  const a=FO.active; if(!a) return; clearInterval(fTick); fTick=null; FO.active=null;
+  const end=Math.min(Date.now(),a.start+a.dur*60000), s={id:a.id,start:a.start,end:end,min:ok?a.dur:Math.floor((end-a.start)/60000),subj:a.subj,label:a.label,type:a.type,ok:ok,why:why||''};
+  if(ok){ s.stars=Math.max(1,Math.round(a.dur/5)); FO.cycle=(FO.cycle||0)+1; } else FO.cycle=0;
+  FO.sessions.push(s); fSave(); fResult=s; fEndUi(); fLastKey='';
+  fPlay(ok?F_WIN:F_FAIL);
+  if(ok&&FO.set.autoBreak){ const long=FO.cycle>=4; if(long) FO.cycle=0; fSave(); fBrk={dur:long?15:Math.max(1,FO.set.brk||5),long:long}; fBrk.end=Date.now()+fBrk.dur*60000; fTick=setInterval(fTickFn,1000); }
+  fUi(); fForest(); fTickFn();
+}
+function fFail(why,away){ if(!FO.active) return; fFinish(false,why); }
+function fBreakEnd(){ clearInterval(fTick); fTick=null; fBrk=null; fEndUi(); fPlay(F_BRK); fResult=null; fLastKey=''; fUi(); }
+function fGiveUp(){
+  if(!FO.active) return;
+  msgBox({icon:'🥀',title:'ยอมแพ้?',text:'ถ้าหยุดตอนนี้ ต้นไม้ที่กำลังปลูกจะเหี่ยวเฉา และไม่ได้ดาวรางวัล',buttons:[{label:'ปลูกต่อ'},{label:'ยอมแพ้',cb:()=>fFail('gaveup')}]});
+}
+function fSkipBreak(){ if(fBrk) fBreakEnd(); }
+document.addEventListener('visibilitychange',()=>{
+  const a=FO.active; if(!a||!FO.set.strict) return;
+  if(document.hidden){ a.hiddenAt=Date.now(); fSave(); return; }
+  const left=a.hiddenAt; a.hiddenAt=0; fSave(); if(!left) return;
+  const failAt=left+FO.set.grace*1000, endAt=a.start+a.dur*60000;
+  if(failAt<endAt&&Date.now()>failAt) fFail('left'); else fTickFn();
+});
+function fResume(){
+  const a=FO.active; if(!a) return;
+  const left=a.hiddenAt||a.seen||a.start, endAt=a.start+a.dur*60000;
+  if(FO.set.strict&&left+FO.set.grace*1000<Math.min(Date.now(),endAt)&&Date.now()>left+FO.set.grace*1000){ fFail('left'); return; }
+  a.hiddenAt=0; fRun();
+}
+
+/* ---- UI ---- */
+function fUi(){
+  const a=FO.active, running=!!a, brk=!!fBrk;
+  $('#ft-setup').style.display=(running||brk)?'none':''; $('#ft-go').style.display=(running||brk)?'none':''; $('#ft-giveup').style.display=running?'':'none'; $('#ft-skip').style.display=brk?'':'none';
+  if(!running&&!brk){
+    $('#ft-lcd').textContent=pad2(+$('#ft-dur').value)+':00'; $('#ft-bar').style.width='0%';
+    if(fResult){ const r=fResult; $('#ft-msg').innerHTML=r.ok?'🎉 ปลูก'+FTYPES[r.type].ic+'สำเร็จ! +'+r.stars+' ⭐ ('+fHM(r.min)+')':'🥀 ต้นไม้เหี่ยวเฉา'+(r.why==='left'?' — ออกจากแอปนานเกิน '+FO.set.grace+' วินาที':' — คุณหยุดก่อนเวลา'); fSceneSet(r.type,r.ok?4:0,!r.ok); }
+    else { $('#ft-msg').textContent='พร้อมปลูกต้นไม้แล้ว — เลือกเวลาแล้วกดเริ่ม'; fSceneSet(FO.sel,4,false); }
+  } else if(brk){ const r=fResult; if(r) fSceneSet(r.type,4,false); }
+  $('#ft-star').textContent=fStars(); fStatus();
+}
+function fStatus(){
+  const day=new Date(); day.setHours(0,0,0,0); const today=FO.sessions.filter(s=>s.ok&&s.start>=day.getTime()).reduce((m,s)=>m+s.min,0);
+  $('#ft-status').textContent='⭐ '+fStars()+' ดาว · วันนี้อ่านแล้ว '+fHM(today)+' · 🌲 ในป่า '+FO.sessions.filter(s=>s.ok).length+' ต้น';
+}
+function fFill(){
+  const sub=$('#ft-subj'); const cur=FO.subj||sub.value; const list=ROT.slice(); if(list.indexOf('อื่นๆ')<0) list.push('อื่นๆ');
+  sub.innerHTML=list.map(r=>'<option>'+esc(r)+'</option>').join(''); if(list.indexOf(cur)>-1) sub.value=cur;
+  const ty=$('#ft-type'); ty.innerHTML=FO.owned.map(k=>'<option value="'+k+'">'+FTYPES[k].ic+' '+FTYPES[k].n+'</option>').join(''); ty.value=FO.sel;
+  $('#ft-dur').value=FO.set.dur; $('#ft-durv').textContent=FO.set.dur+' นาที';
+}
+function fRangeSessions(){
+  const now=new Date(), d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime(), DAY=86400000;
+  const from=fRange==='today'?d0:fRange==='week'?d0-6*DAY:fRange==='month'?d0-29*DAY:0;
+  return FO.sessions.filter(s=>s.start>=from);
+}
+function fStreak(){
+  const days=new Set(FO.sessions.filter(s=>s.ok).map(s=>{ const d=new Date(s.start); return d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate(); }));
+  let n=0; const d=new Date(); const key=x=>x.getFullYear()+'-'+x.getMonth()+'-'+x.getDate();
+  if(!days.has(key(d))) d.setDate(d.getDate()-1);
+  while(days.has(key(d))){ n++; d.setDate(d.getDate()-1); } return n;
+}
+function fForest(){
+  const ss=fRangeSessions(), ok=ss.filter(s=>s.ok), fail=ss.filter(s=>!s.ok), mins=ok.reduce((m,s)=>m+s.min,0);
+  $('#fo-cards').innerHTML='<div class="fcard"><b>'+fHM(mins)+'</b><span>เวลาอ่านรวม</span></div><div class="fcard"><b>'+ok.length+'</b><span>ต้นที่ปลูกสำเร็จ</span></div><div class="fcard"><b>'+fail.length+'</b><span>ต้นที่เหี่ยว</span></div><div class="fcard"><b>'+fStreak()+' วัน</b><span>อ่านต่อเนื่อง</span></div>';
+  const shown=ss.slice(-240);
+  $('#fo-grid').innerHTML=shown.length?shown.map(s=>'<div class="ftr" title="'+esc(new Date(s.start).toLocaleString('th-TH',{dateStyle:'medium',timeStyle:'short'})+' · '+s.subj+(s.label?' — '+s.label:'')+' · '+s.min+' นาที'+(s.ok?'':' (เหี่ยว)'))+'">'+treeSvg(s.type,4,!s.ok)+'</div>').join(''):'<div class="note-s" style="padding:14px">ยังไม่มีต้นไม้ในช่วงนี้ — เริ่มจับเวลาอ่านหนังสือเพื่อปลูกต้นแรก 🌱</div>';
+  const by={}; ok.forEach(s=>{ by[s.subj]=(by[s.subj]||0)+s.min; }); const rows=Object.keys(by).sort((a,b)=>by[b]-by[a]), mx=Math.max(1,...rows.map(k=>by[k]));
+  $('#fo-subj').innerHTML=rows.length?rows.map(k=>'<div class="fsr"><span>'+esc(k)+'</span><div><i style="width:'+Math.round(by[k]/mx*100)+'%"></i></div><em>'+fHM(by[k])+'</em></div>').join(''):'<div class="note-s">ยังไม่มีข้อมูล</div>';
+  const now=new Date(), d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime(), days=[]; 
+  for(let i=6;i>=0;i--){ const a=d0-i*86400000, b=a+86400000; days.push({a:a,m:FO.sessions.filter(s=>s.ok&&s.start>=a&&s.start<b).reduce((m,s)=>m+s.min,0)}); }
+  const dm=Math.max(30,...days.map(d=>d.m));
+  $('#fo-week').innerHTML=days.map(d=>'<div class="fbar" title="'+fHM(d.m)+'"><i style="height:'+Math.round(d.m/dm*100)+'%"></i><span>'+new Date(d.a).toLocaleDateString('th-TH',{weekday:'short'})+'</span></div>').join('');
+  $$('#fo-range button').forEach(b=>b.classList.toggle('on',b.getAttribute('data-r')===fRange)); fStatus();
+}
+function fShop(){
+  $('#fs-star').textContent=fStars();
+  $('#fs-list').innerHTML=Object.keys(FTYPES).map(k=>{
+    const t=FTYPES[k], own=FO.owned.indexOf(k)>-1, can=fStars()>=t.price;
+    return '<div class="fshop"><div class="fsv">'+treeSvg(k,4,false)+'</div><b>'+t.ic+' '+t.n+'</b>'+(own?'<button class="btn sm" data-use="'+k+'"'+(FO.sel===k?' disabled>ใช้อยู่ ✓':'>เลือกใช้')+'</button>':'<button class="btn sm" data-buy="'+k+'"'+(can?'':' disabled')+'>ซื้อ ⭐ '+t.price+'</button>')+'</div>';
+  }).join('');
+}
+function fTabSet(t){
+  fTab=t; $$('#ft-tabs .tab').forEach(b=>b.classList.toggle('on',b.getAttribute('data-t')===t));
+  ['timer','forest','shop','set'].forEach(k=>{ $('#ftp-'+k).style.display=k===t?(k==='timer'?'grid':'block'):'none'; });
+  if(t==='forest') fForest(); if(t==='shop') fShop();
+}
+function fSettingsUi(){
+  $('#fz-strict').checked=!!FO.set.strict; $('#fz-grace').value=FO.set.grace; $('#fz-sound').checked=!!FO.set.sound; $('#fz-brk').checked=!!FO.set.autoBreak; $('#fz-brkm').value=FO.set.brk;
+}
+function openTimer(){ fFill(); fSettingsUi(); fUi(); fForest(); openWin('win-timer'); }
+$('#ft-tabs').addEventListener('click',e=>{ const b=e.target.closest('.tab'); if(b) fTabSet(b.getAttribute('data-t')); });
+$('#ft-dur').addEventListener('input',function(){ $('#ft-durv').textContent=this.value+' นาที'; if(!FO.active&&!fBrk){ $('#ft-lcd').textContent=pad2(+this.value)+':00'; } });
+$('#ft-chips').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; $('#ft-dur').value=b.getAttribute('data-m'); $('#ft-dur').dispatchEvent(new Event('input')); });
+$('#ft-type').addEventListener('change',function(){ FO.sel=this.value; fSave(); fLastKey=''; fUi(); });
+$('#ft-go').addEventListener('click',fStart); $('#ft-giveup').addEventListener('click',fGiveUp); $('#ft-skip').addEventListener('click',fSkipBreak);
+$('#fo-range').addEventListener('click',e=>{ const b=e.target.closest('button'); if(b){ fRange=b.getAttribute('data-r'); fForest(); } });
+$('#fs-list').addEventListener('click',e=>{
+  const u=e.target.closest('[data-use]'), by=e.target.closest('[data-buy]');
+  if(u){ FO.sel=u.getAttribute('data-use'); fSave(); fFill(); fLastKey=''; fUi(); fShop(); }
+  else if(by){ const k=by.getAttribute('data-buy'), t=FTYPES[k]; if(fStars()>=t.price&&FO.owned.indexOf(k)<0){ FO.spent+=t.price; FO.owned.push(k); FO.sel=k; fSave(); fFill(); fLastKey=''; fUi(); fShop(); fPlay(F_BRK); } }
+});
+['fz-strict','fz-sound','fz-brk'].forEach(id=>$('#'+id).addEventListener('change',()=>{ FO.set.strict=$('#fz-strict').checked; FO.set.sound=$('#fz-sound').checked; FO.set.autoBreak=$('#fz-brk').checked; fSave(); }));
+$('#fz-grace').addEventListener('change',function(){ FO.set.grace=Math.max(5,Math.min(600,+this.value||60)); this.value=FO.set.grace; fSave(); });
+$('#fz-brkm').addEventListener('change',function(){ FO.set.brk=Math.max(1,Math.min(60,+this.value||5)); this.value=FO.set.brk; fSave(); });
+$('#fz-test').addEventListener('click',()=>{ fAudio(); fPlay(F_WIN); });
+$('#fz-reset').addEventListener('click',()=>msgBox({icon:'⚠️',title:'ล้างข้อมูลป่า',text:'ลบประวัติการอ่าน ต้นไม้ และดาวทั้งหมดบนเครื่องนี้หรือไม่? (โน้ตไม่ถูกลบ)',buttons:[{label:'ลบทั้งหมด',cb:()=>{ if(FO.active){ clearInterval(fTick); } FO.sessions=[]; FO.spent=0; FO.owned=['pine']; FO.sel='pine'; FO.active=null; FO.cycle=0; fBrk=null; fResult=null; fSave(); fEndUi(); fFill(); fUi(); fForest(); }},{label:'ยกเลิก'}]}));
+$('#tray-timer').addEventListener('click',openTimer);
+(function(){ const sn=$('#ft-snow'); let h=''; for(let i=0;i<22;i++) h+='<i style="left:'+(Math.random()*100).toFixed(1)+'%;animation-delay:-'+(Math.random()*9).toFixed(1)+'s;animation-duration:'+(5+Math.random()*6).toFixed(1)+'s;opacity:'+(0.5+Math.random()*0.5).toFixed(2)+'"></i>'; sn.innerHTML=h; })();
+fLoad();
+$('#b-timer').addEventListener('click',openTimer);
+
 /* ================= Boot ================= */
 async function boot(){
   loadNotes(true); buildSelects(); buildTplSel(); ensureCur(); renderAll(true); openWin('win-main');
+  fFill(); fSettingsUi(); fUi(); fResume();
   setTimeout(()=>{ const b=$('#balloon'); b.style.display='block'; setTimeout(()=>{ b.style.display='none'; },14000); },900);
   await syncInit();
   if(NEED_SEED){
