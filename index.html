@@ -2,6 +2,8 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
+<script>(function(){try{var h=document.documentElement;if(h.getAttribute('data-mode')==='phone'||localStorage.getItem('mednote.xp.phone')==='1'||/[?&]m=1/.test(location.search))h.className+=' phone';}catch(e){}})();</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MedNote XP: Holiday Edition — คลังความรู้ชั้นคลินิก</title>
 <meta name="mobile-web-app-capable" content="yes">
@@ -501,6 +503,77 @@ legend{color:var(--berry-d);padding:0 4px}
   .ftlcd{font-size:44px}
 }
 
+.fshop small{color:var(--muted);font-size:11px;text-align:center;line-height:1.4;min-height:30px}
+.fshop b{text-align:center}
+
+/* ===== Phone mode ===== */
+#mhead,#mback,#msheet,#mdrawer{display:none}
+.edbar .po{display:none}
+html.phone{padding-top:0;padding-bottom:0}
+html.phone body{background:var(--face)}
+html.phone #desktop{background:var(--face)}
+html.phone #snow,html.phone #garland,html.phone #tree,html.phone .icons,html.phone #taskbar,html.phone #startmenu{display:none!important}
+html.phone #mhead{display:flex;position:fixed;top:0;left:0;right:0;z-index:300;align-items:center;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 4px) 8px 4px;min-height:calc(52px + env(safe-area-inset-top,0px));background:linear-gradient(#f26b5f,#c72a35 40%,#a11212);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+#mhead button{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:10px;min-width:44px;height:42px;font-size:21px;line-height:1;padding:0 8px}
+#m-ttl{flex:1;min-width:0;font-weight:bold;font-size:16px;text-shadow:1px 1px #4a0505;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#m-slot #st-sync{display:inline-block;font-size:11px;color:#fff;padding:3px 8px;background:rgba(0,0,0,.28);border-radius:12px;max-width:112px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0}
+html.phone #win-main{position:fixed;left:0!important;top:0!important;right:0;bottom:0;width:100%!important;height:100%!important;border-radius:0;padding:calc(52px + env(safe-area-inset-top,0px)) 0 0;background:var(--face);box-shadow:none}
+html.phone #win-main>.titlebar{display:none}
+html.phone #win-main .menubar,html.phone #win-main .toolbar,html.phone #win-main .addrbar,html.phone #win-main .status,html.phone #win-main .pane-task,html.phone #win-main .otabs,html.phone #win-main .side{display:none!important}
+html.phone .split{flex-direction:column}
+html.phone .pane-edit{padding:8px 10px 0;gap:6px}
+html.phone #f-title{font-size:20px;padding:9px 11px;width:100%}
+html.phone .row2.meta.opt{display:none}
+html.phone.showmeta .row2.meta.opt{display:flex}
+html.phone input,html.phone select,html.phone textarea{font-size:16px}
+html.phone .editorwrap{border:0;background:var(--paper);border-radius:8px;box-shadow:inset 0 0 0 1px var(--edge)}
+html.phone .rich{padding:12px 14px 140px;font-size:16.5px;line-height:1.75}
+html.phone .edbar{position:fixed;left:0;right:0;bottom:var(--kb,0px);z-index:250;flex-wrap:nowrap;overflow-x:auto;gap:5px;padding:7px 8px calc(7px + env(safe-area-inset-bottom,0px));border:0;border-top:2px solid var(--edge);background:linear-gradient(#fbf7ea,#efe6cb);box-shadow:0 -2px 8px rgba(0,0,0,.25);-webkit-overflow-scrolling:touch}
+html.phone.kbopen .edbar{padding-bottom:7px}
+html.phone .edbar button,html.phone .edbar select{flex:none;min-width:44px;height:44px;font-size:18px;border:1px solid var(--edge);background:#fffdf6;border-radius:9px;padding:0 8px}
+html.phone .edbar select{font-size:15px}
+html.phone .edbar button.sw{min-width:44px;font-size:18px}
+html.phone .edbar .adv{display:none}
+html.phone.moretools .edbar .adv{display:inline-flex;align-items:center;justify-content:center}
+html.phone .edbar .po{display:inline-block}
+html.phone .edbar [data-fmt="image"]{order:-3}html.phone .edbar [data-fmt="camera"]{order:-2}
+html.phone .tblpick{top:auto!important;bottom:100%;left:8px!important}
+html.phone .tablebar.show{position:fixed;left:0;right:0;bottom:calc(var(--kb,0px) + 66px);z-index:240;overflow-x:auto;flex-wrap:nowrap;padding:7px 8px}
+html.phone .tablebar .btn{flex:none;min-height:38px}
+html.phone .rich figure.img .ftools{display:none}
+html.phone .rich figure.img.sel .ftools{display:flex}
+html.phone .rich figure.img .ftools button{min-width:42px;height:42px;font-size:19px}
+html.phone .rich figure.img.sel .fw{outline:3px solid var(--berry)}
+html.phone .rich ul.tl li{padding-left:34px;min-height:34px}
+html.phone .rich ul.tl li::before{font-size:24px}
+html.phone .rich table{display:block;overflow-x:auto}
+html.phone #mdrawer{display:flex;flex-direction:column;position:fixed;left:0;top:calc(52px + env(safe-area-inset-top,0px));bottom:0;width:min(88%,380px);transform:translateX(-105%);transition:transform .2s;z-index:280;background:#fff;box-shadow:3px 0 14px rgba(0,0,0,.4)}
+html.phone.drawer #mdrawer{transform:none}
+#mdtop{display:flex;flex-direction:column;gap:8px;padding:10px;background:var(--face);border-bottom:1px solid var(--edge)}
+#mdtop .searchbox{display:flex}#mdtop .searchbox input{width:100%;flex:1}
+#mdtop #folder-sel{display:block!important;width:100%}
+#mdtop .btn{padding:10px;font-size:16px}
+#mdrawer .pane-list{display:flex!important;width:auto;height:auto;flex:1;margin:0;border:0;min-height:0;overflow:auto}
+#mdrawer .pane-list td{padding:13px 10px;font-size:15px}
+#mdrawer .pane-list table{width:100%}
+html.phone #mback{position:fixed;inset:0;z-index:270;background:rgba(0,0,0,.4)}
+html.phone:not(.drawer):not(.sheet) #mback{display:none}
+html.phone.drawer #mback,html.phone.sheet #mback{display:block}
+html.phone #msheet{position:fixed;left:0;right:0;bottom:0;max-height:78%;overflow:auto;z-index:290;background:#fff;border-radius:16px 16px 0 0;padding:6px 6px calc(10px + env(safe-area-inset-bottom,0px));box-shadow:0 -4px 16px rgba(0,0,0,.4)}
+html.phone.sheet #msheet{display:block}
+#msheet button{display:block;width:100%;text-align:left;padding:15px 14px;border:0;background:none;font-size:16px;border-bottom:1px solid #eee;color:#000}
+#msheet hr{border:0;border-top:6px solid #f3efe0;margin:0}
+html.phone .win:not(#win-main):not(#win-msg){left:0!important;top:0!important;width:100%!important;height:100%!important;max-width:none;border-radius:0}
+html.phone .win:not(#win-main) .titlebar{padding-top:calc(6px + env(safe-area-inset-top,0px));height:calc(34px + env(safe-area-inset-top,0px))}
+html.phone .win:not(#win-main):not(#win-msg) .wbody{overflow:auto}
+html.phone .tbtn[data-act="min"],html.phone .tbtn[data-act="max"]{display:none}
+html.phone .tbtn{width:36px;height:30px;font-size:15px}
+html.phone #tray-timer{position:fixed;top:calc(env(safe-area-inset-top,0px) + 60px);right:8px;z-index:260;background:#b3202a;color:#fff;padding:5px 12px;border-radius:14px;box-shadow:0 2px 6px rgba(0,0,0,.4);font-size:14px}
+html.phone #balloon{left:8px;right:8px;width:auto;bottom:calc(var(--kb,0px) + 76px)}
+html.phone .emptyhint{background:rgba(246,239,220,.97)}
+html.phone #win-msg{width:min(92%,390px)}
+@media (max-width:760px){ html.phone #win-main{left:0!important} }
+
 #ed{position:relative}
 </style>
 </head>
@@ -528,6 +601,10 @@ legend{color:var(--berry-d);padding:0 4px}
     <button class="dicon" data-open="win-backup"><span class="g">🎁</span><span class="t">สำรองข้อมูล</span></button>
     <button class="dicon" id="ic-trash"><span class="g">🗑️</span><span class="t">ถังรีไซเคิล</span></button>
   </div>
+
+  <div id="mhead"><button id="m-list" aria-label="รายการโน้ต">☰</button><div id="m-ttl">🎄 MedNote</div><span id="m-slot"></span><button id="m-new" aria-label="โน้ตใหม่">＋</button><button id="m-more" aria-label="เมนู">⋯</button></div>
+  <div id="mback"></div>
+  <div id="msheet" role="menu"></div>
 
   <div class="win" id="win-main">
     <div class="titlebar"><span>🎄</span><span class="ttitle">MedNote XP: Holiday Edition — คลังความรู้ชั้นคลินิก</span>
@@ -559,30 +636,30 @@ legend{color:var(--berry-d);padding:0 4px}
         <div class="pane-edit" id="edit">
           <div class="trashbar" id="trashbar">🗑️ โน้ตนี้อยู่ในถังรีไซเคิล — กด “กู้คืน” เพื่อแก้ไขต่อ</div>
           <div class="row2 meta"><input id="f-title" placeholder="หัวข้อ เช่น Approach: เจ็บหน้าอก" aria-label="ชื่อโน้ต"></div>
-          <div class="row2 meta">
+          <div class="row2 meta opt">
             <label>แผนก <select id="f-rot"></select></label>
             <label>ประเภท <select id="f-type"></select></label>
             <input id="f-tags" placeholder="แท็ก: chest pain, ECG" aria-label="แท็ก">
           </div>
           <div class="edbar" id="edbar">
-            <button data-fmt="bold" title="ตัวหนา Ctrl+B"><b>B</b></button><button data-fmt="italic" title="ตัวเอียง Ctrl+I"><i>I</i></button><button data-fmt="underline" title="ขีดเส้นใต้ Ctrl+U"><u>U</u></button><button data-fmt="strike" title="ขีดฆ่า"><s>S</s></button><button data-fmt="code" title="โค้ดในบรรทัด">&lt;/&gt;</button>
-            <span class="sp"></span>
-            <span title="ปากกาไฮไลต์ธีมคริสต์มาส — เลือกข้อความแล้วกดสี (Ctrl+Shift+H = สีล่าสุด)">🖍️</span>
+            <button data-fmt="bold" title="ตัวหนา Ctrl+B"><b>B</b></button><button data-fmt="italic" title="ตัวเอียง Ctrl+I"><i>I</i></button><button class="adv" data-fmt="underline" title="ขีดเส้นใต้ Ctrl+U"><u>U</u></button><button class="adv" data-fmt="strike" title="ขีดฆ่า"><s>S</s></button><button class="adv" data-fmt="code" title="โค้ดในบรรทัด">&lt;/&gt;</button>
+            <span class="sp adv"></span>
+            <span class="adv" title="ปากกาไฮไลต์ธีมคริสต์มาส — เลือกข้อความแล้วกดสี (Ctrl+Shift+H = สีล่าสุด)">🖍️</span>
             <button class="sw y" data-hl="y" title="ไฮไลต์ทอง" aria-label="ไฮไลต์ทอง">⭐</button><button class="sw g" data-hl="g" title="ไฮไลต์เขียวฮอลลี" aria-label="ไฮไลต์เขียวฮอลลี">🎄</button><button class="sw p" data-hl="p" title="ไฮไลต์ชมพูแคนดี้" aria-label="ไฮไลต์ชมพูแคนดี้">🍬</button><button class="sw b" data-hl="b" title="ไฮไลต์ฟ้าน้ำแข็ง" aria-label="ไฮไลต์ฟ้าน้ำแข็ง">❄️</button><button class="sw o" data-hl="o" title="ไฮไลต์แดงซานต้า" aria-label="ไฮไลต์แดงซานต้า">🎅</button>
             <button data-hl="none" title="ลบไฮไลต์">⌫</button>
-            <span class="sp"></span>
-            <button data-fmt="h1">H1</button><button data-fmt="h2">H2</button><button data-fmt="h3">H3</button>
-            <span class="sp"></span>
-            <button data-fmt="ul" title="รายการ">•</button><button data-fmt="ol" title="รายการลำดับ">1.</button><button data-fmt="task" title="เช็กลิสต์">☑</button>
-            <select id="callout-sel" aria-label="กล่องเน้น"><option value="">💬 กล่องเน้น…</option><option value="info">ℹ️ ข้อมูล</option><option value="warn">⚠️ คำเตือน</option><option value="pearl">⭐ High-yield</option><option value="flag">🚩 Red flag</option></select>
-            <span class="sp"></span>
-            <button data-fmt="table" title="แทรกตาราง">▦ ตาราง</button><button data-fmt="image" title="แทรกรูปที่ตำแหน่งเคอร์เซอร์ (หรือ Ctrl+V)">🖼️ รูป</button><button data-fmt="camera" title="ถ่ายรูป (มือถือ)">📷</button><button data-fmt="flow" title="เขียน flowchart / algorithm">🔀 Flowchart</button>
-            <span class="sp"></span>
-            <button data-fmt="postit" title="Post-it เขียนมือ (ปากกา/Apple Pencil)">🗒️ Post-it</button><button data-fmt="sketch" title="กระดานวาดเขียน">✏️ วาด</button>
-            <span class="sp"></span>
-            <select id="tpl-sel" aria-label="แทรกเทมเพลต"></select><button id="b-tplm" title="เพิ่ม/ลบเทมเพลตของฉัน">⚙️</button>
+            <span class="sp adv"></span>
+            <button class="adv" data-fmt="h1">H1</button><button data-fmt="h2">H2</button><button class="adv" data-fmt="h3">H3</button>
+            <span class="sp adv"></span>
+            <button data-fmt="ul" title="รายการ">•</button><button class="adv" data-fmt="ol" title="รายการลำดับ">1.</button><button data-fmt="task" title="เช็กลิสต์">☑</button><button class="po" data-fmt="indent" title="ย่อหน้าเข้า (บูลเล็ตซ้อน)">⇥</button><button class="po" data-fmt="outdent" title="ดึงออก">⇤</button>
+            <select class="adv" id="callout-sel" aria-label="กล่องเน้น"><option value="">💬 กล่องเน้น…</option><option value="info">ℹ️ ข้อมูล</option><option value="warn">⚠️ คำเตือน</option><option value="pearl">⭐ High-yield</option><option value="flag">🚩 Red flag</option></select>
+            <span class="sp adv"></span>
+            <button class="adv" data-fmt="table" title="แทรกตาราง">▦ ตาราง</button><button data-fmt="image" title="แทรกรูปที่ตำแหน่งเคอร์เซอร์ (หรือ Ctrl+V)">🖼️ รูป</button><button data-fmt="camera" title="ถ่ายรูป (มือถือ)">📷</button><button class="adv" data-fmt="flow" title="เขียน flowchart / algorithm">🔀 Flowchart</button>
+            <span class="sp adv"></span>
+            <button class="adv" data-fmt="postit" title="Post-it เขียนมือ (ปากกา/Apple Pencil)">🗒️ Post-it</button><button class="adv" data-fmt="sketch" title="กระดานวาดเขียน">✏️ วาด</button>
+            <span class="sp adv"></span>
+            <select class="adv" id="tpl-sel" aria-label="แทรกเทมเพลต"></select><button class="adv" id="b-tplm" title="เพิ่ม/ลบเทมเพลตของฉัน">⚙️</button>
             <button data-fmt="undo" title="ย้อนกลับ">↶</button><button data-fmt="redo" title="ทำซ้ำ">↷</button>
-            <input type="file" id="file-in" accept="image/*" multiple hidden><input type="file" id="cam-in" accept="image/*" capture="environment" hidden>
+            <button class="po" id="m-adv" title="เครื่องมือเพิ่มเติม">⋯</button><input type="file" id="file-in" accept="image/*" multiple hidden><input type="file" id="cam-in" accept="image/*" capture="environment" hidden>
             <div class="tblpick" id="tblpick"><div class="g" id="tp-grid"></div><div id="tp-lbl">เลือกขนาดตาราง</div>
               <div class="cu"><input type="number" id="tp-r" min="1" max="30" value="3" aria-label="แถว"> × <input type="number" id="tp-c" min="1" max="12" value="3" aria-label="คอลัมน์"><button class="btn sm" id="tp-ok">แทรก</button></div></div>
           </div>
@@ -731,6 +808,7 @@ legend{color:var(--berry-d);padding:0 4px}
           <div class="note-s">ถ้าอ่านหนังสือหรือ PDF ในแอปอื่น ให้ปิดข้อแรก ไม่งั้นการสลับแอปจะทำให้ต้นไม้เหี่ยว · การจดโน้ตในแอปนี้ไม่นับว่าออกจากแอป</div>
           <label><input type="checkbox" id="fz-sound"> เสียงระฆังเมื่อจบรอบ <button class="btn sm" id="fz-test">ทดสอบเสียง</button></label>
           <label><input type="checkbox" id="fz-brk"> เริ่มช่วงพักอัตโนมัติหลังปลูกสำเร็จ</label>
+          <label>เครื่องดื่มช่วงพัก <select id="fz-drink"><option value="cocoa">☕ โกโก้ร้อนพร้อมมาร์ชเมลโลว์</option><option value="wine">🍷 ไวน์ร้อน (vin chaud) — เป็นภาพประกอบ</option></select></label>
           <label>พักสั้น <input type="number" id="fz-brkm" min="1" max="60" style="width:70px"> นาที (ครบ 4 รอบได้พักยาว 15 นาที)</label>
           <div class="btns" style="justify-content:flex-start"><button class="btn" id="fz-reset">🗑️ ล้างข้อมูลป่าทั้งหมด</button></div>
         </div>
@@ -767,6 +845,7 @@ var reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
 /* ================= Snow + garland ================= */
 (function(){
+  if(document.documentElement.classList.contains('phone')) return;
   var c=$('#snow'), x=c.getContext('2d'), fl=[], st=[], w=0, h=0, raf=0;
   function init(){
     var n=Math.round(Math.min(130,w*h/9500)); fl=[]; st=[];
@@ -966,6 +1045,8 @@ function tplByKey(k){return TPL.filter(function(t){return t.k===k})[0]}
 function nowStr(){return new Date().toLocaleString('th-TH',{dateStyle:'medium',timeStyle:'short'})+' '}
 
 /* ================= Utils + data ================= */
+const PHONE=document.documentElement.classList.contains('phone'), PHONE_FORCED=document.documentElement.getAttribute('data-mode')==='phone';
+function closeDrawer(){ document.documentElement.classList.remove('drawer'); }
 const qa=(r,s)=>Array.from(r.querySelectorAll(s));
 const rm=e=>{ if(e&&e.parentNode) e.parentNode.removeChild(e); };
 const unwrap=e=>{ const p=e.parentNode; if(!p) return; while(e.firstChild) p.insertBefore(e.firstChild,e); p.removeChild(e); };
@@ -1362,6 +1443,8 @@ function fmt(k){
   else if(k==='undo') exec('undo'); else if(k==='redo') exec('redo');
   else if(k==='image'){ if(editable()) $('#file-in').click(); }
   else if(k==='camera'){ if(editable()) $('#cam-in').click(); }
+  else if(k==='indent') handleTab(false);
+  else if(k==='outdent') handleTab(true);
   else if(k==='flow') openFlow(null);
   else if(k==='postit') openDraw({postit:true});
   else if(k==='sketch') openDraw({});
@@ -1591,10 +1674,11 @@ ed.addEventListener('click',e=>{
     else if(a==='del'){ msgBox({icon:'❓',title:'ลบรูป',text:'ลบรูปนี้ออกจากโน้ตหรือไม่?',buttons:[{label:'ใช่',cb:()=>{ const nx=f.nextElementSibling; const id=f.getAttribute('data-iid'); rm(f); ensureEdges(); edChanged(); if(nx) caretTo(firstEditable(nx),true); }},{label:'ไม่ใช่'}]}); }
     return;
   }
+  if(PHONE){ const fg=t.closest&&t.closest('figure.img'); qa(ed,'figure.img.sel').forEach(x=>{ if(x!==fg) x.classList.remove('sel'); }); if(fg&&t.tagName==='IMG'){ fg.classList.toggle('sel'); return; } }
   if(t.tagName==='IMG'&&t.closest('figure.img')){ openViewer(t.closest('figure.img')); return; }
   const a=t.closest&&t.closest('a[href]'); if(a){ e.preventDefault(); try{ window.open(a.href,'_blank','noopener'); }catch(_){} return; }
   const li=t.tagName==='LI'?t:null;
-  if(li&&li.parentNode.classList&&li.parentNode.classList.contains('tl')&&editable()&&e.clientX-li.getBoundingClientRect().left<26){ li.classList.toggle('done'); edChanged(); }
+  if(li&&li.parentNode.classList&&li.parentNode.classList.contains('tl')&&editable()&&e.clientX-li.getBoundingClientRect().left<(PHONE?40:26)){ li.classList.toggle('done'); edChanged(); }
 });
 $('#edbar').addEventListener('mousedown',e=>{ if(e.target.closest('button')) e.preventDefault(); });
 $('#edbar').addEventListener('click',e=>{
@@ -1701,7 +1785,7 @@ function renderList(){
   }
   $('#st-count').textContent=v.length+' รายการ';
 }
-$('#list').addEventListener('click',e=>{ const r=e.target.closest('tr.row'); if(!r) return; flushEditor(); cur=r.getAttribute('data-id'); renderList(); renderEditor(); });
+$('#list').addEventListener('click',e=>{ const r=e.target.closest('tr.row'); if(!r) return; flushEditor(); cur=r.getAttribute('data-id'); renderList(); renderEditor(); closeDrawer(); });
 function flushEditor(){ const n=curNote(); if(n&&!n.deleted&&edNote===n.id&&document.activeElement===ed) edChanged(); }
 function ensureCur(){ const v=visible(); if(!v.some(n=>n.id===cur)) cur=v.length?v[0].id:null; }
 
@@ -1735,7 +1819,7 @@ function newNote(o){
     tags:folder.indexOf('tag:')===0?folder.slice(4):'',html:o.html||'<p><br></p>',pinned:false,deleted:false,created:Date.now(),modified:Date.now()};
   n.text=plainOfHtml(n.html); n.body=n.text;
   notes.push(n); if(folder==='trash'||folder==='pinned') folder='all';
-  query=''; $('#q').value=''; cur=n.id; persist(); renderAll(true); openWin('win-main'); F.title.focus(); F.title.select();
+  query=''; $('#q').value=''; cur=n.id; persist(); renderAll(true); openWin('win-main'); closeDrawer(); F.title.focus(); F.title.select();
 }
 function newFromTpl(k){ if(k==='blank'){ newNote(); return; } const t=tplByKey(k); newNote({title:t.title,type:t.type,html:mdToHtml(t.body)}); }
 $$('[data-newtpl]').forEach(b=>b.addEventListener('click',()=>newFromTpl(b.getAttribute('data-newtpl'))));
@@ -1919,7 +2003,7 @@ const MENUS=[
    ['☁️ ซิงก์ข้อมูลตอนนี้',syncNow],['☁️ สถานะการซิงก์',syncStatus],['🔗 ซิงก์ผ่าน GitHub…',openGh],'-',
    ['🎁 สำรอง / กู้คืนข้อมูล…',()=>openWin('win-backup')],'-',['✕ ปิด',()=>closeWin('win-main')]]],
  ['แก้ไข',[['↶ ย้อนกลับ',()=>fmt('undo')],['↷ ทำซ้ำ',()=>fmt('redo')],'-',['📌 ปักหมุด / เลิกปักหมุด',togglePin],['🗑️ ลบโน้ต',delNote],['♻️ กู้คืนจากถังรีไซเคิล',restoreNote],'-',['ล้างถังรีไซเคิล…',emptyTrash]]],
- ['มุมมอง',()=>[[(UI.tree?'☑':'☐')+' แถบโฟลเดอร์ด้านซ้าย',()=>toggleUi('tree')],[(UI.list?'☑':'☐')+' รายการโน้ต',()=>toggleUi('list')]]],
+ ['มุมมอง',()=>[[(UI.tree?'☑':'☐')+' แถบโฟลเดอร์ด้านซ้าย',()=>toggleUi('tree')],[(UI.list?'☑':'☐')+' รายการโน้ต',()=>toggleUi('list')],'-',['📱 โหมดมือถือ (พิมพ์ / วางรูป / แก้ไข)',goPhone]]],
  ['จัดรูปแบบ',[].concat(Object.keys(HLN).map(k=>['🖍️ ไฮไลต์'+HLN[k],()=>applyHL(k)]),[['⌫ ลบไฮไลต์',()=>applyHL('none')],'-',['H1 หัวข้อใหญ่',()=>fmt('h1')],['H2 หัวข้อรอง',()=>fmt('h2')],['H3 หัวข้อย่อย',()=>fmt('h3')],'-',['• รายการ (กด Tab เพื่อย่อหน้า)',()=>fmt('ul')],['1. รายการลำดับ',()=>fmt('ol')],['☑ เช็กลิสต์',()=>fmt('task')],'-',['⭐ กล่อง High-yield',()=>wrapCurrent('callout','pearl')],['🚩 กล่อง Red flag',()=>wrapCurrent('callout','flag')],['⚠️ กล่องคำเตือน',()=>wrapCurrent('callout','warn')]])],
  ['ตาราง',[['▦ แทรกตาราง 3 × 3',()=>insertTable(3,3)],['▦ แทรกตาราง 5 × 4',()=>insertTable(5,4)],'-',['+ แถวด้านบน',()=>tableOp('rowa')],['+ แถวด้านล่าง',()=>tableOp('rowb')],['+ คอลัมน์ซ้าย',()=>tableOp('cola')],['+ คอลัมน์ขวา',()=>tableOp('colb')],['− ลบแถว',()=>tableOp('rowd')],['− ลบคอลัมน์',()=>tableOp('cold')],['สลับหัวตาราง',()=>tableOp('head')],['🗑️ ลบตาราง',()=>tableOp('del')]]],
  ['แทรก',()=>insertMenuItems()],
@@ -2936,8 +3020,17 @@ $('#b-tplm').addEventListener('click',()=>openTplMgr(false));
 
 /* ================= Forest: study timer (Christmas) ================= */
 const FK='mednote.xp.forest';
-const FTYPES={pine:{n:'สนคริสต์มาส',ic:'🎄',price:0},snowy:{n:'สนหิมะ',ic:'❄️',price:20},candy:{n:'ต้นแคนดี้เคน',ic:'🍬',price:40},snowman:{n:'ตุ๊กตาหิมะ',ic:'⛄',price:60},ginger:{n:'บ้านขนมปังขิง',ic:'🏠',price:100}};
-const FO={sessions:[],spent:0,owned:['pine'],sel:'pine',set:{dur:25,strict:true,grace:60,sound:true,autoBreak:true,brk:5},active:null,subj:'',cycle:0};
+const FTYPES={
+  pine:{n:'สนคริสต์มาส',ic:'🎄',price:0,d:'ต้นสนประดับไฟและดาว'},
+  snowy:{n:'สนหิมะ',ic:'❄️',price:20,d:'สนปกคลุมด้วยหิมะขาว'},
+  gingerman:{n:'ขนมปังขิงรูปคน',ic:'🍪',price:30,d:'นวดแป้ง อบ แต่งหน้า ผูกโบว์'},
+  candy:{n:'ต้นแคนดี้เคน',ic:'🍬',price:40,d:'ต้นสนลายขนมแดง-ขาว'},
+  vinchaud:{n:'ไวน์ร้อน (Vin chaud)',ic:'🍷',price:50,d:'ค่อยๆ เติมเต็มแก้ว ใส่ส้มกับอบเชย (แบบไม่มีแอลกอฮอล์ก็ได้)'},
+  snowman:{n:'ตุ๊กตาหิมะ',ic:'⛄',price:60,d:'ปั้นลูกหิมะทีละก้อน'},
+  ginger:{n:'บ้านขนมปังขิง',ic:'🏠',price:100,d:'สร้างบ้านขนมทีละชั้น'},
+  strasbourg:{n:'ตลาดคริสต์มาสสตราสบูร์ก',ic:'🏘️',price:120,d:'บ้านไม้ครึ่งปูนสไตล์อัลซัส ร้านค้า ไฟประดับ และยอดโบสถ์'}
+};
+const FO={sessions:[],spent:0,owned:['pine'],sel:'pine',set:{dur:25,strict:true,grace:60,sound:true,autoBreak:true,brk:5,drink:'cocoa'},active:null,subj:'',cycle:0};
 regWin('win-timer',{title:'ป่าคริสต์มาส',icon:'🌲',center:true});
 function fLoad(){
   try{ const s=JSON.parse(localStorage.getItem(FK)||'null'); if(s){ ['sessions','spent','owned','sel','active','subj','cycle'].forEach(k=>{ if(s[k]!==undefined) FO[k]=s[k]; }); FO.set=Object.assign(FO.set,s.set||{}); } }catch(e){}
@@ -2961,6 +3054,9 @@ function treeSvg(type,stage,dead,cls){
   const W0='<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" class="'+(cls||'')+'" aria-hidden="true">';
   const ground='<ellipse cx="60" cy="124" rx="46" ry="8" fill="#eaf4ff" opacity=".95"/>';
   let b='';
+  if(type==='vinchaud'||type==='cocoa') return mugSvg(type==='cocoa'?'cocoa':'wine',stage,dead,W0,ground);
+  if(type==='gingerman') return gingerSvg(stage,dead,W0,ground);
+  if(type==='strasbourg') return strasSvg(stage,dead,W0,ground);
   if(dead){
     if(type==='snowman') b='<ellipse cx="60" cy="122" rx="32" ry="6" fill="#cfe6f7"/><rect x="48" y="110" width="22" height="6" rx="2" fill="#222"/><rect x="42" y="114" width="36" height="4" fill="#222"/><polygon points="86,120 104,118 86,116" fill="#f08a24"/><circle cx="40" cy="120" r="2" fill="#333"/>';
     else if(type==='ginger') b='<polygon points="30,122 50,108 62,122" fill="#8a4a1e"/><rect x="62" y="108" width="26" height="14" fill="#b5753a" transform="rotate(14 75 115)"/><polygon points="68,106 86,96 94,108" fill="#6a3815"/><circle cx="46" cy="120" r="3" fill="#d6283a"/><circle cx="96" cy="120" r="3" fill="#1b7a3a"/>';
@@ -2998,6 +3094,79 @@ function treeSvg(type,stage,dead,cls){
 }
 function fStage(p){ return p<0.12?0:p<0.35?1:p<0.6?2:p<0.85?3:4; }
 
+/* ---- extra Christmas items: gingerbread man, vin chaud mug, Strasbourg market ---- */
+function mugSvg(kind,stage,dead,W0,ground){
+  const wine=kind!=='cocoa', liq=wine?'#8e1b3a':'#6b3d1e', hi=wine?'#b8335a':'#8a5530';
+  const body='<path d="M36 62 H84 V104 Q84 114 74 114 H46 Q36 114 36 104 Z" fill="#f6efdc" stroke="#8a7a55" stroke-width="2"/><path d="M84 72 C108 72 108 101 84 101" fill="none" stroke="#8a7a55" stroke-width="9" stroke-linecap="round"/><path d="M84 72 C108 72 108 101 84 101" fill="none" stroke="#f6efdc" stroke-width="6" stroke-linecap="round"/><rect x="36" y="80" width="48" height="11" fill="#b3202a"/><g fill="#fff"><circle cx="43" cy="85.5" r="1.8"/><circle cx="53" cy="85.5" r="1.8"/><circle cx="63" cy="85.5" r="1.8"/><circle cx="73" cy="85.5" r="1.8"/></g><path d="M36 91 H84" stroke="#8a7a55" stroke-width="1" opacity=".4"/>';
+  if(dead){
+    return W0+ground+'<ellipse cx="92" cy="121" rx="22" ry="5" fill="'+liq+'" opacity=".85"/><ellipse cx="96" cy="120" rx="8" ry="1.8" fill="'+hi+'" opacity=".7"/><g transform="translate(-2 -13) rotate(84 60 100)">'+body+'</g></svg>';
+  }
+  const lv=[0,.22,.5,.8,.95][Math.min(4,Math.max(0,stage))];
+  let b='';
+  if(wine&&stage>=3) b+='<rect x="63" y="38" width="5" height="42" rx="2" fill="#a0522d" transform="rotate(14 65 60)"/><rect x="56" y="42" width="5" height="40" rx="2" fill="#b4673c" transform="rotate(-10 58 62)"/>';
+  b+=body;
+  if(lv>0){ const top=112-48*lv; b+='<path d="M38 '+top.toFixed(1)+' H82 V104 Q82 112 74 112 H46 Q38 112 38 104 Z" fill="'+liq+'"/><path d="M38 '+top.toFixed(1)+' H82" stroke="'+hi+'" stroke-width="2.5"/>'; }
+  if(stage>=4){
+    if(wine) b+='<circle cx="81" cy="62" r="9" fill="#ff9f1c" stroke="#fff3d0" stroke-width="2"/><path d="M81 53 V71 M72 62 H90 M74.6 55.6 L87.4 68.4 M87.4 55.6 L74.6 68.4" stroke="#ffd27a" stroke-width="1"/><path d="M52 66 l2 4 4 -1 -2 4 3 3 -4 0 -1 4 -3 -3 -4 1 2 -4 -3 -3 4 0 z" fill="#7a3b1a" transform="scale(.9) translate(6 6)"/><path d="M101 66 l5 -6 5 6 -3 0 4 5 -6 -1 -6 1 4 -5 z" fill="#b3202a"/>';
+    else b+='<circle cx="50" cy="62" r="6" fill="#fff"/><circle cx="62" cy="59" r="6.5" fill="#fff"/><circle cx="73" cy="63" r="5.5" fill="#fff"/>';
+    b+='<path class="o" d="M48 50 Q42 40 50 32 Q56 24 50 14" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" opacity=".85"/><path class="o" style="animation-delay:.5s" d="M62 48 Q56 38 64 30 Q70 22 64 12" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" opacity=".85"/><path class="o" style="animation-delay:1s" d="M75 50 Q69 40 77 32 Q83 24 77 16" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" opacity=".85"/>';
+  }
+  return W0+ground+b+'</svg>';
+}
+function gingerSvg(stage,dead,W0,ground){
+  if(dead) return W0+ground+'<circle cx="42" cy="112" r="10" fill="#9a7b55" transform="rotate(20 42 112)"/><rect x="58" y="108" width="22" height="12" rx="5" fill="#8a6a45" transform="rotate(-18 69 114)"/><rect x="82" y="112" width="12" height="9" rx="3" fill="#9a7b55" transform="rotate(30 88 116)"/><circle cx="30" cy="121" r="2" fill="#8a6a45"/><circle cx="52" cy="122" r="1.6" fill="#8a6a45"/><circle cx="76" cy="122" r="2" fill="#8a6a45"/><circle cx="46" cy="109" r="1.3" fill="#fff"/><circle cx="39" cy="109" r="1.3" fill="#fff"/></svg>';
+  if(stage<=0) return W0+ground+'<ellipse cx="60" cy="112" rx="19" ry="11" fill="#d9a066" stroke="#b98450" stroke-width="2"/><path d="M48 108 Q60 104 72 108" stroke="#c78d52" stroke-width="2" fill="none"/></svg>';
+  const base=stage>=2?'#b5753a':'#e0aa72', edge=stage>=2?'#8a4a1e':'#c4915a';
+  const limbs=[[50,64,28,76],[70,64,92,76],[54,92,44,118],[66,92,76,118]];
+  let b='';
+  limbs.forEach(l=>{ b+='<line x1="'+l[0]+'" y1="'+l[1]+'" x2="'+l[2]+'" y2="'+l[3]+'" stroke="'+edge+'" stroke-width="18" stroke-linecap="round"/>'; });
+  b+='<rect x="42" y="52" width="36" height="46" rx="16" fill="'+edge+'"/><circle cx="60" cy="38" r="19" fill="'+edge+'"/>';
+  limbs.forEach(l=>{ b+='<line x1="'+l[0]+'" y1="'+l[1]+'" x2="'+l[2]+'" y2="'+l[3]+'" stroke="'+base+'" stroke-width="14.5" stroke-linecap="round"/>'; });
+  b+='<rect x="43.8" y="53.8" width="32.4" height="42.4" rx="14.5" fill="'+base+'"/><circle cx="60" cy="38" r="17.2" fill="'+base+'"/>';
+  if(stage>=3){
+    limbs.forEach(l=>{ const dx=l[2]-l[0], dy=l[3]-l[1], len=Math.hypot(dx,dy), ux=dx/len, uy=dy/len, ex=l[2]-ux*6, ey=l[3]-uy*6;
+      b+='<path d="M'+(ex-uy*6).toFixed(1)+' '+(ey+ux*6).toFixed(1)+' L'+(ex+uy*6).toFixed(1)+' '+(ey-ux*6).toFixed(1)+'" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>'; });
+    b+='<circle cx="54" cy="35" r="2.6" fill="#fff"/><circle cx="66" cy="35" r="2.6" fill="#fff"/><circle cx="54" cy="35" r="1" fill="#333"/><circle cx="66" cy="35" r="1" fill="#333"/><path d="M52 44 Q60 52 68 44" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>';
+    b+='<circle cx="60" cy="68" r="3.2" fill="#d6283a"/><circle cx="60" cy="78" r="3.2" fill="#1b7a3a"/><circle cx="60" cy="88" r="3.2" fill="#d6283a"/>';
+  }
+  if(stage>=4){
+    b+='<polygon points="60,56 49,50 49,62" fill="#d6283a"/><polygon points="60,56 71,50 71,62" fill="#d6283a"/><circle cx="60" cy="56" r="3" fill="#b3202a"/>';
+    b+='<circle cx="47" cy="42" r="3.4" fill="#ff8fb0" opacity=".7"/><circle cx="73" cy="42" r="3.4" fill="#ff8fb0" opacity=".7"/>';
+    b+='<g stroke-linecap="round" stroke-width="2"><line x1="52" y1="74" x2="54" y2="72" stroke="#ffd54f"/><line x1="67" y1="70" x2="69" y2="72" stroke="#7fd0ff"/><line x1="52" y1="90" x2="54" y2="91" stroke="#ff8fb0"/><line x1="68" y1="84" x2="70" y2="82" stroke="#69c58a"/></g>';
+    b+='<path d="M98 94 V76 Q98 68 91 68" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><path d="M98 94 V76 Q98 68 91 68" fill="none" stroke="#d6283a" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="3.4 3.4"/>';
+    b+='<path class="o" d="M20 40 l2 -5 2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 z" fill="#ffd54f"/><path class="o" style="animation-delay:.6s" d="M96 38 l2 -4 2 4 4 2 -4 2 -2 4 -2 -4 -4 -2 z" fill="#fff"/>';
+  }
+  return W0+ground+b+'</svg>';
+}
+function strasSvg(stage,dead,W0,ground){
+  const P=dead?{wall:'#bdbdbd',beam:'#555',roof:'#7c7c7c',roof2:'#666',win:'#6d6d6d',shut:'#777',door:'#444'}:{wall:'#f0d49b',beam:'#5c2a1e',roof:'#b3452f',roof2:'#8f3524',win:'#ffe27a',shut:'#b3202a',door:'#6b3d1e'};
+  let b='';
+  if(stage<=0&&!dead){ [[34,120,7],[52,122,6],[70,119,7],[88,122,6],[44,126,5],[78,126,5]].forEach(s=>{ b+='<ellipse cx="'+s[0]+'" cy="'+s[1]+'" rx="'+s[2]+'" ry="3" fill="#8f8a80" stroke="#6f6a60" stroke-width="1"/>'; }); return W0+ground+b+'</svg>'; }
+  const st=dead?3:stage;
+  if(st>=4) b+='<g opacity=".6" fill="#c9998a"><rect x="88" y="48" width="16" height="48"/><polygon points="96,4 87,48 105,48"/><rect x="74" y="62" width="11" height="34"/><polygon points="79.5,46 73,62 86,62"/><circle cx="96" cy="64" r="4" fill="#8c6a60"/></g>';
+  b+='<g'+(dead?' transform="rotate(5 60 116)"':'')+'>';
+  if(st>=2) b+='<rect x="22" y="66" width="60" height="50" fill="'+P.wall+'"/>';
+  b+='<path d="M22 66 V116 M42 66 V116 M62 66 V116 M82 66 V116 M22 66 H82 M22 90 H82 M22 116 H82 M22 116 L42 90 M62 116 L42 90 M62 90 L82 116 M22 90 L42 66 M62 66 L82 90" stroke="'+P.beam+'" stroke-width="'+(st>=2?3:3.4)+'" fill="none"/>';
+  if(st>=3){
+    b+='<polygon points="14,68 52,26 90,68" fill="'+P.roof+'" stroke="'+P.roof2+'" stroke-width="2"/><path d="M24 62 L52 34 M32 66 L52 46 M70 62 L52 40 M80 66 L60 46" stroke="'+P.roof2+'" stroke-width="1.4" opacity=".7"/>';
+    [[27,72],[66,72],[27,96],[66,96]].forEach(w=>{ b+='<rect x="'+w[0]+'" y="'+w[1]+'" width="11" height="13" fill="'+P.win+'" stroke="'+P.beam+'" stroke-width="1.5"/><path d="M'+(w[0]+5.5)+' '+w[1]+' V'+(w[1]+13)+' M'+w[0]+' '+(w[1]+6.5)+' H'+(w[0]+11)+'" stroke="'+P.beam+'" stroke-width="1"/><rect x="'+(w[0]-4)+'" y="'+w[1]+'" width="4" height="13" fill="'+P.shut+'"/><rect x="'+(w[0]+11)+'" y="'+w[1]+'" width="4" height="13" fill="'+P.shut+'"/>'; });
+    b+='<path d="M46 116 V102 Q52 94 58 102 V116 Z" fill="'+P.door+'" stroke="'+P.beam+'" stroke-width="1.5"/>';
+  }
+  b+='</g>';
+  if(dead) return W0+ground+b+'<path d="M24 112 L34 120 M34 112 L24 120" stroke="#8a1010" stroke-width="3" stroke-linecap="round"/><ellipse cx="60" cy="120" rx="22" ry="4" fill="#fff" opacity=".9"/></svg>';
+  if(st>=4){
+    b+='<path d="M14 68 L52 26 M90 68 L52 26" stroke="none"/>';
+    for(let i=1;i<=6;i++){ const t=i/7, c=['#ff4d4d','#ffd84d','#4dd06b','#4db8ff'][i%4]; b+='<circle class="o" style="animation-delay:'+(i*.17).toFixed(2)+'s" cx="'+(14+38*t).toFixed(1)+'" cy="'+(68-42*t).toFixed(1)+'" r="2" fill="'+c+'"/><circle class="o" style="animation-delay:'+(i*.23).toFixed(2)+'s" cx="'+(90-38*t).toFixed(1)+'" cy="'+(68-42*t).toFixed(1)+'" r="2" fill="'+c+'"/>'; }
+    b+='<path d="M44 32 Q52 24 60 32 Q56 36 52 33 Q48 36 44 32 Z" fill="#fff"/>';
+    b+='<path d="M86 86 V102 M113 86 V102" stroke="#6b3d1e" stroke-width="3"/><rect x="86" y="102" width="28" height="14" fill="#8a4a1e" stroke="#5c2a1e" stroke-width="1.5"/>';
+    for(let i=0;i<4;i++){ const x0=84+i*8; b+='<polygon points="'+x0+',85 '+(x0+8)+',85 '+(88+i*6+6)+',96 '+(88+i*6)+',96" fill="'+(i%2?'#fff':'#d6283a')+'" stroke="#8a1010" stroke-width=".6"/>'; }
+    b+='<rect x="90" y="97" width="5" height="6" rx="1" fill="#b3202a"/><rect x="99" y="97" width="5" height="6" rx="1" fill="#f6efdc"/><rect x="107" y="97" width="5" height="6" rx="1" fill="#b3202a"/>';
+    b+='<polygon class="o" points="99,106 100.5,109 104,109 101.2,111 102.3,114.5 99,112.5 95.7,114.5 96.8,111 94,109 97.5,109" fill="#ffd54f"/>';
+    b+='<polygon points="11,70 20,88 2,88" fill="#1b7a3a"/><polygon points="11,84 23,106 -1,106" fill="#178036"/><polygon points="11,100 26,122 -4,122" fill="#146a30"/><polygon class="o" points="11,60 12.6,65 18,65 13.6,68 15.2,73 11,70 6.8,73 8.4,68 4,65 9.4,65" fill="#f3c93a"/><circle cx="8" cy="100" r="2" fill="#ff4d4d"/><circle cx="15" cy="112" r="2" fill="#4db8ff"/>';
+  }
+  return W0+ground+b+'</svg>';
+}
+
 /* ---- audio ---- */
 let fAC=null;
 function fAudio(){ try{ if(!fAC){ const C=window.AudioContext||window.webkitAudioContext; if(C) fAC=new C(); } if(fAC&&fAC.state==='suspended') fAC.resume(); }catch(e){} }
@@ -3033,7 +3202,7 @@ function fTickFn(){
   }
   if(fBrk){
     const left=fBrk.end-Date.now(); if(left<=0){ fBreakEnd(); return; }
-    $('#ft-lcd').textContent=fMMSS(left); $('#ft-bar').style.width=((1-left/(fBrk.dur*60000))*100).toFixed(1)+'%'; $('#ft-msg').textContent='☕ พักดื่มโกโก้ร้อน · '+(fBrk.long?'พักยาว':'พักสั้น');
+    $('#ft-lcd').textContent=fMMSS(left); $('#ft-bar').style.width=((1-left/(fBrk.dur*60000))*100).toFixed(1)+'%'; $('#ft-msg').textContent=(FO.set.drink==='wine'?'🍷 พักจิบไวน์ร้อน (vin chaud) · ':'☕ พักดื่มโกโก้ร้อน · ')+(fBrk.long?'พักยาว':'พักสั้น'); fSceneSet(FO.set.drink==='wine'?'vinchaud':'cocoa',4,false);
     const t=fMMSS(left); document.title='☕ '+t+' — MedNote XP'; fSetTaskTitle(t); const tr=$('#tray-timer'); tr.style.display=''; tr.textContent='☕ '+t; return;
   }
   clearInterval(fTick); fTick=null;
@@ -3077,7 +3246,7 @@ function fUi(){
     $('#ft-lcd').textContent=pad2(+$('#ft-dur').value)+':00'; $('#ft-bar').style.width='0%';
     if(fResult){ const r=fResult; $('#ft-msg').innerHTML=r.ok?'🎉 ปลูก'+FTYPES[r.type].ic+'สำเร็จ! +'+r.stars+' ⭐ ('+fHM(r.min)+')':'🥀 ต้นไม้เหี่ยวเฉา'+(r.why==='left'?' — ออกจากแอปนานเกิน '+FO.set.grace+' วินาที':' — คุณหยุดก่อนเวลา'); fSceneSet(r.type,r.ok?4:0,!r.ok); }
     else { $('#ft-msg').textContent='พร้อมปลูกต้นไม้แล้ว — เลือกเวลาแล้วกดเริ่ม'; fSceneSet(FO.sel,4,false); }
-  } else if(brk){ const r=fResult; if(r) fSceneSet(r.type,4,false); }
+  } else if(brk){ fSceneSet(FO.set.drink==='wine'?'vinchaud':'cocoa',4,false); }
   $('#ft-star').textContent=fStars(); fStatus();
 }
 function fStatus(){
@@ -3118,7 +3287,7 @@ function fShop(){
   $('#fs-star').textContent=fStars();
   $('#fs-list').innerHTML=Object.keys(FTYPES).map(k=>{
     const t=FTYPES[k], own=FO.owned.indexOf(k)>-1, can=fStars()>=t.price;
-    return '<div class="fshop"><div class="fsv">'+treeSvg(k,4,false)+'</div><b>'+t.ic+' '+t.n+'</b>'+(own?'<button class="btn sm" data-use="'+k+'"'+(FO.sel===k?' disabled>ใช้อยู่ ✓':'>เลือกใช้')+'</button>':'<button class="btn sm" data-buy="'+k+'"'+(can?'':' disabled')+'>ซื้อ ⭐ '+t.price+'</button>')+'</div>';
+    return '<div class="fshop"><div class="fsv">'+treeSvg(k,4,false)+'</div><b>'+t.ic+' '+t.n+'</b><small>'+esc(t.d||'')+'</small>'+(own?'<button class="btn sm" data-use="'+k+'"'+(FO.sel===k?' disabled>ใช้อยู่ ✓':'>เลือกใช้')+'</button>':'<button class="btn sm" data-buy="'+k+'"'+(can?'':' disabled')+'>ซื้อ ⭐ '+t.price+'</button>')+'</div>';
   }).join('');
 }
 function fTabSet(t){
@@ -3127,7 +3296,7 @@ function fTabSet(t){
   if(t==='forest') fForest(); if(t==='shop') fShop();
 }
 function fSettingsUi(){
-  $('#fz-strict').checked=!!FO.set.strict; $('#fz-grace').value=FO.set.grace; $('#fz-sound').checked=!!FO.set.sound; $('#fz-brk').checked=!!FO.set.autoBreak; $('#fz-brkm').value=FO.set.brk;
+  $('#fz-strict').checked=!!FO.set.strict; $('#fz-grace').value=FO.set.grace; $('#fz-sound').checked=!!FO.set.sound; $('#fz-brk').checked=!!FO.set.autoBreak; $('#fz-brkm').value=FO.set.brk; $('#fz-drink').value=FO.set.drink||'cocoa';
 }
 function openTimer(){ fFill(); fSettingsUi(); fUi(); fForest(); openWin('win-timer'); }
 $('#ft-tabs').addEventListener('click',e=>{ const b=e.target.closest('.tab'); if(b) fTabSet(b.getAttribute('data-t')); });
@@ -3144,6 +3313,7 @@ $('#fs-list').addEventListener('click',e=>{
 ['fz-strict','fz-sound','fz-brk'].forEach(id=>$('#'+id).addEventListener('change',()=>{ FO.set.strict=$('#fz-strict').checked; FO.set.sound=$('#fz-sound').checked; FO.set.autoBreak=$('#fz-brk').checked; fSave(); }));
 $('#fz-grace').addEventListener('change',function(){ FO.set.grace=Math.max(5,Math.min(600,+this.value||60)); this.value=FO.set.grace; fSave(); });
 $('#fz-brkm').addEventListener('change',function(){ FO.set.brk=Math.max(1,Math.min(60,+this.value||5)); this.value=FO.set.brk; fSave(); });
+$('#fz-drink').addEventListener('change',function(){ FO.set.drink=this.value; fSave(); fLastKey=''; if(fBrk) fTickFn(); });
 $('#fz-test').addEventListener('click',()=>{ fAudio(); fPlay(F_WIN); });
 $('#fz-reset').addEventListener('click',()=>msgBox({icon:'⚠️',title:'ล้างข้อมูลป่า',text:'ลบประวัติการอ่าน ต้นไม้ และดาวทั้งหมดบนเครื่องนี้หรือไม่? (โน้ตไม่ถูกลบ)',buttons:[{label:'ลบทั้งหมด',cb:()=>{ if(FO.active){ clearInterval(fTick); } FO.sessions=[]; FO.spent=0; FO.owned=['pine']; FO.sel='pine'; FO.active=null; FO.cycle=0; fBrk=null; fResult=null; fSave(); fEndUi(); fFill(); fUi(); fForest(); }},{label:'ยกเลิก'}]}));
 $('#tray-timer').addEventListener('click',openTimer);
@@ -3151,10 +3321,60 @@ $('#tray-timer').addEventListener('click',openTimer);
 fLoad();
 $('#b-timer').addEventListener('click',openTimer);
 
+
+/* ================= Phone mode (simple UI: type / paste images / edit) ================= */
+function goFull(){
+  if(PHONE_FORCED){ location.href='index.html'; return; }
+  try{ localStorage.removeItem('mednote.xp.phone'); }catch(e){} location.reload();
+}
+function goPhone(){ try{ localStorage.setItem('mednote.xp.phone','1'); }catch(e){} location.reload(); }
+function openSheet(items){
+  const sh=$('#msheet'); sh.innerHTML='';
+  items.forEach(it=>{
+    if(it==='-'){ const h=document.createElement('hr'); sh.appendChild(h); return; }
+    const d=document.createElement('button'); d.type='button'; d.textContent=it[0]; d.onclick=()=>{ closeSheet(); setTimeout(it[1],30); }; sh.appendChild(d);
+  });
+  document.documentElement.classList.add('sheet');
+}
+function closeSheet(){ document.documentElement.classList.remove('sheet'); }
+function phoneMenu(){
+  openSheet([
+    ['ℹ️ รายละเอียดโน้ต (แผนก / ประเภท / แท็ก)',()=>document.documentElement.classList.toggle('showmeta')],
+    ['📌 ปักหมุด / เลิกปักหมุด',togglePin],['📋 คัดลอกข้อความ',copyNote],['📄 ส่งออกเป็น PDF',openPdfDialog],['🗑️ ลบโน้ต',delNote],'-',
+    ['🌲 จับเวลาอ่านหนังสือ',()=>openTimer()],['🧮 เครื่องคิดเลขคลินิก',()=>openWin('win-calc')],['🗂️ เทมเพลต',()=>openTplMgr(false)],['🏷️ แผนก / ประเภท',()=>openLists()],'-',
+    ['☁️ สถานะการซิงก์',syncStatus],['🔗 ซิงก์ผ่าน GitHub',openGh],['🎁 สำรอง / กู้คืนข้อมูล',()=>openWin('win-backup')],'-',
+    [PHONE_FORCED?'🖥️ เปิดแบบเต็ม (index.html)':'🖥️ กลับโหมดเต็ม',goFull]
+  ]);
+}
+function initPhone(){
+  const root=document.documentElement;
+  const dr=document.createElement('div'); dr.id='mdrawer';
+  dr.innerHTML='<div id="mdtop"><button class="btn def" id="m-new2">＋ โน้ตใหม่</button></div>';
+  dr.appendChild($('#list')); $('#desktop').appendChild(dr);
+  const top=$('#mdtop'); top.appendChild($('.searchbox')); top.appendChild($('#folder-sel'));
+  $('#m-slot').appendChild($('#st-sync')); document.body.appendChild($('#tray-timer'));
+  $('#m-list').addEventListener('click',()=>root.classList.toggle('drawer'));
+  $('#mback').addEventListener('click',()=>{ closeDrawer(); closeSheet(); });
+  $('#m-new').addEventListener('click',()=>newNote()); $('#m-new2').addEventListener('click',()=>newNote());
+  $('#m-more').addEventListener('click',phoneMenu);
+  $('#m-adv').addEventListener('click',()=>root.classList.toggle('moretools'));
+  $('#edbar').addEventListener('click',e=>{ const b=e.target.closest('[data-hl]'); if(b) return; });
+  if(window.visualViewport){
+    const vv=window.visualViewport, upd=()=>{ const kb=Math.max(0,window.innerHeight-vv.height-vv.offsetTop); root.style.setProperty('--kb',kb+'px'); root.classList.toggle('kbopen',kb>80); };
+    vv.addEventListener('resize',upd); vv.addEventListener('scroll',upd); upd();
+  }
+}
+function suggestPhone(){
+  if(PHONE||!window.matchMedia('(max-width:560px)').matches) return;
+  try{ if(localStorage.getItem('mednote.xp.phoneAsked')) return; localStorage.setItem('mednote.xp.phoneAsked','1'); }catch(e){}
+  msgBox({icon:'📱',title:'โหมดมือถือ',text:'ดูเหมือนคุณใช้โทรศัพท์อยู่\nเปลี่ยนเป็นโหมดเรียบง่าย (พิมพ์ วางรูป แก้ไข) ที่ใช้ง่ายกว่าบนจอเล็กไหม?\n(สลับกลับได้จากเมนู ⋯)',buttons:[{label:'เปลี่ยนเลย',cb:goPhone},{label:'ไว้ก่อน'}]});
+}
+if(PHONE) initPhone();
+
 /* ================= Boot ================= */
 async function boot(){
   loadNotes(true); buildSelects(); buildTplSel(); ensureCur(); renderAll(true); openWin('win-main');
-  fFill(); fSettingsUi(); fUi(); fResume();
+  fFill(); fSettingsUi(); fUi(); fResume(); setTimeout(suggestPhone,1500);
   setTimeout(()=>{ const b=$('#balloon'); b.style.display='block'; setTimeout(()=>{ b.style.display='none'; },14000); },900);
   await syncInit();
   if(NEED_SEED){
