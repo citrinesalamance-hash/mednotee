@@ -661,6 +661,26 @@ html.phone.dlg #mhead,html.phone.dlg #edbar,html.phone.dlg .tablebar,html.phone.
 .ocedit img{max-height:36vh}
 .fcedit .occw img{max-height:36vh}
 html.phone .fdeck{grid-template-columns:1fr 36px 36px 36px auto}
+
+/* PDF page view */
+.rich .pb{height:0;margin:12px 0;border-top:2px dashed var(--berry);position:relative;cursor:pointer;clear:both}
+.rich .pb::after{content:"ขึ้นหน้าใหม่ · คลิกเพื่อลบ";position:absolute;right:0;top:-9px;font-size:11px;background:var(--paper);color:var(--berry-d);padding:0 6px}
+#pginner #ed .pb{margin:0}
+#printarea .pb{height:0!important;margin:0!important;border:0!important;break-after:page;page-break-after:always}
+#printarea .pb::after{display:none}
+.pgbar{display:none;flex-wrap:wrap;gap:8px;align-items:center;padding:3px 8px;background:#fff3d6;border:1px solid #d98a00;font-size:12px}
+.pgbar b{color:var(--berry-d)}
+html.phone .pgbar{display:none!important}
+.edcol.pgv{overflow:auto;background:#bdb590;padding:14px}
+#pgbox{margin:0 auto;position:relative;flex:none}
+#pginner{position:absolute;left:0;top:0;width:793.7px;transform-origin:0 0}
+#pginner #ed{position:relative;box-sizing:border-box;width:793.7px;padding:52.9px;overflow:visible;flex:none;height:auto;min-height:1123px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.5);line-height:1.65}
+#pginner #ed.pgh::before{content:attr(data-head);position:static;display:block;white-space:pre-wrap;font:bold 22px/1.3 Tahoma,"Noto Sans Thai",sans-serif;color:#8a1010;border-bottom:2px solid #b3202a;padding-bottom:30px;margin-bottom:10px;pointer-events:none}
+#pgov{position:absolute;left:0;right:0;top:0;pointer-events:none;z-index:2}
+.pgl{position:absolute;left:0;right:0;border-top:2px dashed #b3202a}
+.pgl.first{border-top:0}
+.pgl span{position:absolute;left:100%;margin-left:8px;top:-10px;white-space:nowrap;font-size:12px;color:#5c2a1e;background:#fff3d6;border:1px solid #d98a00;border-radius:3px;padding:0 6px}
+#b-pgv.on{background:#fff3d6;border-color:#d98a00}
 </style>
 </head>
 <body>
@@ -715,6 +735,7 @@ html.phone .fdeck{grid-template-columns:1fr 36px 36px 36px auto}
         <button class="tbn" id="b-cards" title="แฟลชการ์ด (ทบทวนแบบเว้นระยะ)">🃏<span class="tx"> การ์ด</span></button>
         <button class="tbn" id="b-candle" title="ห้องเทียนคริสต์มาส">🕯️<span class="tx"> เทียน</span></button>
         <button class="tbn" id="b-timer" title="จับเวลาอ่านหนังสือ (ปลูกต้นคริสต์มาส)">🌲<span class="tx"> จับเวลา</span></button>
+        <button class="tbn" id="b-pgv" title="มุมมองหน้า PDF (A4) — ดูขอบเขตหน้าและจัดหน้าก่อนส่งออก">📄<span class="tx"> หน้า PDF</span></button>
         <button class="tbn" id="b-calc" title="เครื่องคิดเลขคลินิก">🧮<span class="tx"> คำนวณ</span></button>
         <button class="tbn" id="b-lists" title="แผนก / ประเภท">🏷️<span class="tx"> แผนก</span></button>
         <span class="tspacer"></span>
@@ -746,7 +767,7 @@ html.phone .fdeck{grid-template-columns:1fr 36px 36px 36px auto}
             <span class="sp adv"></span>
             <button class="adv" data-fmt="table" title="แทรกตาราง">▦ ตาราง</button><button data-fmt="image" title="แทรกรูปที่ตำแหน่งเคอร์เซอร์ (หรือ Ctrl+V)">🖼️ รูป</button><button data-fmt="camera" title="ถ่ายรูป (มือถือ)">📷</button><button class="adv" data-fmt="flow" title="เขียน flowchart / algorithm">🔀 Flowchart</button>
             <span class="sp adv"></span>
-            <button class="adv" data-fmt="postit" title="Post-it เขียนมือ (ปากกา/Apple Pencil)">🗒️ Post-it</button><button class="adv" data-fmt="sketch" title="กระดานวาดเขียน">✏️ วาด</button><button class="adv" data-fmt="cardsel" title="สร้างแฟลชการ์ดปิดคำจากข้อความที่เลือก">🃏 การ์ด</button>
+            <button class="adv" data-fmt="postit" title="Post-it เขียนมือ (ปากกา/Apple Pencil)">🗒️ Post-it</button><button class="adv" data-fmt="sketch" title="กระดานวาดเขียน">✏️ วาด</button><button class="adv" data-fmt="pagebreak" title="แทรกตัวแบ่งหน้า (ขึ้นหน้าใหม่ตอนส่งออก PDF)">⤓ ขึ้นหน้าใหม่</button><button class="adv" data-fmt="cardsel" title="สร้างแฟลชการ์ดปิดคำจากข้อความที่เลือก">🃏 การ์ด</button>
             <span class="sp adv"></span>
             <select class="adv" id="tpl-sel" aria-label="แทรกเทมเพลต"></select><button class="adv" id="b-tplm" title="เพิ่ม/ลบเทมเพลตของฉัน">⚙️</button>
             <button data-fmt="undo" title="ย้อนกลับ">↶</button><button data-fmt="redo" title="ทำซ้ำ">↷</button>
@@ -759,6 +780,11 @@ html.phone .fdeck{grid-template-columns:1fr 36px 36px 36px auto}
             <button class="btn" data-tb="rowd">− แถว</button><button class="btn" data-tb="cold">− คอลัมน์</button><button class="btn" data-tb="head">หัวตาราง</button><button class="btn" data-tb="del">🗑️ ลบตาราง</button>
             <span>สีเซลล์:</span><button class="sw y" data-cell="y" aria-label="สีเหลือง"></button><button class="sw g" data-cell="g" aria-label="สีเขียว"></button><button class="sw p" data-cell="p" aria-label="สีชมพู"></button><button class="sw b" data-cell="b" aria-label="สีฟ้า"></button><button class="sw o" data-cell="o" aria-label="สีส้ม"></button><button class="btn" data-cell="none">ล้าง</button>
           </div>
+          <div class="pgbar" id="pgbar" style="display:none"><b>📄 มุมมองหน้า A4</b><span id="pg-info">≈ 1 หน้า</span>
+            <label>ตัวอักษร <select id="pg-font"><option value="13">เล็ก</option><option value="14" selected>ปกติ</option><option value="16">ใหญ่</option></select></label>
+            <label><input type="checkbox" id="pg-head" checked> หัวเอกสาร</label>
+            <button class="btn sm" id="pg-zo" title="ย่อ">−</button><button class="btn sm" id="pg-zf" title="พอดีความกว้าง">พอดี</button><button class="btn sm" id="pg-zi" title="ขยาย">+</button>
+            <button class="btn sm" id="pg-br" title="เนื้อหาถัดจากเคอร์เซอร์จะขึ้นหน้าใหม่">⤓ แทรกตัวแบ่งหน้า</button><button class="btn sm" id="pg-pdf">📄 ส่งออก PDF</button><button class="btn sm" id="pg-x">✕ ปิด</button></div>
           <div class="editorwrap"><div class="edcol"><div id="ed" class="rich" contenteditable="true" spellcheck="false" data-ph="เริ่มจดตรงนี้… วางรูปด้วย Ctrl+V ที่ไหนก็ได้ในข้อความ · เลือกข้อความแล้วกดสีเพื่อไฮไลต์ · ปุ่ม ▦ เพื่อแทรกตาราง"></div></div></div>
           <div class="emptyhint" id="emptyhint"><div>ยังไม่ได้เลือกโน้ต<br>เลือกจากรายการ หรือเริ่มเรื่องใหม่ด้านล่าง</div>
             <div class="qb"><button class="btn" data-newtpl="dis">📘 โรค</button><button class="btn" data-newtpl="app">🧭 Approach</button><button class="btn" data-newtpl="pe">🩺 คู่มือตรวจ</button><button class="btn" data-newtpl="drug">💊 Drug card</button><button class="btn" data-newtpl="blank">📝 โน้ตเปล่า</button></div></div>
@@ -1412,7 +1438,7 @@ function exec(c,a){ try{ return document.execCommand(c,false,a==null?null:a); }c
 const CI={info:'ℹ️',warn:'⚠️',pearl:'⭐',flag:'🚩'};
 function makeP(){ const p=document.createElement('p'); p.innerHTML='<br>'; return p; }
 function isEmptyEl(el){ return !el.textContent.replace(/[\u200b\u00a0]/g,'').trim() && !el.querySelector('img,figure,table,hr'); }
-function needsP(el){ return !!el&&(/^(TABLE|FIGURE|HR|PRE)$/.test(el.tagName)||el.classList.contains('callout')||el.classList.contains('flow')); }
+function needsP(el){ return !!el&&(/^(TABLE|FIGURE|HR|PRE)$/.test(el.tagName)||el.classList.contains('callout')||el.classList.contains('flow')||el.classList.contains('pb')); }
 function ensureEdges(){
   if(!ed.firstChild) ed.appendChild(makeP());
   if(needsP(ed.firstElementChild)) ed.insertBefore(makeP(),ed.firstChild);
@@ -1440,13 +1466,14 @@ function decorate(root){
     }
   });
   qa(root,'.flow').forEach(renderFlowEl);
+  qa(root,'.pb').forEach(p=>{ p.setAttribute('contenteditable','false'); p.title='ตัวแบ่งหน้า — คลิกเพื่อลบ'; });
   qa(root,'.callout').forEach(c=>{
     if(!c.querySelector('.cb')){ const cb=document.createElement('div'); cb.className='cb'; while(c.firstChild) cb.appendChild(c.firstChild); c.appendChild(cb); }
     if(!c.querySelector('.ci')){ const i=document.createElement('span'); i.className='ci'; i.setAttribute('contenteditable','false'); i.textContent=CI[c.getAttribute('data-k')]||'ℹ️'; c.insertBefore(i,c.firstChild); }
   });
 }
 function serialize(root){
-  const c=root.cloneNode(true);
+  const c=root.cloneNode(true); normBlocks(c);
   qa(c,'.ftools,.ci').forEach(rm);
   qa(c,'.flow').forEach(f=>{ f.innerHTML=''; f.removeAttribute('title'); });
   qa(c,'figure.img').forEach(f=>{
@@ -1485,12 +1512,12 @@ function loadEditor(){
   const n=curNote(); edNote=n?n.id:null;
   if(!n){ ed.innerHTML=''; ed.contentEditable='false'; updEmpty(); updWords(); updTableBar(); return; }
   ed.innerHTML=n.html||'<p><br></p>'; wrapLooseText(); decorate(ed); ensureEdges(); hydrateImages(ed);
-  ed.contentEditable=n.deleted?'false':'true'; updEmpty(); updWords(); updTableBar();
+  ed.contentEditable=n.deleted?'false':'true'; updEmpty(); updWords(); updTableBar(); pgvSched(true);
 }
 function edChanged(){
   const n=curNote(); if(!n||n.deleted||edNote!==n.id) return;
   n.html=serialize(ed); n.text=plainText(ed); n.body=n.text; n.modified=Date.now();
-  updEmpty(); updWords(); renderList(); flash('กำลังบันทึก…');
+  updEmpty(); updWords(); renderList(); pgvSched(); flash('กำลังบันทึก…');
   clearTimeout(saveTimer); saveTimer=setTimeout(saveNow,600);
 }
 function saveNow(){
@@ -1588,6 +1615,7 @@ function fmt(k){
   else if(k==='postit') openDraw({postit:true});
   else if(k==='sketch') openDraw({});
   else if(k==='cardsel') cardFromSelection();
+  else if(k==='pagebreak') insertPageBreak();
   edChanged();
 }
 function editable(){ const n=curNote(); return !!n&&!n.deleted; }
@@ -1742,6 +1770,7 @@ ed.addEventListener('compositionstart',()=>{composing=true}); ed.addEventListene
 ed.addEventListener('input',e=>{
   if(composing) return;
   if(!ed.firstChild){ ed.appendChild(makeP()); caretTo(ed.firstChild,true); }
+  if(e.inputType==='insertParagraph'||e.inputType==='insertLineBreak') fixLiveBlocks();
   edChanged();
 });
 /* ---- Tab / Shift+Tab: nested bullets, table cells, paragraph indent ---- */
@@ -1804,6 +1833,7 @@ ed.addEventListener('keydown',e=>{
 });
 ed.addEventListener('click',e=>{
   const t=e.target;
+  const pbk=t.closest&&t.closest('.pb'); if(pbk&&editable()){ rm(pbk); ensureEdges(); edChanged(); flash('ลบตัวแบ่งหน้าแล้ว'); return; }
   const fl=t.closest&&t.closest('.flow'); if(fl&&editable()){ openFlow(fl); return; }
   const fa=t.closest&&t.closest('[data-fa]');
   if(fa){
@@ -2145,7 +2175,7 @@ const MENUS=[
    ['☁️ ซิงก์ข้อมูลตอนนี้',syncNow],['☁️ สถานะการซิงก์',syncStatus],['🔗 ซิงก์ผ่าน GitHub…',openGh],'-',
    ['🎁 สำรอง / กู้คืนข้อมูล…',()=>openWin('win-backup')],'-',['✕ ปิด',()=>closeWin('win-main')]]],
  ['แก้ไข',[['↶ ย้อนกลับ',()=>fmt('undo')],['↷ ทำซ้ำ',()=>fmt('redo')],'-',['✅ ทำโน้ตนี้เสร็จ (จุดเทียน)',toggleDone],['📌 ปักหมุด / เลิกปักหมุด',togglePin],['🗑️ ลบโน้ต',delNote],['♻️ กู้คืนจากถังรีไซเคิล',restoreNote],'-',['ล้างถังรีไซเคิล…',emptyTrash]]],
- ['มุมมอง',()=>[[(UI.tree?'☑':'☐')+' แถบโฟลเดอร์ด้านซ้าย',()=>toggleUi('tree')],[(UI.list?'☑':'☐')+' รายการโน้ต',()=>toggleUi('list')],'-',['📱 โหมดมือถือ (พิมพ์ / วางรูป / แก้ไข)',goPhone]]],
+ ['มุมมอง',()=>[[(UI.tree?'☑':'☐')+' แถบโฟลเดอร์ด้านซ้าย',()=>toggleUi('tree')],[(UI.list?'☑':'☐')+' รายการโน้ต',()=>toggleUi('list')],'-',[(PG.on?'☑':'☐')+' มุมมองหน้า PDF (A4)',togglePgv],['📱 โหมดมือถือ (พิมพ์ / วางรูป / แก้ไข)',goPhone]]],
  ['จัดรูปแบบ',[].concat(Object.keys(HLN).map(k=>['🖍️ ไฮไลต์'+HLN[k],()=>applyHL(k)]),[['⌫ ลบไฮไลต์',()=>applyHL('none')],'-',['H1 หัวข้อใหญ่',()=>fmt('h1')],['H2 หัวข้อรอง',()=>fmt('h2')],['H3 หัวข้อย่อย',()=>fmt('h3')],'-',['• รายการ (กด Tab เพื่อย่อหน้า)',()=>fmt('ul')],['1. รายการลำดับ',()=>fmt('ol')],['☑ เช็กลิสต์',()=>fmt('task')],'-',['⭐ กล่อง High-yield',()=>wrapCurrent('callout','pearl')],['🚩 กล่อง Red flag',()=>wrapCurrent('callout','flag')],['⚠️ กล่องคำเตือน',()=>wrapCurrent('callout','warn')]])],
  ['ตาราง',[['▦ แทรกตาราง 3 × 3',()=>insertTable(3,3)],['▦ แทรกตาราง 5 × 4',()=>insertTable(5,4)],'-',['+ แถวด้านบน',()=>tableOp('rowa')],['+ แถวด้านล่าง',()=>tableOp('rowb')],['+ คอลัมน์ซ้าย',()=>tableOp('cola')],['+ คอลัมน์ขวา',()=>tableOp('colb')],['− ลบแถว',()=>tableOp('rowd')],['− ลบคอลัมน์',()=>tableOp('cold')],['สลับหัวตาราง',()=>tableOp('head')],['🗑️ ลบตาราง',()=>tableOp('del')]]],
  ['แทรก',()=>insertMenuItems()],
@@ -2247,7 +2277,8 @@ async function buildDoc(n,opt,pxW,target){
     head='<h1 style="margin:0 0 4px;color:#8a1010">'+escH(n.title||'(ไม่มีชื่อ)')+'</h1><div style="font-size:'+Math.max(10,opt.font-3)+'px;color:#6b5a30;margin-bottom:6px">'+meta+'</div><hr style="border:0;border-top:2px solid #b3202a;margin:6px 0 10px">';
   }
   box.innerHTML=head+sanitize(n.html||'');
-  decorate(box); qa(box,'.ftools').forEach(rm); qa(box,'[contenteditable]').forEach(e=>e.removeAttribute('contenteditable'));
+  decorate(box); qa(box,'.ftools').forEach(rm);
+  if(!target) qa(box,'.pb').forEach(p=>{ p.className='pbx'; p.setAttribute('data-pbx','1'); p.style.cssText='height:0;margin:0;border:0'; }); qa(box,'[contenteditable]').forEach(e=>e.removeAttribute('contenteditable'));
   if(!opt.vector) for(const f of qa(box,'.flow')){ const sv=f.querySelector('svg'); if(!sv) continue; const im=document.createElement('img'); im.style.cssText='max-width:100%;height:auto;display:block;margin:6px auto'; const w=sv.getAttribute('width'); if(w) im.setAttribute('width',w); const url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(sv)); await Promise.race([new Promise(r=>{ im.onload=r; im.onerror=r; im.src=url; }),sleep(5000)]); f.innerHTML=''; f.style.cssText='border:0;padding:0;background:none'; f.appendChild(im); }
   const figs=qa(box,'figure.img');
   for(const f of figs){
@@ -2273,11 +2304,14 @@ async function buildPdf(list,opt,progress){
       const scale=Math.max(0.8,Math.min(opt.scale,16000/total));
       const canvas=await window.html2canvas(box,{scale:scale,backgroundColor:'#ffffff',logging:false,windowWidth:pxW,width:pxW});
       const sc=canvas.width/pxW, base=box.getBoundingClientRect().top;
+      const forced=Array.from(box.querySelectorAll('[data-pbx]')).map(c=>Math.round(c.getBoundingClientRect().top-base)).filter(y=>y>0);
       const cuts=Array.from(box.children).map(c=>Math.round(c.getBoundingClientRect().bottom-base)).filter(y=>y>0);
       let start=0;
       while(start<total-1){
         const limit=start+pagePx; let end;
-        if(limit>=total) end=total;
+        const fcut=forced.filter(y=>y>start+4&&y<=limit);
+        if(fcut.length) end=fcut[0];
+        else if(limit>=total) end=total;
         else { const ok=cuts.filter(y=>y>start+pagePx*0.4&&y<=limit); end=ok.length?ok[ok.length-1]:limit; }
         const sub=document.createElement('canvas'); sub.width=canvas.width; sub.height=Math.max(1,Math.round((end-start)*sc));
         const cx=sub.getContext('2d'); cx.fillStyle='#fff'; cx.fillRect(0,0,sub.width,sub.height);
@@ -3130,7 +3164,7 @@ function buildTplSel(){
   $('#tpl-sel').innerHTML=s+(g?'</optgroup>':'');
 }
 function insertMenuItems(){
-  const a=[['🗒️ Post-it เขียนมือ…',()=>openDraw({postit:true})],['✏️ กระดานวาดเขียน…',()=>openDraw({})],['🔀 Flowchart / Algorithm…',()=>openFlow(null)],['🖼️ รูปจากไฟล์…',()=>fmt('image')],['📷 ถ่ายรูป (มือถือ)',()=>fmt('camera')],['🕒 วันเวลา',()=>{ if(editable()) insertPlain(nowStr()); }],'-']; let g='';
+  const a=[['⤓ ตัวแบ่งหน้า (ขึ้นหน้าใหม่)',()=>insertPageBreak()],['🗒️ Post-it เขียนมือ…',()=>openDraw({postit:true})],['✏️ กระดานวาดเขียน…',()=>openDraw({})],['🔀 Flowchart / Algorithm…',()=>openFlow(null)],['🖼️ รูปจากไฟล์…',()=>fmt('image')],['📷 ถ่ายรูป (มือถือ)',()=>fmt('camera')],['🕒 วันเวลา',()=>{ if(editable()) insertPlain(nowStr()); }],'-']; let g='';
   allTpls().forEach(t=>{ if(t.g!==g){ if(g) a.push('-'); g=t.g; } a.push([t.name,()=>{ if(editable()) insertTpl(t.k); }]); });
   a.push('-'); a.push(['🗂️ จัดการเทมเพลต…',()=>openTplMgr(false)]); return a;
 }
@@ -3504,7 +3538,7 @@ function phoneMenu(){
   openSheet([
     ['ℹ️ รายละเอียดโน้ต (แผนก / ประเภท / แท็ก)',()=>document.documentElement.classList.toggle('showmeta')],
     ['📌 ปักหมุด / เลิกปักหมุด',togglePin],['📋 คัดลอกข้อความ',copyNote],['📄 ส่งออกเป็น PDF',openPdfDialog],['🗑️ ลบโน้ต',delNote],'-',
-    ['✅ ทำโน้ตนี้เสร็จ (จุดเทียน)',toggleDone],['🃏 แฟลชการ์ด',()=>openFlash()],['🕯️ ห้องเทียน',()=>openCandles()],['🌲 จับเวลาอ่านหนังสือ',()=>openTimer()],['🧮 เครื่องคิดเลขคลินิก',()=>openWin('win-calc')],['🗂️ เทมเพลต',()=>openTplMgr(false)],['🏷️ แผนก / ประเภท',()=>openLists()],'-',
+    ['✅ ทำโน้ตนี้เสร็จ (จุดเทียน)',toggleDone],['🃏 แฟลชการ์ด',()=>openFlash()],['🕯️ ห้องเทียน',()=>openCandles()],['📄 มุมมองหน้า PDF (A4)',togglePgv],['🌲 จับเวลาอ่านหนังสือ',()=>openTimer()],['🧮 เครื่องคิดเลขคลินิก',()=>openWin('win-calc')],['🗂️ เทมเพลต',()=>openTplMgr(false)],['🏷️ แผนก / ประเภท',()=>openLists()],'-',
     ['☁️ สถานะการซิงก์',syncStatus],['🔗 ซิงก์ผ่าน GitHub',openGh],['🎁 สำรอง / กู้คืนข้อมูล',()=>openWin('win-backup')],'-',
     [PHONE_FORCED?'🖥️ เปิดแบบเต็ม (index.html)':'🖥️ กลับโหมดเต็ม',goFull]
   ]);
@@ -3970,6 +4004,89 @@ function drShape(x,a,b){
   if(DR.tool==='rect'){ if(fill) x.fillRect(a.x,a.y,b.x-a.x,b.y-a.y); else x.strokeRect(a.x,a.y,b.x-a.x,b.y-a.y); }
   else { x.beginPath(); x.ellipse((a.x+b.x)/2,(a.y+b.y)/2,Math.abs(b.x-a.x)/2,Math.abs(b.y-a.y)/2,0,0,Math.PI*2); if(fill) x.fill(); else x.stroke(); }
 }
+
+
+/* ================= PDF page view (A4) + manual page breaks ================= */
+const PG={on:false,zoom:0,pushed:[],timer:null};
+try{ PG.on=localStorage.getItem('mednote.xp.pgv')==='1'; }catch(e){}
+const PGW=793.7, PGH=1122.5, PGM=52.9, PGCH=PGH-2*PGM;   // A4 @96dpi, 14mm margins (same as the print stylesheet)
+function insertPageBreak(){
+  if(!editable()) return; const el=document.createElement('div'); el.className='pb';
+  placeBlock(el,true); decorate(ed); ensureEdges();
+  let nx=el.nextElementSibling; if(!nx||nx.tagName!=='P'){ nx=makeP(); el.parentNode.insertBefore(nx,el.nextSibling); }
+  caretTo(nx,true); edChanged(); flash('แทรกตัวแบ่งหน้าแล้ว — เนื้อหาถัดจากนี้จะขึ้นหน้าใหม่ตอนส่งออก');
+}
+function pgvBuild(){
+  const col=$('.edcol'); if($('#pgbox')) return;
+  const box=document.createElement('div'); box.id='pgbox'; const inner=document.createElement('div'); inner.id='pginner'; const ov=document.createElement('div'); ov.id='pgov';
+  col.appendChild(box); box.appendChild(inner); inner.appendChild(ed); inner.appendChild(ov);
+}
+function pgvClear(){
+  PG.pushed.forEach(el=>{ el.style.marginTop=''; }); PG.pushed=[]; qa(ed,'.pb').forEach(p=>{ p.style.height=''; });
+  ed.style.minHeight=''; ed.style.fontSize=''; ed.classList.remove('pgh'); ed.removeAttribute('data-head');
+}
+function pgvApply(){
+  const col=$('.edcol'), box=$('#pgbox');
+  if(PG.on){ pgvBuild(); } else if(box){ pgvClear(); col.insertBefore(ed,box); rm(box); }
+  col.classList.toggle('pgv',PG.on); $('#pgbar').style.display=PG.on?'flex':'none'; $('#b-pgv').classList.toggle('on',PG.on);
+  if(PG.on) pgvSched(true);
+}
+function togglePgv(){ PG.on=!PG.on; try{ localStorage.setItem('mednote.xp.pgv',PG.on?'1':'0'); }catch(e){} pgvApply(); }
+function pgvSched(now){ if(!PG.on) return; clearTimeout(PG.timer); PG.timer=setTimeout(pgvLayout,now?10:220); }
+function pgvLayout(){
+  if(!PG.on) return; const box=$('#pgbox'), inner=$('#pginner'), ov=$('#pgov'), col=$('.edcol'); if(!box) return;
+  PG.pushed.forEach(el=>{ el.style.marginTop=''; }); PG.pushed=[]; qa(ed,'.pb').forEach(p=>{ p.style.height=''; });
+  const n=curNote(), head=$('#pdf-head').checked&&!!n;
+  ed.style.fontSize=($('#pdf-font').value||14)+'px'; ed.classList.toggle('pgh',head); if(head) ed.setAttribute('data-head',n.title||'(ไม่มีชื่อ)'); else ed.removeAttribute('data-head');
+  const H=PGCH, kids=Array.from(ed.children);
+  for(let i=0;i<kids.length;i++){
+    const el=kids[i], h=el.offsetHeight, top=el.offsetTop-PGM;
+    if(el.classList.contains('pb')){ const r=((top%H)+H)%H; el.style.height=Math.max(0,(r<0.5?0:(H-r-2)))+'px'; continue; }
+    if(!h) continue;
+    const page=Math.floor((top+0.01)/H), bound=(page+1)*H, bottom=top+h, r=top-page*H;
+    const avoid=/^(TABLE|FIGURE|PRE)$/.test(el.tagName)||el.classList.contains('callout')||el.classList.contains('flow');
+    const heading=/^H[1-3]$/.test(el.tagName);
+    if(r>0.5&&((avoid&&bottom>bound+0.5&&h<=H)||(heading&&bottom+34>bound))){
+      const mt=parseFloat(getComputedStyle(el).marginTop)||0; el.style.marginTop=(mt+bound-top)+'px'; PG.pushed.push(el);
+    }
+  }
+  let bottom=0; for(let i=kids.length-1;i>=0;i--){ const el=kids[i]; if(el.classList.contains('pb')||(el.tagName==='P'&&isEmptyEl(el))) continue; bottom=el.offsetTop-PGM+el.offsetHeight; break; }
+  const lastPb=kids.filter(k=>k.classList.contains('pb')).pop(); if(lastPb) bottom=Math.max(bottom,lastPb.offsetTop-PGM+lastPb.offsetHeight);
+  const pages=Math.max(1,Math.ceil(bottom/H-0.001));
+  ed.style.minHeight=(pages*H+2*PGM)+'px';
+  let h='<div class="pgl first" style="top:'+PGM+'px"><span>หน้า 1</span></div>';
+  for(let k=1;k<pages;k++) h+='<div class="pgl" style="top:'+(PGM+k*H).toFixed(1)+'px"><span>▲ หน้า '+k+' | หน้า '+(k+1)+' ▼</span></div>';
+  ov.innerHTML=h; $('#pg-info').textContent='≈ '+pages+' หน้า A4';
+  const avail=col.clientWidth-28, s=PG.zoom>0?PG.zoom:Math.min(1.2,Math.max(0.3,avail/PGW));
+  inner.style.transform='scale('+s.toFixed(3)+')'; box.style.width=(PGW*s)+'px'; box.style.height=(inner.offsetHeight*s)+'px'; $('#pg-zf').textContent=Math.round(s*100)+'%';
+}
+function pgvZoom(f){ const cur=PG.zoom>0?PG.zoom:(($('.edcol').clientWidth-28)/PGW); PG.zoom=Math.min(1.6,Math.max(0.3,cur*f)); pgvSched(true); }
+$('#b-pgv').addEventListener('click',togglePgv); $('#pg-x').addEventListener('click',togglePgv); $('#pg-br').addEventListener('click',insertPageBreak);
+$('#pg-pdf').addEventListener('click',openPdfDialog); $('#pg-zo').addEventListener('click',()=>pgvZoom(1/1.15)); $('#pg-zi').addEventListener('click',()=>pgvZoom(1.15)); $('#pg-zf').addEventListener('click',()=>{ PG.zoom=0; pgvSched(true); });
+$('#pg-font').addEventListener('change',function(){ $('#pdf-font').value=this.value; pgvSched(true); });
+$('#pg-head').addEventListener('change',function(){ $('#pdf-head').checked=this.checked; pgvSched(true); });
+$('#pdf-font').addEventListener('change',function(){ $('#pg-font').value=this.value; pgvSched(true); });
+$('#pdf-head').addEventListener('change',function(){ $('#pg-head').checked=this.checked; pgvSched(true); });
+window.addEventListener('resize',()=>pgvSched());
+ed.addEventListener('load',()=>pgvSched(),true);
+if(PG.on) setTimeout(pgvApply,0);
+
+/* ---- fix: nested blocks (e.g. <div> created inside <p> by some mobile browsers) turn into stray empty paragraphs after save/reload ---- */
+const BLK_TAGS=/^(P|DIV|H1|H2|H3|H4|UL|OL|TABLE|FIGURE|PRE|HR|BLOCKQUOTE)$/;
+function splitMixed(el){
+  const frag=document.createDocumentFragment(); let run=null;
+  const flush=()=>{ if(run){ const p=document.createElement('p'); run.forEach(x=>p.appendChild(x)); frag.appendChild(p); run=null; } };
+  Array.from(el.childNodes).forEach(x=>{ if(x.nodeType===1&&BLK_TAGS.test(x.tagName)){ flush(); frag.appendChild(x); } else (run=run||[]).push(x); });
+  flush(); el.parentNode.replaceChild(frag,el);
+}
+function normBlocks(root){
+  const SEL=':scope > p, :scope > div, :scope > ul, :scope > ol, :scope > table, :scope > figure, :scope > pre, :scope > hr, :scope > h1, :scope > h2, :scope > h3, :scope > blockquote';
+  for(let i=0;i<20;i++){
+    const bad=qa(root,'p, div:not([class])').filter(e=>e.querySelector(SEL));
+    if(!bad.length) break; bad.forEach(e=>{ if(e.parentNode) splitMixed(e); });
+  }
+}
+function fixLiveBlocks(){ if(ed.querySelector('p p, p div, p ul, p ol, p table, p figure, div:not([class]) div:not([class])')) caretMarker(()=>normBlocks(ed)); }
 
 /* ================= Boot ================= */
 async function boot(){
