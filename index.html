@@ -656,7 +656,7 @@ html.phone #tray-candle{position:fixed;top:calc(env(safe-area-inset-top,0px) + 6
 .msk.edit{opacity:.78;cursor:move}.msk.edit.sel{opacity:1;outline:3px solid #ffd54f}
 .msk .hnd{position:absolute;right:-1px;bottom:-1px;width:16px;height:16px;background:#ffd54f;border:2px solid #5c2a1e;cursor:nwse-resize}
 html.phone .rvface{max-height:50vh}
-html.phone.dlg #mhead,html.phone.dlg #edbar,html.phone.dlg .tablebar,html.phone.dlg #tray-timer,html.phone.dlg #tray-candle,html.phone.dlg #mdrawer,html.phone.dlg #mback,html.phone.dlg #balloon,html.phone.dlg #msheet{display:none!important}
+html.phone.dlgopen #mhead,html.phone.dlgopen #edbar,html.phone.dlgopen .tablebar,html.phone.dlgopen #tray-timer,html.phone.dlgopen #tray-candle,html.phone.dlgopen #mdrawer,html.phone.dlgopen #mback,html.phone.dlgopen #balloon,html.phone.dlgopen #msheet{display:none!important}
 .fcedit>.drawbar:last-child{position:sticky;bottom:-10px;background:var(--face);padding:8px 4px;border-top:1px solid var(--edge);z-index:3}
 .ocedit img{max-height:36vh}
 .fcedit .occw img{max-height:36vh}
@@ -681,6 +681,20 @@ html.phone .pgbar{display:none!important}
 .pgl.first{border-top:0}
 .pgl span{position:absolute;left:100%;margin-left:8px;top:-10px;white-space:nowrap;font-size:12px;color:#5c2a1e;background:#fff3d6;border:1px solid #d98a00;border-radius:3px;padding:0 6px}
 #b-pgv.on{background:#fff3d6;border-color:#d98a00}
+
+/* deck folders */
+#win-deck{width:min(420px,calc(100% - 16px))}
+.fdeck{grid-template-columns:1fr 40px 40px 40px auto}
+.fdn{cursor:pointer}
+.fact{display:flex;gap:4px}
+.fcsync{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:6px 10px;margin-bottom:8px;border:1px dashed #d98a00;background:#fff3d6;border-radius:6px;font-size:12.5px}
+.fcsync.ok{border-color:#7dbb8a;background:#eaf6e8}
+.fbsel{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:4px 6px;margin-bottom:6px;background:#efe6cb;border-radius:4px;font-size:12.5px}
+.fbsel .grow{flex:1}
+.fbr{grid-template-columns:24px 1fr auto auto}
+.fbr .tx2{cursor:pointer}
+html.phone .fdeck{grid-template-columns:1fr 30px 30px 30px auto}
+html.phone .fact .btn{min-width:38px;min-height:36px}
 </style>
 </head>
 <body>
@@ -960,7 +974,7 @@ html.phone .pgbar{display:none!important}
 
   <div class="win" id="win-fce"><div class="titlebar"><span>✏️</span><span class="ttitle">การ์ด</span><div class="tbtns"><button class="tbtn" data-act="min" aria-label="ย่อ">–</button><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
     <div class="wbody"><div class="fcedit">
-      <div class="row2"><label>สำรับ <input id="fce-deck" list="fce-decks" style="width:150px" maxlength="40"></label><datalist id="fce-decks"></datalist>
+      <div class="row2"><label>สำรับ <select id="fce-deck" style="min-width:170px;max-width:280px"></select></label><datalist id="fce-decks"></datalist>
         <label>ชนิด <select id="fce-type"><option value="basic">หน้า – หลัง</option><option value="cloze">ปิดคำ (cloze)</option><option value="occ">ปิดรูป (image occlusion)</option></select></label>
         <input id="fce-tags" placeholder="แท็ก" aria-label="แท็ก" style="flex:1;min-width:90px"></div>
       <div class="fcebar" id="fce-bar"><button data-cf="bold" title="ตัวหนา"><b>B</b></button><button data-cf="italic" title="ตัวเอียง"><i>I</i></button><button data-cf="under" title="ขีดเส้นใต้"><u>U</u></button>
@@ -979,6 +993,13 @@ html.phone .pgbar{display:none!important}
       <input type="file" id="fce-file" accept="image/*" hidden><input type="file" id="fce-cam" accept="image/*" capture="environment" hidden>
       <div class="drawbar"><span id="fce-st" class="note-s" style="flex:1" aria-live="polite"></span><button class="btn" id="fce-del">🗑️ ลบ</button><button class="btn" id="fce-save2">บันทึก + ใบต่อไป</button><button class="btn def" id="fce-save">บันทึก</button><button class="btn" data-close="win-fce">ยกเลิก</button></div>
     </div></div></div>
+
+  <div class="win" id="win-deck"><div class="titlebar"><span>📁</span><span class="ttitle" id="dk-title">สำรับ / โฟลเดอร์</span><div class="tbtns"><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
+    <div class="wbody"><div class="dlg">
+      <label id="dk-l1">ชื่อ <input id="dk-name" maxlength="60" style="width:100%" autocomplete="off"></label>
+      <label id="dk-l2">อยู่ใต้โฟลเดอร์ <select id="dk-parent" style="width:100%"></select></label>
+      <div class="note-s" id="dk-hint"></div>
+      <div class="btns"><button class="btn def" id="dk-ok">ตกลง</button><button class="btn" data-close="win-deck">ยกเลิก</button></div></div></div></div>
 
   <div id="modal"></div>
   <div class="win" id="win-msg"><div class="titlebar"><span class="ttitle" id="msg-title">MedNote</span><div class="tbtns"><button class="tbtn close" data-act="close" aria-label="ปิด">✕</button></div></div>
@@ -1094,7 +1115,7 @@ function closeWin(id){
   if(w.onClose) w.onClose(); renderTask();
 }
 function renderTask(){
-  try{ document.documentElement.classList.toggle('dlg',Object.keys(W).some(k=>k!=='win-main'&&k!=='win-msg'&&W[k].open&&!W[k].min)); }catch(e){}
+  try{ document.documentElement.classList.toggle('dlgopen',Object.keys(W).some(k=>k!=='win-main'&&k!=='win-msg'&&W[k].open&&!W[k].min)); }catch(e){}
   var box=$('#tasks'); box.innerHTML='';
   Object.keys(W).forEach(function(id){
     var w=W[id]; if(!w.open||!w.task) return;
@@ -2519,7 +2540,7 @@ async function pushAll(){
   if(SYNC.busy){ SYNC.again=true; return; }
   SYNC.busy=true; setSync('syncing'); const P=PV();
   try{
-    if(settingsDirty){ const m=settingsM; await P.setSettings({rot:ROT,type:TYPES,tpl:TPLCUST,hide:TPLHIDE,m:m}); if(settingsM===m) settingsDirty=false; }
+    if(settingsDirty){ const m=settingsM; await P.setSettings({rot:ROT,type:TYPES,tpl:TPLCUST,hide:TPLHIDE,fdecks:FCS.folders||[],m:m}); if(settingsM===m) settingsDirty=false; }
     await uploadPendingImages(P);
     for(const n of notes.slice()){
       const base=SYNC.synced[n.id]||0; if(!(n.modified>base)||SYNC.big[n.id]) continue;
@@ -2573,6 +2594,7 @@ function applyRemoteSettings(d){
   if(Array.isArray(d.rot)&&d.rot.length) ROT=d.rot.slice();
   if(Array.isArray(d.type)&&d.type.length) TYPES=d.type.slice();
   if(Array.isArray(d.tpl)) TPLCUST=d.tpl.slice(); if(Array.isArray(d.hide)) TPLHIDE=d.hide.slice();
+  if(Array.isArray(d.fdecks)){ FCS.folders=d.fdecks.slice(); fcSave(true); if(W['win-fc']&&W['win-fc'].open) flRender(); }
   settingsM=d.m; settingsDirty=false; normalizeLists(); persistSettings(); buildSelects(); buildTplSel(); return true;
 }
 function applyDocs(items){
@@ -3679,10 +3701,10 @@ function fcNorm(c){
   if(c.type==='occ') c.occ=Object.assign({iid:'',mode:'one',masks:[]},c.occ||{}); return c;
 }
 function fcLoad(){
-  try{ const s=JSON.parse(localStorage.getItem(FCK)||'null'); if(s){ FCS.cards=s.cards||[]; FCS.tombs=s.tombs||[]; Object.assign(FCS.set,s.set||{}); FCS.day=s.day||FCS.day; FCS.log=s.log||[]; FCS.lastDeck=s.lastDeck||FCS.lastDeck; } }catch(e){}
+  try{ const s=JSON.parse(localStorage.getItem(FCK)||'null'); if(s){ FCS.cards=s.cards||[]; FCS.tombs=s.tombs||[]; Object.assign(FCS.set,s.set||{}); FCS.day=s.day||FCS.day; FCS.log=s.log||[]; FCS.lastDeck=s.lastDeck||FCS.lastDeck; FCS.folders=Array.isArray(s.folders)?s.folders:[]; } }catch(e){}
   FCS.cards=FCS.cards.map(fcNorm);
 }
-function fcSave(quiet){ try{ localStorage.setItem(FCK,JSON.stringify({cards:FCS.cards,tombs:FCS.tombs,set:FCS.set,day:FCS.day,log:FCS.log.slice(-3000),lastDeck:FCS.lastDeck})); }catch(e){} if(!quiet) schedulePush(); }
+function fcSave(quiet){ try{ localStorage.setItem(FCK,JSON.stringify({cards:FCS.cards,tombs:FCS.tombs,set:FCS.set,day:FCS.day,log:FCS.log.slice(-3000),lastDeck:FCS.lastDeck,folders:FCS.folders||[]})); }catch(e){} if(!quiet) schedulePush(); }
 function lday(ts){ const d=new Date(ts-4*3600000); return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate()); }
 function dayEnd(ts){ const d=new Date(ts-4*3600000); d.setHours(0,0,0,0); return d.getTime()+DAYMS+4*3600000; }
 function fcDay(){ const k=lday(Date.now()); if(FCS.day.k!==k) FCS.day={k:k,n:0,r:0}; return FCS.day; }
@@ -3736,13 +3758,13 @@ function fmtIvl(ms){
 /* ---- queue ---- */
 function fcCounts(deck){
   const now=Date.now(), end=dayEnd(now), day=fcDay(); let nw=0,ln=0,rv=0;
-  fcAlive().filter(c=>!deck||c.deck===deck).forEach(c=>fcKeys(c).forEach(k=>{ const st=c.sr[k]||{state:'new'};
+  fcAlive().filter(c=>inDeck(c,deck)).forEach(c=>fcKeys(c).forEach(k=>{ const st=c.sr[k]||{state:'new'};
     if(st.state==='new') nw++; else if(st.state==='review'){ if(st.due<end) rv++; } else if(st.due<=now+FCS.set.ahead*MINMS) ln++; }));
   return {nw:Math.min(nw,Math.max(0,FCS.set.newPerDay-day.n)),ln:ln,rv:Math.min(rv,Math.max(0,FCS.set.revPerDay-day.r)),allNew:nw};
 }
 function fcPick(deck){
   const now=Date.now(), end=dayEnd(now), day=fcDay(), L=[],R=[],N=[];
-  fcAlive().filter(c=>!deck||c.deck===deck).forEach(c=>fcKeys(c).forEach(k=>{ const st=fcSr(c,k), it={card:c,key:k,st:st};
+  fcAlive().filter(c=>inDeck(c,deck)).forEach(c=>fcKeys(c).forEach(k=>{ const st=fcSr(c,k), it={card:c,key:k,st:st};
     if(st.state==='new') N.push(it); else if(st.state==='review'){ if(st.due<end) R.push(it); } else if(st.due<=now+FCS.set.ahead*MINMS) L.push(it); }));
   L.sort((a,b)=>a.st.due-b.st.due); R.sort((a,b)=>a.st.due-b.st.due); N.sort((a,b)=>a.card.created-b.card.created);
   if(L.length&&L[0].st.due<=now) return L[0];
@@ -3771,7 +3793,7 @@ const fcPlain=c=>c.type==='occ'?'🖼️ [ปิดรูป · '+((c.occ&&c.occ
 /* ---- window views ---- */
 const FV={view:'home',deck:null,cur:null,shown:false,hist:[],done:0,q:'',bdeck:''};
 function fcStatus(){ const c=fcCounts(null); $('#fc-status').textContent='การ์ดทั้งหมด '+fcAlive().length+' ใบ · วันนี้: ใหม่ '+c.nw+' · เรียนซ้ำ '+c.ln+' · ทบทวน '+c.rv; }
-function openFlash(){ FV.view='home'; openWin('win-fc'); flRender(); }
+function openFlash(){ FV.view='home'; openWin('win-fc'); flRender(); if(SYNC.on&&SYNC.mode==='gh') ghPull(); }
 function flRender(){
   if(!$('#win-fc')||!W['win-fc'].open) return;
   const body=$('#fc-body'); $$('#fc-tabs .tab').forEach(b=>b.classList.toggle('on',b.getAttribute('data-v')===FV.view));
@@ -3789,7 +3811,7 @@ function fcStudy(deck){ FV.deck=deck||null; FV.view='review'; FV.hist=[]; FV.don
 function fcReview(b){
   const it=FV.cur=FV.cur&&fcAlive().includes(FV.cur.card)?FV.cur:fcPick(FV.deck);
   const cnt=fcCounts(FV.deck);
-  const top='<div class="rvtop"><button class="btn sm" data-act="back">← กลับ</button><span class="rvc">ใหม่ <b style="color:#1565c0">'+cnt.nw+'</b> · ซ้ำ <b style="color:#c62828">'+cnt.ln+'</b> · ทบทวน <b style="color:#14612b">'+cnt.rv+'</b></span><span style="flex:1"></span><button class="btn sm" data-act="undo" title="ย้อนคำตอบ (Z)"'+(FV.hist.length?'':' disabled')+'>↶</button><button class="btn sm" data-act="editc" title="แก้การ์ด"'+(it?'':' disabled')+'>✏️</button></div>';
+  const top='<div class="rvtop"><button class="btn sm" data-act="back">← กลับ</button><span class="rvc">ใหม่ <b style="color:#1565c0">'+cnt.nw+'</b> · ซ้ำ <b style="color:#c62828">'+cnt.ln+'</b> · ทบทวน <b style="color:#14612b">'+cnt.rv+'</b></span><span style="flex:1"></span><button class="btn sm" data-act="undo" title="ย้อนคำตอบ (Z)"'+(FV.hist.length?'':' disabled')+'>↶</button><button class="btn sm" data-act="newin" data-deck="'+(it?esc(it.card.deck):'')+'" title="เพิ่มการ์ดในสำรับนี้">＋</button><button class="btn sm" data-act="editc" title="แก้การ์ด"'+(it?'':' disabled')+'>✏️</button></div>';
   if(!it){
     b.innerHTML=top+'<div class="rvdone">🎉<br><b>จบการทบทวนแล้ว</b><br><small>วันนี้ตอบไป '+FV.done+' ใบ'+(FCS.cards.length?'':' · ยังไม่มีการ์ด')+'</small><div class="note-s" style="margin-top:8px">🕯️ ทบทวนครบ 10 ใบจุดเทียน 1 เล่ม — ตอนนี้ '+CD.prog+'/10</div><div style="margin-top:10px"><button class="btn def" data-act="back">กลับหน้าสำรับ</button></div></div>';
     const k='b_'+lday(Date.now()); if(FV.done>=5&&!CD.events.some(e=>e.ref===k)) lightCandle('bonus',k,'เคลียร์การ์ดวันนี้'); return;
@@ -3871,7 +3893,7 @@ function ceSetType(t){
 function ceHtml(sel){ return sanitize($(sel).innerHTML.replace(/<div><br><\/div>/g,'<br>')); }
 function openCardEditor(c,preset){
   CE.card=c||null; preset=preset||{}; const d=c||preset;
-  $('#fce-deck').value=d.deck||FCS.lastDeck||'ทั่วไป'; $('#fce-tags').value=d.tags||''; $('#fce-decks').innerHTML=fcDecks().map(x=>'<option value="'+esc(x)+'">').join('');
+  ceFillDecks(d.deck||FCS.lastDeck||'ทั่วไป'); $('#fce-tags').value=d.tags||''; $('#fce-decks').innerHTML=fcDecks().map(x=>'<option value="'+esc(x)+'">').join('');
   const t=d.type||'basic'; ceSetType(t);
   $('#fce-front').innerHTML=t==='basic'?(d.front||''):''; $('#fce-back').innerHTML=t==='basic'?(d.back||''):'';
   $('#fce-ctext').innerHTML=t==='cloze'?(d.front||''):''; $('#fce-cextra').innerHTML=t==='cloze'?(d.back||''):''; $('#fce-oextra').innerHTML=t==='occ'?(d.back||''):'';
@@ -3993,8 +4015,8 @@ function fcApplyRemote(d){
   if(L) FCS.cards[FCS.cards.indexOf(L)]=R; else FCS.cards.push(R); SYNC.synced[key]=d.modified; return true;
 }
 function fcAfterRemote(){ fcSave(true); if(W['win-fc'].open){ if(FV.view==='review'&&FV.cur&&!FCS.cards.includes(FV.cur.card)) FV.cur=null; flRender(); } }
-const fcExport=()=>({cards:FCS.cards,set:FCS.set});
-function fcImport(o){ if(!o||!Array.isArray(o.cards)) return 0; let n=0; o.cards.forEach(c=>{ const L=FCS.cards.find(x=>x.id===c.id); if(!L){ FCS.cards.push(fcNorm(c)); n++; } else if((c.modified||0)>L.modified){ FCS.cards[FCS.cards.indexOf(L)]=fcNorm(c); n++; } }); fcSave(); return n; }
+const fcExport=()=>({cards:FCS.cards,set:FCS.set,folders:FCS.folders||[]});
+function fcImport(o){ if(!o||!Array.isArray(o.cards)) return 0; let n=0; (o.folders||[]).forEach(f=>{ if((FCS.folders=FCS.folders||[]).indexOf(f)<0) FCS.folders.push(f); }); o.cards.forEach(c=>{ const L=FCS.cards.find(x=>x.id===c.id); if(!L){ FCS.cards.push(fcNorm(c)); n++; } else if((c.modified||0)>L.modified){ FCS.cards[FCS.cards.indexOf(L)]=fcNorm(c); n++; } }); fcSave(); return n; }
 $('#b-cards').addEventListener('click',openFlash);
 fcLoad();
 
@@ -4087,6 +4109,117 @@ function normBlocks(root){
   }
 }
 function fixLiveBlocks(){ if(ed.querySelector('p p, p div, p ul, p ol, p table, p figure, div:not([class]) div:not([class])')) caretMarker(()=>normBlocks(ed)); }
+
+
+/* ================= Flashcard decks as folders (path = a::b::c) ================= */
+FCS.folders=FCS.folders||[];
+Object.assign(FV,{col:new Set(),sel:new Set()});
+regWin('win-deck',{title:'สำรับ / โฟลเดอร์',icon:'📁',center:true});
+const DECKSEP='::';
+function inDeck(c,deck){ return !deck||c.deck===deck||c.deck.indexOf(deck+DECKSEP)===0; }
+function fcNormDeck(s){ return String(s||'').split(DECKSEP).map(x=>x.replace(/\s+/g,' ').trim()).filter(Boolean).join(DECKSEP).slice(0,120); }
+function fcTreeList(){
+  const all=new Set();
+  fcAlive().forEach(c=>all.add(c.deck)); FCS.folders.forEach(f=>all.add(f));
+  [...all].forEach(p=>{ const seg=p.split(DECKSEP); for(let i=1;i<seg.length;i++) all.add(seg.slice(0,i).join(DECKSEP)); });
+  return [...all].filter(Boolean).sort((a,b)=>a.split(DECKSEP).join('\u0001').localeCompare(b.split(DECKSEP).join('\u0001'),'th')).map(p=>{ const seg=p.split(DECKSEP); return {path:p,name:seg[seg.length-1],depth:seg.length-1}; });
+}
+const fcDeckOptions=(cur,extra)=>fcTreeList().map(n=>'<option value="'+esc(n.path)+'"'+(n.path===cur?' selected':'')+'>'+'— '.repeat(n.depth)+esc(n.name)+'</option>').join('')+(extra||'');
+function fcMarkFolders(){ fcSave(); markSettings(); persistSettings(); schedulePush(); }
+/* ---- card editor: deck picker ---- */
+function ceFillDecks(cur){
+  cur=fcNormDeck(cur)||'ทั่วไป'; const list=fcTreeList().map(n=>n.path); const sel=$('#fce-deck');
+  sel.innerHTML=(list.indexOf(cur)<0?'<option value="'+esc(cur)+'" selected>'+esc(cur)+'</option>':'')+fcDeckOptions(cur,'<option value="__new__">＋ สำรับ / โฟลเดอร์ใหม่…</option>'); sel.value=cur;
+}
+$('#fce-deck').addEventListener('change',function(){
+  if(this.value!=='__new__'){ FCS.lastDeck=this.value; return; }
+  const prev=FCS.lastDeck||'ทั่วไป'; this.value=list0(prev);
+  openDeckDialog({mode:'new',parent:'',cb:p=>{ ceFillDecks(p); }});
+});
+const list0=p=>{ const has=[...$('#fce-deck').options].some(o=>o.value===p); return has?p:($('#fce-deck').options[0]?$('#fce-deck').options[0].value:''); };
+/* ---- deck dialog (new / rename+move / move cards) ---- */
+const DK={mode:'new',path:'',cb:null,cards:null};
+function dkParents(skip){ return '<option value="">(ระดับบนสุด)</option>'+fcTreeList().filter(n=>!skip||(n.path!==skip&&n.path.indexOf(skip+DECKSEP)!==0)).map(n=>'<option value="'+esc(n.path)+'">'+'— '.repeat(n.depth)+esc(n.name)+'</option>').join(''); }
+function openDeckDialog(o){
+  Object.assign(DK,{mode:o.mode,path:o.path||'',cb:o.cb||null,cards:o.cards||null});
+  const m=o.mode, seg=(o.path||'').split(DECKSEP), last=seg.pop();
+  $('#dk-title').textContent=m==='new'?'📁 สำรับ / โฟลเดอร์ใหม่':m==='ren'?'✏️ เปลี่ยนชื่อ / ย้ายสำรับ':'📦 ย้ายการ์ดไปสำรับ';
+  $('#dk-l1').firstChild.textContent=m==='move'?'หรือพิมพ์ชื่อสำรับใหม่ ':'ชื่อ '; $('#dk-name').value=m==='ren'?last:'';
+  $('#dk-parent').innerHTML=dkParents(m==='ren'?o.path:null); $('#dk-parent').value=m==='ren'?seg.join(DECKSEP):(o.parent||'');
+  $('#dk-hint').textContent=m==='move'?'เลือกสำรับปลายทางจากรายการ หรือพิมพ์ชื่อใหม่ (ใช้ :: คั่นโฟลเดอร์ย่อย)':'ใส่โฟลเดอร์แม่เพื่อสร้างเป็นโฟลเดอร์ย่อย — สำรับกับโฟลเดอร์ใช้ร่วมกันได้ (โฟลเดอร์ใส่การ์ดได้ และมีโฟลเดอร์ย่อยได้)';
+  openWin('win-deck'); setTimeout(()=>$('#dk-name').focus(),50);
+}
+function fcRenameDeck(old,neu){
+  const pre=old+DECKSEP; if(!neu||neu===old||neu.indexOf(pre)===0) return false; const now=Date.now();
+  FCS.cards.forEach(c=>{ if(c.deck===old||c.deck.indexOf(pre)===0){ c.deck=neu+c.deck.slice(old.length); c.modified=now; } });
+  FCS.folders=FCS.folders.map(f=>(f===old||f.indexOf(pre)===0)?neu+f.slice(old.length):f); if(FCS.folders.indexOf(neu)<0) FCS.folders.push(neu); return true;
+}
+$('#dk-ok').addEventListener('click',()=>{
+  const m=DK.mode, name=fcNormDeck($('#dk-name').value), par=$('#dk-parent').value;
+  if(m==='move'){
+    const dest=name||par; if(!dest){ $('#dk-hint').textContent='เลือกสำรับปลายทางก่อน'; return; } const now=Date.now();
+    (DK.cards||[]).forEach(c=>{ c.deck=dest; c.modified=now; }); if(FCS.folders.indexOf(dest)<0&&!fcAlive().some(c=>c.deck===dest)) FCS.folders.push(dest);
+    FV.sel.clear(); fcMarkFolders(); closeWin('win-deck'); flRender(); return;
+  }
+  if(!name){ $('#dk-hint').textContent='ใส่ชื่อก่อน'; return; }
+  const path=fcNormDeck((par?par+DECKSEP:'')+name);
+  if(m==='new'){ if(FCS.folders.indexOf(path)<0) FCS.folders.push(path); FCS.lastDeck=path; fcMarkFolders(); closeWin('win-deck'); if(DK.cb) DK.cb(path); else { FV.col.delete(par); flRender(); } }
+  else { if(!fcRenameDeck(DK.path,path)){ $('#dk-hint').textContent='ย้ายเข้าตัวเองหรือโฟลเดอร์ย่อยของตัวเองไม่ได้'; return; } fcMarkFolders(); closeWin('win-deck'); flRender(); }
+});
+$('#dk-name').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('#dk-ok').click(); } });
+/* ---- home: deck tree ---- */
+function fcSyncLine(){
+  if(SYNC.on) return '<div class="fcsync ok">☁️ ซิงก์อัตโนมัติอยู่ · รออัปโหลด '+fcDirty()+' ใบ <button class="btn sm" data-act="syncnow">🔄 ซิงก์ตอนนี้</button></div>';
+  return '<div class="fcsync">💾 การ์ดอยู่เฉพาะเครื่องนี้ — ตั้งค่าซิงก์เพื่อใช้หลายเครื่อง <button class="btn sm" data-act="syncset">ตั้งค่าซิงก์</button></div>';
+}
+function fcHome(b){
+  const tree=fcTreeList(), all=fcCounts(null); let rows='';
+  tree.forEach(nd=>{
+    const seg=nd.path.split(DECKSEP); let skip=false; for(let i=1;i<seg.length;i++) if(FV.col.has(seg.slice(0,i).join(DECKSEP))){ skip=true; break; } if(skip) return;
+    const c=fcCounts(nd.path), tot=fcAlive().filter(x=>inDeck(x,nd.path)).length, kids=tree.some(t=>t.path.indexOf(nd.path+DECKSEP)===0), dp=esc(nd.path);
+    rows+='<div class="fdeck" style="margin-left:'+nd.depth*18+'px"><div class="fdn" data-act="tgl" data-deck="'+dp+'" title="แตะเพื่อพับ/กาง"><b>'+(kids?(FV.col.has(nd.path)?'▸ 📁 ':'▾ 📂 '):'🗂️ ')+esc(nd.name)+'</b><small>'+tot+' ใบ'+(kids?' · รวมโฟลเดอร์ย่อย':'')+'</small></div><span class="fn" title="ใหม่">'+c.nw+'</span><span class="fl" title="เรียนซ้ำ">'+c.ln+'</span><span class="fr" title="ทบทวน">'+c.rv+'</span><span class="fact"><button class="btn sm" data-act="study" data-deck="'+dp+'" title="ทบทวนสำรับนี้">▶</button><button class="btn sm" data-act="newin" data-deck="'+dp+'" title="เพิ่มการ์ดในสำรับนี้">＋</button><button class="btn sm" data-act="dmenu" data-deck="'+dp+'" title="จัดการสำรับ">⋯</button></span></div>';
+  });
+  b.innerHTML=fcSyncLine()+'<div class="fchead"><button class="btn def" data-act="study" data-deck="">▶ ทบทวนทุกสำรับ <small>(ใหม่ '+all.nw+' · ซ้ำ '+all.ln+' · ทบทวน '+all.rv+')</small></button><button class="btn" data-act="new">＋ การ์ดใหม่</button><button class="btn" data-act="mkdeck">📁 สำรับ / โฟลเดอร์ใหม่</button></div>'+
+    (rows?'<div class="fdecks">'+rows+'</div><div class="note-s" style="margin-top:6px">ตัวเลข: <b style="color:#1565c0">ใหม่</b> · <b style="color:#c62828">เรียนซ้ำ</b> · <b style="color:#14612b">ทบทวน</b> · ▶ ทบทวน · ＋ เพิ่มการ์ดในสำรับนั้น · ⋯ โฟลเดอร์ย่อย/เปลี่ยนชื่อ/ย้าย/ลบ · ทบทวนโฟลเดอร์แม่ = รวมทุกโฟลเดอร์ย่อย</div>'
+     :'<div class="cdempty" style="color:#555">ยังไม่มีสำรับ — กด “📁 สำรับ / โฟลเดอร์ใหม่” เพื่อสร้าง แล้วกด ＋ ที่สำรับเพื่อเพิ่มการ์ด หรือเลือกข้อความในโน้ตแล้วกด 🃏</div>');
+}
+function fcDeckMenu(path){
+  const n=fcAlive().filter(c=>inDeck(c,path)).length;
+  msgBox({icon:'📁',title:'จัดการสำรับ',text:path.split(DECKSEP).join(' › ')+'\n('+n+' ใบ)',buttons:[
+    {label:'＋ โฟลเดอร์ย่อย',cb:()=>openDeckDialog({mode:'new',parent:path})},
+    {label:'✏️ เปลี่ยนชื่อ / ย้าย',cb:()=>openDeckDialog({mode:'ren',path:path})},
+    {label:'🗑️ ลบ',cb:()=>setTimeout(()=>msgBox({icon:'⚠️',title:'ลบสำรับ',text:'ลบ “'+path+'” พร้อมโฟลเดอร์ย่อยและการ์ดทั้งหมด '+n+' ใบหรือไม่?',buttons:[{label:'ลบทั้งหมด',cb:()=>{
+      const now=Date.now(); FCS.cards.filter(c=>inDeck(c,path)).forEach(c=>{ FCS.tombs.push({id:c.id,m:now}); fcPurgeImgs(c); }); FCS.cards=FCS.cards.filter(c=>!inDeck(c,path)); FCS.folders=FCS.folders.filter(f=>f!==path&&f.indexOf(path+DECKSEP)!==0); fcMarkFolders(); flRender(); }},{label:'ยกเลิก'}]}),50)},
+    {label:'ปิด'}]});
+}
+/* ---- browse with deck filter + bulk move/delete ---- */
+function fcBrowse(b){
+  const q=FV.q.trim().toLowerCase();
+  const list=fcAlive().filter(c=>inDeck(c,FV.bdeck)&&(!q||(fcPlain(c)+' '+c.tags+' '+c.deck).toLowerCase().indexOf(q)>-1)).sort((a,c2)=>c2.modified-a.modified);
+  const ids=new Set(list.map(c=>c.id)); [...FV.sel].forEach(i=>{ if(!ids.has(i)) FV.sel.delete(i); });
+  b.innerHTML='<div class="fchead"><input id="fb-q" placeholder="ค้นหาการ์ด…" value="'+esc(FV.q)+'" style="flex:1;min-width:120px"><select id="fb-d"><option value="">ทุกสำรับ</option>'+fcDeckOptions(FV.bdeck)+'</select><button class="btn" data-act="newin" data-deck="'+esc(FV.bdeck)+'">＋</button></div>'+
+   '<div class="fbsel"><label><input type="checkbox" id="fb-all"'+(list.length&&FV.sel.size===list.length?' checked':'')+'> เลือกทั้งหมด ('+list.length+')</label><span class="grow"></span>'+(FV.sel.size?'<b>'+FV.sel.size+' ใบ</b> <button class="btn sm" data-act="bmove">📦 ย้ายไปสำรับ…</button><button class="btn sm" data-act="bdel">🗑️ ลบ</button>':'<span class="note-s">ติ๊กเลือกการ์ดเพื่อย้าย/ลบทีละหลายใบ</span>')+'</div>'+
+   '<div class="fblist">'+(list.length?list.slice(0,300).map(c=>{ const ks=fcKeys(c), s0=c.sr[ks[0]]||{state:'new'}; const due=s0.state==='new'?'ใหม่':fmtIvl(Math.max(0,s0.due-Date.now()))+(s0.due<Date.now()?' (ถึงกำหนด)':'');
+     return '<div class="fbr"><input type="checkbox" class="fbk" data-id="'+c.id+'"'+(FV.sel.has(c.id)?' checked':'')+' aria-label="เลือกการ์ด"><span class="tx2" data-act="edit" data-id="'+c.id+'"><span class="ty">'+(c.type==='occ'?'🖼️ ':c.type==='cloze'?'[…] ':'🃏 ')+'</span>'+esc(fcPlain(c).slice(0,90)||'(ว่าง)')+'</span><em>'+esc(c.deck.split(DECKSEP).join(' › '))+'</em><small>'+due+'</small></div>'; }).join(''):'<div class="note-s" style="padding:12px">ไม่พบการ์ด</div>')+'</div>';
+}
+$('#fc-body').addEventListener('change',e=>{
+  const t=e.target;
+  if(t.id==='fb-d'){ FV.bdeck=t.value; FV.sel.clear(); flRender(); }
+  else if(t.classList&&t.classList.contains('fbk')){ if(t.checked) FV.sel.add(t.getAttribute('data-id')); else FV.sel.delete(t.getAttribute('data-id')); flRender(); }
+  else if(t.id==='fb-all'){ const q=FV.q.trim().toLowerCase(); fcAlive().filter(c=>inDeck(c,FV.bdeck)&&(!q||(fcPlain(c)+' '+c.tags+' '+c.deck).toLowerCase().indexOf(q)>-1)).slice(0,300).forEach(c=>{ if(t.checked) FV.sel.add(c.id); else FV.sel.delete(c.id); }); flRender(); }
+});
+$('#fc-body').addEventListener('click',e=>{
+  const a=e.target.closest('[data-act]'); if(!a) return; const act=a.getAttribute('data-act'), dk=a.getAttribute('data-deck')||'';
+  if(act==='tgl'){ const kids=fcTreeList().some(t=>t.path.indexOf(dk+DECKSEP)===0); if(kids){ if(FV.col.has(dk)) FV.col.delete(dk); else FV.col.add(dk); } else { FV.bdeck=dk; FV.view='browse'; } flRender(); }
+  else if(act==='newin') openCardEditor(null,{deck:dk||FCS.lastDeck||'ทั่วไป',type:'basic'});
+  else if(act==='dmenu') fcDeckMenu(dk);
+  else if(act==='mkdeck') openDeckDialog({mode:'new',parent:''});
+  else if(act==='syncnow') syncNow();
+  else if(act==='syncset'){ if(IN_CLAUDE) syncStatus(); else openGh(); }
+  else if(act==='bmove'){ const cs=FCS.cards.filter(c=>FV.sel.has(c.id)); if(cs.length) openDeckDialog({mode:'move',cards:cs}); }
+  else if(act==='bdel'){ const cs=FCS.cards.filter(c=>FV.sel.has(c.id)); if(cs.length) msgBox({icon:'⚠️',title:'ลบการ์ด',text:'ลบการ์ดที่เลือก '+cs.length+' ใบหรือไม่?',buttons:[{label:'ลบ',cb:()=>{ const now=Date.now(); cs.forEach(c=>{ FCS.tombs.push({id:c.id,m:now}); fcPurgeImgs(c); }); FCS.cards=FCS.cards.filter(c=>!FV.sel.has(c.id)); FV.sel.clear(); fcSave(); flRender(); }},{label:'ยกเลิก'}]}); }
+});
+function fcDeckInit(){ if(!Array.isArray(FCS.folders)) FCS.folders=[]; }
 
 /* ================= Boot ================= */
 async function boot(){
